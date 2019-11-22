@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Vocabulary</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+
+    <string name="query_create_table">CREATE_TABLE %s ( %s )</string>
+    <string name="query_drop_table">DROP TABLE IF EXISTS %s</string>
+</resources>
