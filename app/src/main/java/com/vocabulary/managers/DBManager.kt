@@ -10,12 +10,13 @@ import com.vocabulary.db.models.TestFailModel
 import com.vocabulary.db.models.TestsModel
 import com.vocabulary.db.models.WordModel
 
-class DBManager() {
+class DBManager(private val context: Context) {
 
-    private lateinit var db: DBHelper
-    private lateinit var context: Context
+    private var db: DBHelper
+//    private var context: Context
+
     init {
-        this.context = Injector.application!!
+//        this.context = Injector.application!!
         this.db = DBHelper(context)
     }
 

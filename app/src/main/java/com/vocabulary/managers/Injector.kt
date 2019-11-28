@@ -1,5 +1,6 @@
 package com.vocabulary.managers
 
+import android.content.Context
 import com.vocabulary.application.App
 
 object Injector {
@@ -11,7 +12,10 @@ object Injector {
 
     fun initManagers() {
         this.languageManager = LanguageManager()
-        this.dbManager = DBManager()
+    }
+
+    fun initDBManager(context: Context) {
+        this.dbManager = DBManager(context)
     }
 
 }
