@@ -1,4 +1,4 @@
-package com.vocabulary.db.models
+package com.vocabulary.models
 
 import com.vocabulary.db.DBField
 import com.vocabulary.db.FieldType

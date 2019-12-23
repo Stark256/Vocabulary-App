@@ -3,4 +3,19 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="red">#F44336</color>
+    <color name="grey">#9E9E9E</color>
+    <color name="transparent">#00FFFFFF</color>
+
+
+    <color name="white">#FFFFFF</color>
+    <color name="start_white">#59FFFFFF</color>
+
+
+    <color name="theme_blue">#2C81EE</color>
+    <color name="half_blue">#802C81EE</color>
+
+    <color name="theme_red">#F33022</color>
+    <color name="half_red">#80F33022</color>
+
 </resources>

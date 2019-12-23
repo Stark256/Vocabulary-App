@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <style name="Theme.Custom_Blue" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="toolbar_back">@style/toolber_blue</item>
+        <item name="filter_view">@style/filter_view_blue</item>
+        <item name="filter_background">@style/filter_background_blue</item>
+        <item name="bottom_navigation">@style/navigation_blue</item>
+        <item name="button_white">@style/button_white_blue</item>
+        <item name="button_transparent">@style/button_transparent</item>
+    </style>
+
+    <style name="Theme.Custom_Red" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="toolbar_back">@style/toolber_red</item>
+        <item name="filter_view">@style/filter_view_red</item>
+        <item name="filter_background">@style/filter_background_red</item>
+        <item name="bottom_navigation">@style/navigation_red</item>
+        <item name="button_white">@style/button_white_red</item>
+        <item name="button_transparent">@style/button_transparent</item>
+    </style>
+</resources>

@@ -1,10 +1,14 @@
 <resources>
     <string name="app_name">Vocabulary</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_words">Words</string>
+    <string name="title_tests">Tests</string>
+    <string name="title_settings">Settings</string>
 
+    <string name="hint_search">Search…</string>
 
     <string name="query_create_table">CREATE_TABLE %s ( %s )</string>
     <string name="query_drop_table">DROP TABLE IF EXISTS %s</string>
+
+    <string name="apply_filters">Apply filters</string>
+    <string name="reset">Reset</string>
 </resources>

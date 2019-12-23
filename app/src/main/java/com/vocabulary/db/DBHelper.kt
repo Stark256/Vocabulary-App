@@ -4,8 +4,8 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import com.vocabulary.R
-import com.vocabulary.db.models.LanguageModel
-import com.vocabulary.db.models.TestsModel
+import com.vocabulary.models.LanguageModel
+import com.vocabulary.models.TestsModel
 
 class DBHelper(val context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 

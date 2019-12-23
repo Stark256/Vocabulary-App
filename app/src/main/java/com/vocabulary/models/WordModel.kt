@@ -1,20 +1,27 @@
-package com.vocabulary.db.models
+package com.vocabulary.models
 
+import android.content.ContentValues
 import com.vocabulary.db.DBField
 import com.vocabulary.db.FieldType
 
-class TestFailModel(
+class WordModel(
     val id: Int,
     val word: String,
-    val translate: String,
-    val wrongTranslate1: String,
-    val wrongTranslate2: String,
-    val wrongTranslate3: String,
-    var isFailed: Boolean = false
-) {
+    val translate: String
+) : WordBaseItem() {
+
+    fun getContentValues() : ContentValues {
+        val values = ContentValues()
+//        values.put(key_id, id)
+        values.put(key_word, word)
+        values.put(key_translate, translate)
+        return values
+    }
+
+    override fun getType(): WordItemType = WordItemType.TYPE_WORD
     companion object {
 
-        val TABLE_NAME = "TABLE_TEST_FAILS_"
+        val TABLE_NAME = "TABLE_LANGUAGE_"
 
         val key_id = "id"
         val key_word = "word"
@@ -30,5 +37,7 @@ class TestFailModel(
             DBField(key_word, type_word),
             DBField(key_translate, type_table_translate)
         )
+
+
     }
 }

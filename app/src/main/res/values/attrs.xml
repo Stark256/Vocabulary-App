@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="toolbar_back" format="reference"/>
+    <attr name="filter_view" format="reference"/>
+    <attr name="filter_background" format="reference"/>
+    <attr name="bottom_navigation" format="reference"/>
+    <attr name="button_white" format="reference"/>
+    <attr name="button_transparent" format="reference"/>
+</resources>

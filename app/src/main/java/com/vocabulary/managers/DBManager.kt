@@ -2,13 +2,12 @@ package com.vocabulary.managers
 
 import android.content.Context
 import com.vocabulary.R
-import com.vocabulary.db.DBField
 import com.vocabulary.db.DBHelper
 import com.vocabulary.db.DBUtil
-import com.vocabulary.db.FieldType
-import com.vocabulary.db.models.TestFailModel
-import com.vocabulary.db.models.TestsModel
-import com.vocabulary.db.models.WordModel
+import com.vocabulary.models.LanguageModel
+import com.vocabulary.models.TestFailModel
+import com.vocabulary.models.TestsModel
+import com.vocabulary.models.WordModel
 
 class DBManager(private val context: Context) {
 
@@ -25,6 +24,25 @@ class DBManager(private val context: Context) {
 
     // ----------------------------------------
     // WORDS
+    fun addLanguage(language: LanguageModel) {
+        db.writableDatabase.insert(LanguageModel.TABLE_NAME, null, language.getContentValues())
+    }
+
+    fun updateLanguage() {
+
+    }
+
+    fun deleteLanguage() {
+
+    }
+
+
+    // ----------------------------------------
+
+
+
+    // ----------------------------------------
+    // WORDS
     fun createTableWords() {
         db.writableDatabase.execSQL(DBUtil.createTableString(context, WordModel.TABLE_NAME, WordModel.TABLE_FIELDS))
     }
@@ -33,8 +51,9 @@ class DBManager(private val context: Context) {
         db.writableDatabase.execSQL(String.format(context.getString(R.string.query_drop_table), WordModel.TABLE_NAME))
     }
 
-    fun addWord() {
-        //TODO
+    fun addWord(word: WordModel) {
+        db.writableDatabase.insert(WordModel.TABLE_NAME, null, word.getContentValues())
+
     }
 
     fun updateWord() {

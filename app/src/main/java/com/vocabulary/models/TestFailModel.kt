@@ -1,16 +1,20 @@
-package com.vocabulary.db.models
+package com.vocabulary.models
 
 import com.vocabulary.db.DBField
 import com.vocabulary.db.FieldType
 
-class WordModel(
+class TestFailModel(
     val id: Int,
     val word: String,
-    val translate: String
+    val translate: String,
+    val wrongTranslate1: String,
+    val wrongTranslate2: String,
+    val wrongTranslate3: String,
+    var isFailed: Boolean = false
 ) {
     companion object {
 
-        val TABLE_NAME = "TABLE_LANGUAGE_"
+        val TABLE_NAME = "TABLE_TEST_FAILS_"
 
         val key_id = "id"
         val key_word = "word"

@@ -1,5 +1,6 @@
-package com.vocabulary.db.models
+package com.vocabulary.models
 
+import android.content.ContentValues
 import com.vocabulary.db.DBField
 import com.vocabulary.db.FieldType
 
@@ -9,6 +10,15 @@ class LanguageModel(
     val tableWords: String,
     val tableTestFails: String
 ) {
+    fun getContentValues() : ContentValues {
+        val values = ContentValues()
+//        values.put(key_id, id)
+        values.put(key_name, name)
+        values.put(key_table_words, tableWords)
+        values.put(key_table_test_fails, tableTestFails)
+        return values
+    }
+
     companion object {
 
         val TABLE_NAME = "TABLE_ALL_LANGUAGES"
