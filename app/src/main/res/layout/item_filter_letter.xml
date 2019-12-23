@@ -11,7 +11,8 @@
         android:id="@+id/rl_letter_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/circle_white">
+        android:background="@drawable/circle_white"
+        android:foreground="?selectableItemBackgroundBorderless">
 
         <TextView
             android:id="@+id/tv_filter_letter"
