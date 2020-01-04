@@ -5,11 +5,8 @@
     android:layout_gravity="center"
     android:id="@+id/root_filter"
     android:orientation="vertical"
-    android:padding="13dp"
-    android:paddingTop="13dp"
-    android:paddingBottom="13dp"
-    android:paddingStart="13dp"
-    android:paddingEnd="5dp">
+    android:padding="5dp"
+    >
 
     <ImageView
         android:id="@+id/btn_add_word"
@@ -17,7 +14,7 @@
         android:layout_height="30dp"
         android:background="?selectableItemBackgroundBorderless"
         android:padding="3dp"
-        android:src="@drawable/ic_add" />
+        style="?attr/ic_add" />
 
     <!--    <View-->
     <!--        android:id="@+id/badge_filter"-->

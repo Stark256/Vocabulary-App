@@ -1,11 +1,13 @@
 package com.vocabulary.ui.words
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.LinearInterpolator
 import android.view.animation.OvershootInterpolator
 import android.view.inputmethod.EditorInfo
 import androidx.constraintlayout.widget.ConstraintSet
@@ -18,13 +20,13 @@ import androidx.transition.ChangeBounds
 import androidx.transition.Transition
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.vocabulary.R
-import com.vocabulary.base.BaseFragment
+import com.vocabulary.ui.common.BaseFragment
 import com.vocabulary.managers.Injector
 import com.vocabulary.models.LetterModel
 import com.vocabulary.models.WordBaseItem
 import com.vocabulary.ui.MainActivity
+import com.vocabulary.ui.language.LanguageActivity
 import com.vocabulary.ui.words_filter.WordsFilterFragment
-import com.vocabulary.utils.ThemeUtils
 import kotlinx.android.synthetic.main.button_badge_1.*
 import kotlinx.android.synthetic.main.button_badge_2.*
 import kotlinx.android.synthetic.main.fragment_words.*
@@ -102,11 +104,13 @@ class WordsFragment : BaseFragment(), WordsFilterFragment.OnFilterStateChangeLis
 
     override fun onApplyPressed(filters: ArrayList<LetterModel>) {
         hideFilter()
+        showBadge()
         viewModel.setFilters(filters)
     }
 
     override fun onResetPressed() {
         hideFilter()
+        hideBadge()
         viewModel.resetFilters()
     }
 
@@ -119,6 +123,7 @@ class WordsFragment : BaseFragment(), WordsFilterFragment.OnFilterStateChangeLis
     override fun onLanguagePressed() {
         hideFilter()
         // TODO open language activity
+        startActivity(Intent(this@WordsFragment.contextMain, LanguageActivity::class.java))
     }
 
     private fun showFilter() {
@@ -153,5 +158,25 @@ class WordsFragment : BaseFragment(), WordsFilterFragment.OnFilterStateChangeLis
         val ft = childFragmentManager.beginTransaction()
         ft.replace(R.id.fl_filter, WordsFilterFragment.newInstance(this), filterFragmentKey)
         ft.commit()
+    }
+
+    private fun showBadge() {
+        badge_filter
+            ?.animate()
+            ?.scaleX(1f)
+            ?.scaleY(1f)
+            ?.setInterpolator(LinearInterpolator())
+            ?.setDuration(250)
+            ?.start()
+    }
+
+    private fun hideBadge() {
+        badge_filter
+            ?.animate()
+            ?.scaleX(0f)
+            ?.scaleY(0f)
+            ?.setInterpolator(LinearInterpolator())
+            ?.setDuration(250)
+            ?.start()
     }
 }

@@ -14,16 +14,16 @@ class WordsViewModel : ViewModel() {
 
 
     private val dbWords: ArrayList<WordModel> = arrayListOf(
-        WordModel(0, "atest1", "aтест1"),
-        WordModel(1, "atest2", "aтест2"),
-        WordModel(2, "atest3", "aтест3"),
-        WordModel(3, "btest4", "bтест4"),
-        WordModel(4, "btest5", "bтест5"),
-        WordModel(5, "ctest6", "cтест6"),
-        WordModel(6, "dtest7", "dтест7"),
-        WordModel(7, "dtest8", "dтест8"),
-        WordModel(0, "etest9", "eтест9"),
-        WordModel(0, "etest10", "eтест10")
+        WordModel(0, "atest1", "aтест1", "test"),
+        WordModel(1, "atest2", "aтест2", "test"),
+        WordModel(2, "atest3", "aтест3", "test"),
+        WordModel(3, "btest4", "bтест4", "test"),
+        WordModel(4, "btest5", "bтест5", "test"),
+        WordModel(5, "ctest6", "cтест6", "test"),
+        WordModel(6, "dtest7", "dтест7", "test"),
+        WordModel(7, "dtest8", "dтест8", "test"),
+        WordModel(0, "etest9", "eтест9", "test"),
+        WordModel(0, "etest10", "eтест10", "test")
     )
 
     fun loadWords() {

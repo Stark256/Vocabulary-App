@@ -3,20 +3,27 @@ package com.vocabulary.models
 import android.content.ContentValues
 import com.vocabulary.db.DBField
 import com.vocabulary.db.FieldType
+import java.io.Serializable
 
 class LanguageModel(
-    val id: Int,
-    val name: String,
-    val tableWords: String,
-    val tableTestFails: String
-) {
+    var id: Int = 0,
+    var name: String,
+    var tableWords: String,
+    var tableTestFails: String,
+    var wordsCount: Long = 0
+) : Serializable {
     fun getContentValues() : ContentValues {
-        val values = ContentValues()
-//        values.put(key_id, id)
-        values.put(key_name, name)
-        values.put(key_table_words, tableWords)
-        values.put(key_table_test_fails, tableTestFails)
-        return values
+        return ContentValues().apply {
+          put(key_name, name)
+          put(key_table_words, tableWords)
+          put(key_table_test_fails, tableTestFails)
+        }
+    }
+
+    fun getContentValueName() : ContentValues {
+        return ContentValues().apply {
+            put(key_name, name)
+        }
     }
 
     companion object {

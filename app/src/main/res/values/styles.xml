@@ -8,6 +8,20 @@
         <item name="colorAccent">@color/white</item>
     </style>
 
+    <style name="AppThemeBlue" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/theme_blue</item>
+        <item name="colorPrimaryDark">@color/theme_blue</item>
+        <item name="colorAccent">@color/theme_blue</item>
+    </style>
+
+    <style name="AppThemeRed" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/theme_red</item>
+        <item name="colorPrimaryDark">@color/theme_red</item>
+        <item name="colorAccent">@color/theme_red</item>
+    </style>
+
     <style name="button_transparent" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="android:backgroundTint">@color/transparent</item>
         <!--        <item name="android:background">@color/transparent</item>-->
@@ -17,9 +31,32 @@
     </style>
 
 
+    <style name="MyDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowBackground">@drawable/background_gradient_red</item>
+    </style>
+
+
+
 
 
     <!--    THEME BLUE     -->
+
+    <style name="text_blue">
+        <item name="android:textColor">@color/theme_blue</item>
+    </style>
+
+    <style name="ic_tune_blue">
+        <item name="android:src">@drawable/ic_tune_blue</item>
+    </style>
+
+    <style name="ic_add_blue">
+        <item name="android:src">@drawable/ic_add_blue</item>
+    </style>
+
+    <style name="badge_filter_blue">
+        <item name="android:background">@drawable/circle_blue_with_white_border</item>
+    </style>
 
     <style name="filter_background_blue">
         <item name="android:background">@color/theme_blue</item>
@@ -51,6 +88,21 @@
 
 
     <!--    THEME RED     -->
+    <style name="text_red">
+        <item name="android:textColor">@color/theme_red</item>
+    </style>
+
+    <style name="ic_tune_red">
+        <item name="android:src">@drawable/ic_tune_red</item>
+    </style>
+
+    <style name="ic_add_red">
+        <item name="android:src">@drawable/ic_add_red</item>
+    </style>
+
+    <style name="badge_filter_red">
+        <item name="android:background">@drawable/circle_red_with_white_border</item>
+    </style>
 
     <style name="filter_background_red">
         <item name="android:background">@color/theme_red</item>

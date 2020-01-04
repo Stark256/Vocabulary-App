@@ -6,9 +6,41 @@
 
     <string name="hint_search">Search…</string>
 
-    <string name="query_create_table">CREATE_TABLE %s ( %s )</string>
+    <string name="query_create_table">CREATE TABLE %s ( %s )</string>
     <string name="query_drop_table">DROP TABLE IF EXISTS %s</string>
+    <string name="query_select_where">SELECT * FROM %s WHERE %s=\'%s\'</string>
+
+    <string name="message_empty_field">This field can not be empty</string>
+    <string name="message_language_exist">This language already exist</string>
+    <string name="message_word_exist">This word already exist</string>
+    <string name="message_word_table_exist">Words base with this name already exist</string>
 
     <string name="apply_filters">Apply filters</string>
     <string name="reset">Reset</string>
+
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+
+    <string name="add_new_language">Add New Language</string>
+    <string name="edit_language">Edit Language</string>
+
+    <string name="add">Add</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+
+    <string name="add_new_word">Add New Word</string>
+    <string name="edit_word">Edit Word</string>
+
+    <string name="word">Word</string>
+    <string name="translate">Translate</string>
+    <string name="language">Language</string>
+    <string name="words_count_title">Words:</string>
+
+    <string name="message_deleting_language">With deleting you also delete all words and games related with this language</string>
+    <string name="message_sure_language">Are you sure you want to delete this language?</string>
+    <string name="message_sure_word">Are you sure you want to delete this word?</string>
+
+    <string name="delete_language_model">%s ( %s words )</string>
+    <string name="delete_word_model">%s ( %s )</string>
+
 </resources>

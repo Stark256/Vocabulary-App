@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:cardCornerRadius="16dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="?attr/accent_background">
+
+        <TextView
+            android:id="@+id/tv_dialog_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"/>
+
+        <RelativeLayout
+            android:id="@+id/ll_warning_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_dialog_title">
+
+            <ImageView
+                android:id="@+id/iv_warning"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/ic_warning"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/tv_warning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_toEndOf="@+id/iv_warning"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:textSize="16sp"
+                android:layout_alignTop="@+id/iv_warning"
+                android:textColor="@color/white"
+                android:maxLines="3"
+                android:ellipsize="end"
+                android:visibility="gone"
+                />
+
+            <TextView
+                android:id="@+id/tv_model_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_toEndOf="@+id/iv_warning"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_alignEnd="@+id/iv_warning"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:layout_below="@+id/tv_warning"
+                android:visibility="gone"
+                />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_model_title"
+                android:layout_toStartOf="@+id/btn_ok"
+                android:text="@string/cancel"
+                style="?attr/button_transparent"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_ok"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_model_title"
+                android:layout_alignParentEnd="true"
+                android:text="@string/ok"
+                style="?attr/button_white"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"/>
+
+            <ProgressBar
+                android:id="@+id/pb_languages"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:indeterminateTint="@color/white"
+                android:visibility="gone"
+                android:layout_margin="16dp"/>
+
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

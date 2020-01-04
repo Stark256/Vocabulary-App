@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.DialogFragment
 import com.vocabulary.R
 import com.vocabulary.models.CustomTheme
 
@@ -54,6 +55,31 @@ class ThemeManager {
             CustomTheme.THEME_RED -> ContextCompat.getColor(context, R.color.theme_red)
         }
 
+    }
+
+    fun customizeCheckView(context: Context, circle: View, imageView: ImageView, isChecked: Boolean) {
+        when (currentTheme) {
+            CustomTheme.THEME_BLUE -> {
+                if (isChecked) {
+                    imageView.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_check_white))
+                    imageView.visibility = View.VISIBLE
+                    circle.background = ContextCompat.getDrawable(context, R.drawable.circle_blue)
+                } else {
+                    circle.background = ContextCompat.getDrawable(context, R.drawable.circle_white_with_blue_border)
+                    imageView.visibility = View.GONE
+                }
+            }
+            CustomTheme.THEME_RED -> {
+                if (isChecked) {
+                    imageView.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_check_white))
+                    imageView.visibility = View.VISIBLE
+                    circle.background = ContextCompat.getDrawable(context, R.drawable.circle_red)
+                } else {
+                    circle.background = ContextCompat.getDrawable(context, R.drawable.circle_white_with_red_border)
+                    imageView.visibility = View.GONE
+                }
+            }
+        }
     }
 
     fun customizeWordEditBackground(context: Context, circle: View, imageView: ImageView, isEnabled: Boolean) {

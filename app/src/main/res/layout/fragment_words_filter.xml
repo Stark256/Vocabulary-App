@@ -10,7 +10,7 @@
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
-    style="?attr/filter_background">
+    style="?attr/accent_background">
 
     <View
         android:id="@+id/edit_circle"

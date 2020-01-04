@@ -10,11 +10,10 @@ class TestFailModel(
     val wrongTranslate1: String,
     val wrongTranslate2: String,
     val wrongTranslate3: String,
-    var isFailed: Boolean = false
+    var isFailed: Boolean = false,
+    var tableName: String
 ) {
     companion object {
-
-        val TABLE_NAME = "TABLE_TEST_FAILS_"
 
         val key_id = "id"
         val key_word = "word"
