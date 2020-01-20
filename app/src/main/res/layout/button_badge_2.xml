@@ -23,5 +23,5 @@
         android:scaleY="0"
         android:layout_height="15dp"
         android:layout_gravity="top|end"
-        style="?attr/badge_filter"/>
+        style="?attr/badge_filter_indicator"/>
 </FrameLayout>

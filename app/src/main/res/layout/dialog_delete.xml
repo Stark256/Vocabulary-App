@@ -9,7 +9,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="?attr/accent_background">
+        style="?attr/background_accent">
 
         <TextView
             android:id="@+id/tv_dialog_title"

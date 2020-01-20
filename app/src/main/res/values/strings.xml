@@ -43,4 +43,25 @@
     <string name="delete_language_model">%s ( %s words )</string>
     <string name="delete_word_model">%s ( %s )</string>
 
+    <string name="theme_sunrise">Sunrise</string>
+    <string name="theme_grape">Grape</string>
+    <string name="theme_razz">Razz</string>
+    <string name="theme_sundown">Sundown</string>
+    <string name="theme_ocean">Ocean</string>
+    <string name="theme_spring">Spring</string>
+    <string name="theme_autumn">Autumn</string>
+    <string name="theme_bubblegum">Bubblegum</string>
+    <string name="theme_lilac">Lilac</string>
+    <string name="theme_eclipse">Eclipse</string>
+    <string name="theme_azure">Azure</string>
+
+
+    <string name="no_languages_found_title">NO LANGUAGES FOUND</string>
+    <string name="no_languages_found_message">Please add new language.</string>
+
+    <string name="no_words_found_title">NO WORDS FOUND</string>
+    <string name="no_words_found_message">Please add new word.</string>
+
+    <string name="no_tests_found_title">NO TESTS FOUND</string>
+    <string name="no_tests_found_message">Please add new test.</string>
 </resources>

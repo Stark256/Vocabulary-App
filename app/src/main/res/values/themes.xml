@@ -1,29 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <style name="Theme.Custom_Blue" parent="AppThemeBlue">
-        <item name="toolbar_back">@style/toolber_blue</item>
-        <item name="filter_view">@style/filter_view_blue</item>
-        <item name="accent_background">@style/filter_background_blue</item>
-        <item name="accent_text">@style/text_blue</item>
-        <item name="bottom_navigation">@style/navigation_blue</item>
-        <item name="button_white">@style/button_white_blue</item>
+<!--    <style name="Theme.Custom_Blue" parent="AppThemeBlue">-->
+<!--        <item name="toolbar_back">@style/toolber_blue</item>-->
+<!--        <item name="filter_view">@style/filter_view_blue</item>-->
+<!--        <item name="accent_background">@style/filter_background_blue</item>-->
+<!--        <item name="accent_text">@style/text_blue</item>-->
+<!--        <item name="bottom_navigation">@style/navigation_blue</item>-->
+<!--        <item name="button_white">@style/button_white_blue</item>-->
+<!--        <item name="button_transparent">@style/button_transparent</item>-->
+<!--        <item name="badge_filter">@style/badge_filter_blue</item>-->
+<!--        <item name="ic_tune">@style/ic_tune_blue</item>-->
+<!--        <item name="ic_add">@style/ic_add_blue</item>-->
+<!--    </style>-->
+
+<!--    <style name="Theme.Custom_Red" parent="AppThemeRed">-->
+<!--        <item name="toolbar_back">@style/toolber_red</item>-->
+<!--        <item name="filter_view">@style/filter_view_red</item>-->
+<!--        <item name="accent_background">@style/filter_background_red</item>-->
+<!--        <item name="accent_text">@style/text_red</item>-->
+<!--        <item name="bottom_navigation">@style/navigation_red</item>-->
+<!--        <item name="button_white">@style/button_white_red</item>-->
+<!--        <item name="button_transparent">@style/button_transparent</item>-->
+<!--        <item name="badge_filter">@style/badge_filter_red</item>-->
+<!--        <item name="ic_tune">@style/ic_tune_red</item>-->
+<!--        <item name="ic_add">@style/ic_add_red</item>-->
+<!--    </style>-->
+
+
+    <style name="Theme.Custom_Ocean" parent="AppThemeOcean">
+        <item name="button_white">@style/button_white_ocean</item>
         <item name="button_transparent">@style/button_transparent</item>
-        <item name="badge_filter">@style/badge_filter_blue</item>
-        <item name="ic_tune">@style/ic_tune_blue</item>
-        <item name="ic_add">@style/ic_add_blue</item>
+        <item name="badge_filter_indicator">@style/badge_filter_indicator_ocean</item>
+        <item name="background_filter_gradient">@style/background_filter_gradient_ocean</item>
+        <item name="background_gradient">@style/background_gradient_ocean</item>
+        <item name="background_accent">@style/background_accent_ocean</item>
+        <item name="bottom_navigation">@style/bottom_navigation_ocean</item>
+        <item name="filter_view_gradient">@style/filter_view_gradient_ocean</item>
+        <item name="ic_tune">@style/ic_tune_ocean</item>
+        <item name="ic_add">@style/ic_add_ocean</item>
+        <item name="toolbar_background">@style/toolbar_background_ocean</item>
+        <item name="text_accent">@style/text_accent_ocean</item>
+        <item name="text_default">@style/text_default_ocean</item>
     </style>
 
-    <style name="Theme.Custom_Red" parent="AppThemeRed">
-        <item name="toolbar_back">@style/toolber_red</item>
-        <item name="filter_view">@style/filter_view_red</item>
-        <item name="accent_background">@style/filter_background_red</item>
-        <item name="accent_text">@style/text_red</item>
-        <item name="bottom_navigation">@style/navigation_red</item>
-        <item name="button_white">@style/button_white_red</item>
+    <style name="Theme.Custom_Grape" parent="AppThemeGrape">
+        <item name="button_white">@style/button_white_grape</item>
         <item name="button_transparent">@style/button_transparent</item>
-        <item name="badge_filter">@style/badge_filter_red</item>
-        <item name="ic_tune">@style/ic_tune_red</item>
-        <item name="ic_add">@style/ic_add_red</item>
+        <item name="badge_filter_indicator">@style/badge_filter_indicator_grape</item>
+        <item name="background_filter_gradient">@style/background_filter_gradient_grape</item>
+        <item name="background_gradient">@style/background_gradient_grape</item>
+        <item name="background_accent">@style/background_accent_grape</item>
+        <item name="bottom_navigation">@style/bottom_navigation_grape</item>
+        <item name="filter_view_gradient">@style/filter_view_gradient_grape</item>
+        <item name="ic_tune">@style/ic_tune_grape</item>
+        <item name="ic_add">@style/ic_add_grape</item>
+        <item name="toolbar_background">@style/toolbar_background_grape</item>
+        <item name="text_accent">@style/text_accent_grape</item>
+        <item name="text_default">@style/text_default_grape</item>
     </style>
+
+    <style name="Theme.Custom_Razz" parent="AppThemeRazz">
+        <item name="button_white">@style/button_white_razz</item>
+        <item name="button_transparent">@style/button_transparent</item>
+        <item name="badge_filter_indicator">@style/badge_filter_indicator_razz</item>
+        <item name="background_filter_gradient">@style/background_filter_gradient_razz</item>
+        <item name="background_gradient">@style/background_gradient_razz</item>
+        <item name="background_accent">@style/background_accent_razz</item>
+        <item name="bottom_navigation">@style/bottom_navigation_razz</item>
+        <item name="filter_view_gradient">@style/filter_view_gradient_razz</item>
+        <item name="ic_tune">@style/ic_tune_razz</item>
+        <item name="ic_add">@style/ic_add_razz</item>
+        <item name="toolbar_background">@style/toolbar_background_razz</item>
+        <item name="text_accent">@style/text_accent_razz</item>
+        <item name="text_default">@style/text_default_razz</item>
+    </style>
+
+    <style name="Theme.Custom_Sunrise" parent="AppThemeSunrise">
+        <item name="button_white">@style/button_white_sunrise</item>
+        <item name="button_transparent">@style/button_transparent</item>
+        <item name="badge_filter_indicator">@style/badge_filter_indicator_sunrise</item>
+        <item name="background_filter_gradient">@style/background_filter_gradient_sunrise</item>
+        <item name="background_gradient">@style/background_gradient_sunrise</item>
+        <item name="background_accent">@style/background_accent_sunrise</item>
+        <item name="bottom_navigation">@style/bottom_navigation_sunrise</item>
+        <item name="filter_view_gradient">@style/filter_view_gradient_sunrise</item>
+        <item name="ic_tune">@style/ic_tune_sunrise</item>
+        <item name="ic_add">@style/ic_add_sunrise</item>
+        <item name="toolbar_background">@style/toolbar_background_sunrise</item>
+        <item name="text_accent">@style/text_accent_sunrise</item>
+        <item name="text_default">@style/text_default_sunrise</item>
+    </style>
+
+    <style name="Theme.Custom_Sundown" parent="AppThemeSundown">
+        <item name="button_white">@style/button_white_sundown</item>
+        <item name="button_transparent">@style/button_transparent</item>
+        <item name="badge_filter_indicator">@style/badge_filter_indicator_sundown</item>
+        <item name="background_filter_gradient">@style/background_filter_gradient_sundown</item>
+        <item name="background_gradient">@style/background_gradient_sundown</item>
+        <item name="background_accent">@style/background_accent_sundown</item>
+        <item name="bottom_navigation">@style/bottom_navigation_sundown</item>
+        <item name="filter_view_gradient">@style/filter_view_gradient_sundown</item>
+        <item name="ic_tune">@style/ic_tune_sundown</item>
+        <item name="ic_add">@style/ic_add_sundown</item>
+        <item name="toolbar_background">@style/toolbar_background_sundown</item>
+        <item name="text_accent">@style/text_accent_sundown</item>
+        <item name="text_default">@style/text_default_sundown</item>
+    </style>
+
+    <style name="Theme.Custom_Autumn" parent="AppThemeAutumn">
+        <item name="button_white">@style/button_white_autumn</item>
+        <item name="button_transparent">@style/button_transparent</item>
+        <item name="badge_filter_indicator">@style/badge_filter_indicator_autumn</item>
+        <item name="background_filter_gradient">@style/background_filter_gradient_autumn</item>
+        <item name="background_gradient">@style/background_gradient_autumn</item>
+        <item name="background_accent">@style/background_accent_autumn</item>
+        <item name="bottom_navigation">@style/bottom_navigation_autumn</item>
+        <item name="filter_view_gradient">@style/filter_view_gradient_autumn</item>
+        <item name="ic_tune">@style/ic_tune_autumn</item>
+        <item name="ic_add">@style/ic_add_autumn</item>
+        <item name="toolbar_background">@style/toolbar_background_autumn</item>
+        <item name="text_accent">@style/text_accent_autumn</item>
+        <item name="text_default">@style/text_default_autumn</item>
+    </style>
+
+    <style name="Theme.Custom_Spring" parent="AppThemeSpring">
+        <item name="button_white">@style/button_white_spring</item>
+        <item name="button_transparent">@style/button_transparent</item>
+        <item name="badge_filter_indicator">@style/badge_filter_indicator_spring</item>
+        <item name="background_filter_gradient">@style/background_filter_gradient_spring</item>
+        <item name="background_gradient">@style/background_gradient_spring</item>
+        <item name="background_accent">@style/background_accent_spring</item>
+        <item name="bottom_navigation">@style/bottom_navigation_spring</item>
+        <item name="filter_view_gradient">@style/filter_view_gradient_spring</item>
+        <item name="ic_tune">@style/ic_tune_spring</item>
+        <item name="ic_add">@style/ic_add_spring</item>
+        <item name="toolbar_background">@style/toolbar_background_spring</item>
+        <item name="text_accent">@style/text_accent_spring</item>
+        <item name="text_default">@style/text_default_spring</item>
+    </style>
+
 </resources>

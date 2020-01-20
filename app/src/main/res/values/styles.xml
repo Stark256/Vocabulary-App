@@ -133,4 +133,354 @@
     </style>
 
 
+
+    <style name="AppThemeOcean" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/theme_ocean_accent</item>
+        <item name="colorPrimaryDark">@color/theme_ocean_accent</item>
+        <item name="colorAccent">@color/theme_ocean_accent</item>
+    </style>
+
+    <style name="button_white_ocean" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:textColor">@color/theme_ocean_accent</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="cornerRadius">8dp</item>
+    </style>
+    <style name="badge_filter_indicator_ocean" >
+        <item name="android:background">@drawable/circle_ocean_with_white_border</item>
+    </style>
+    <style name="background_filter_gradient_ocean" >
+        <item name="android:background">@drawable/background_filter_gradient_ocean</item>
+    </style>
+    <style name="background_gradient_ocean" >
+        <item name="android:background">@drawable/background_gradient_ocean</item>
+    </style>
+    <style name="background_accent_ocean" >
+        <item name="android:background">@color/theme_ocean_accent</item>
+    </style>
+    <style name="bottom_navigation_ocean" >
+        <item name="itemIconTint">@drawable/navigation_selector_ocean</item>
+        <item name="itemTextColor">@drawable/navigation_selector_ocean</item>
+        <item name="elevation">16dp</item>
+        <item name="android:background">@color/white</item>
+    </style>
+    <style name="filter_view_gradient_ocean" >
+        <item name="android:background">@color/theme_ocean_accent</item>
+    </style>
+    <style name="ic_tune_ocean" >
+        <item name="android:src">@drawable/ic_tune_ocean</item>
+    </style>
+    <style name="ic_add_ocean" >
+        <item name="android:src">@drawable/ic_add_ocean</item>
+    </style>
+    <style name="toolbar_background_ocean" >
+        <item name="android:background">@color/theme_ocean_accent</item>
+    </style>
+    <style name="text_accent_ocean" >
+        <item name="android:textColor">@color/theme_ocean_accent</item>
+    </style>
+    <style name="text_default_ocean" > </style>
+
+
+    <style name="AppThemeSunrise" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/theme_sunrise_accent</item>
+        <item name="colorPrimaryDark">@color/theme_sunrise_accent</item>
+        <item name="colorAccent">@color/theme_sunrise_accent</item>
+    </style>
+
+    <style name="button_white_sunrise" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:textColor">@color/theme_sunrise_accent</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="cornerRadius">8dp</item>
+    </style>
+    <style name="badge_filter_indicator_sunrise">
+        <item name="android:background">@drawable/circle_sunrise_with_white_border</item>
+    </style>
+    <style name="background_filter_gradient_sunrise" >
+        <item name="android:background">@drawable/background_filter_gradient_sunrise</item>
+    </style>
+    <style name="background_gradient_sunrise">
+        <item name="android:background">@drawable/background_gradient_sunrise</item>
+    </style>
+    <style name="background_accent_sunrise">
+        <item name="android:background">@color/theme_sunrise_accent</item>
+    </style>
+    <style name="bottom_navigation_sunrise">
+        <item name="itemIconTint">@drawable/navigation_selector_sunrise</item>
+        <item name="itemTextColor">@drawable/navigation_selector_sunrise</item>
+        <item name="elevation">16dp</item>
+        <item name="android:background">@color/white</item>
+    </style>
+    <style name="filter_view_gradient_sunrise">
+        <item name="android:background">@color/theme_sunrise_accent</item>
+    </style>
+    <style name="ic_tune_sunrise">
+        <item name="android:src">@drawable/ic_tune_sunrise</item>
+    </style>
+    <style name="ic_add_sunrise">
+        <item name="android:src">@drawable/ic_add_sunrise</item>
+    </style>
+    <style name="toolbar_background_sunrise" >
+        <item name="android:background">@color/theme_sunrise_accent</item>
+    </style>
+    <style name="text_accent_sunrise" >
+        <item name="android:textColor">@color/theme_sunrise_accent</item>
+    </style>
+    <style name="text_default_sunrise" > </style>
+
+
+    <style name="AppThemeSundown" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/theme_sundown_accent</item>
+        <item name="colorPrimaryDark">@color/theme_sundown_accent</item>
+        <item name="colorAccent">@color/theme_sundown_accent</item>
+    </style>
+
+    <style name="button_white_sundown" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:textColor">@color/theme_sundown_accent</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="cornerRadius">8dp</item>
+    </style>
+    <style name="badge_filter_indicator_sundown" >
+        <item name="android:background">@drawable/circle_sundown_with_white_border</item>
+    </style>
+    <style name="background_filter_gradient_sundown" >
+        <item name="android:background">@drawable/background_filter_gradient_sundown</item>
+    </style>
+    <style name="background_gradient_sundown" >
+        <item name="android:background">@drawable/background_gradient_sundown</item>
+    </style>
+    <style name="background_accent_sundown" >
+        <item name="android:background">@color/theme_sundown_accent</item>
+    </style>
+    <style name="bottom_navigation_sundown" >
+        <item name="itemIconTint">@drawable/navigation_selector_sundown</item>
+        <item name="itemTextColor">@drawable/navigation_selector_sundown</item>
+        <item name="elevation">16dp</item>
+        <item name="android:background">@color/white</item>
+    </style>
+    <style name="filter_view_gradient_sundown" >
+        <item name="android:background">@color/theme_sundown_accent</item>
+    </style>
+    <style name="ic_tune_sundown" >
+        <item name="android:src">@drawable/ic_tune_sundown</item>
+    </style>
+    <style name="ic_add_sundown" >
+        <item name="android:src">@drawable/ic_add_sundown</item>
+    </style>
+    <style name="toolbar_background_sundown" >
+        <item name="android:background">@color/theme_sundown_accent</item>
+    </style>
+    <style name="text_accent_sundown" >
+        <item name="android:textColor">@color/theme_sundown_accent</item>
+    </style>
+    <style name="text_default_sundown" > </style>
+
+
+    <style name="AppThemeRazz" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/theme_razz_accent</item>
+        <item name="colorPrimaryDark">@color/theme_razz_accent</item>
+        <item name="colorAccent">@color/theme_razz_accent</item>
+    </style>
+
+    <style name="button_white_razz" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:textColor">@color/theme_razz_accent</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="cornerRadius">8dp</item>
+    </style>
+    <style name="badge_filter_indicator_razz" >
+        <item name="android:background">@drawable/circle_razz_with_white_border</item>
+    </style>
+    <style name="background_filter_gradient_razz" >
+        <item name="android:background">@drawable/background_filter_gradient_razz</item>
+    </style>
+    <style name="background_gradient_razz" >
+        <item name="android:background">@drawable/background_gradient_razz</item>
+    </style>
+    <style name="background_accent_razz" >
+        <item name="android:background">@color/theme_razz_accent</item>
+    </style>
+    <style name="bottom_navigation_razz" >
+        <item name="itemIconTint">@drawable/navigation_selector_razz</item>
+        <item name="itemTextColor">@drawable/navigation_selector_razz</item>
+        <item name="elevation">16dp</item>
+        <item name="android:background">@color/white</item>
+    </style>
+    <style name="filter_view_gradient_razz" >
+        <item name="android:background">@color/theme_razz_accent</item>
+    </style>
+    <style name="ic_tune_razz" >
+        <item name="android:src">@drawable/ic_tune_razz</item>
+    </style>
+    <style name="ic_add_razz" >
+        <item name="android:src">@drawable/ic_add_razz</item>
+    </style>
+    <style name="toolbar_background_razz" >
+        <item name="android:background">@color/theme_razz_accent</item>
+    </style>
+    <style name="text_accent_razz" >
+        <item name="android:textColor">@color/theme_razz_accent</item>
+    </style>
+    <style name="text_default_razz" > </style>
+
+
+    <style name="AppThemeGrape" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/theme_grape_accent</item>
+        <item name="colorPrimaryDark">@color/theme_grape_accent</item>
+        <item name="colorAccent">@color/theme_grape_accent</item>
+    </style>
+
+    <style name="button_white_grape" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:textColor">@color/theme_grape_accent</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="cornerRadius">8dp</item>
+    </style>
+    <style name="badge_filter_indicator_grape" >
+        <item name="android:background">@drawable/circle_grape_with_white_border</item>
+    </style>
+    <style name="background_filter_gradient_grape" >
+        <item name="android:background">@drawable/background_filter_gradient_grape</item>
+    </style>
+    <style name="background_gradient_grape" >
+        <item name="android:background">@drawable/background_gradient_grape</item>
+    </style>
+    <style name="background_accent_grape" >
+        <item name="android:background">@color/theme_grape_accent</item>
+    </style>
+    <style name="bottom_navigation_grape" >
+        <item name="itemIconTint">@drawable/navigation_selector_grape</item>
+        <item name="itemTextColor">@drawable/navigation_selector_grape</item>
+        <item name="elevation">16dp</item>
+        <item name="android:background">@color/white</item>
+    </style>
+    <style name="filter_view_gradient_grape" >
+        <item name="android:background">@color/theme_grape_accent</item>
+    </style>
+    <style name="ic_tune_grape" >
+        <item name="android:src">@drawable/ic_tune_grape</item>
+    </style>
+    <style name="ic_add_grape" >
+        <item name="android:src">@drawable/ic_add_grape</item>
+    </style>
+    <style name="toolbar_background_grape" >
+        <item name="android:background">@color/theme_grape_accent</item>
+    </style>
+    <style name="text_accent_grape" >
+        <item name="android:textColor">@color/theme_grape_accent</item>
+    </style>
+    <style name="text_default_grape" > </style>
+
+
+    <style name="AppThemeAutumn" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/theme_autumn_accent</item>
+        <item name="colorPrimaryDark">@color/theme_autumn_accent</item>
+        <item name="colorAccent">@color/theme_autumn_accent</item>
+    </style>
+
+    <style name="button_white_autumn" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:textColor">@color/theme_autumn_accent</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="cornerRadius">8dp</item>
+    </style>
+    <style name="badge_filter_indicator_autumn" >
+        <item name="android:background">@drawable/circle_autumn_with_white_border</item>
+    </style>
+    <style name="background_filter_gradient_autumn" >
+        <item name="android:background">@drawable/background_filter_gradient_autumn</item>
+    </style>
+    <style name="background_gradient_autumn" >
+        <item name="android:background">@drawable/background_gradient_autumn</item>
+    </style>
+    <style name="background_accent_autumn" >
+        <item name="android:background">@color/theme_autumn_accent</item>
+    </style>
+    <style name="bottom_navigation_autumn" >
+        <item name="itemIconTint">@drawable/navigation_selector_autumn</item>
+        <item name="itemTextColor">@drawable/navigation_selector_autumn</item>
+        <item name="elevation">16dp</item>
+        <item name="android:background">@color/white</item>
+    </style>
+    <style name="filter_view_gradient_autumn" >
+        <item name="android:background">@color/theme_autumn_accent</item>
+    </style>
+    <style name="ic_tune_autumn" >
+        <item name="android:src">@drawable/ic_tune_autumn</item>
+    </style>
+    <style name="ic_add_autumn" >
+        <item name="android:src">@drawable/ic_add_autumn</item>
+    </style>
+    <style name="toolbar_background_autumn" >
+        <item name="android:background">@color/theme_autumn_accent</item>
+    </style>
+    <style name="text_accent_autumn" >
+    -    <item name="android:textColor">@color/theme_autumn_accent</item>
+    </style>
+    <style name="text_default_autumn" > </style>
+
+
+    <style name="AppThemeSpring" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/theme_spring_accent</item>
+        <item name="colorPrimaryDark">@color/theme_spring_accent</item>
+        <item name="colorAccent">@color/theme_spring_accent</item>
+    </style>
+
+    <style name="button_white_spring" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:textColor">@color/theme_spring_accent</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="cornerRadius">8dp</item>
+    </style>
+    <style name="badge_filter_indicator_spring" >
+        <item name="android:background">@drawable/circle_spring_with_white_border</item>
+    </style>
+    <style name="background_filter_gradient_spring" >
+        <item name="android:background">@drawable/background_filter_gradient_spring</item>
+    </style>
+    <style name="background_gradient_spring" >
+        <item name="android:background">@drawable/background_gradient_spring</item>
+    </style>
+    <style name="background_accent_spring" >
+        <item name="android:background">@color/theme_spring_accent</item>
+    </style>
+    <style name="bottom_navigation_spring" >
+        <item name="itemIconTint">@drawable/navigation_selector_spring</item>
+        <item name="itemTextColor">@drawable/navigation_selector_spring</item>
+        <item name="elevation">16dp</item>
+        <item name="android:background">@color/white</item>
+    </style>
+    <style name="filter_view_gradient_spring" >
+        <item name="android:background">@color/theme_spring_accent</item>
+    </style>
+    <style name="ic_tune_spring" >
+        <item name="android:src">@drawable/ic_tune_spring</item>
+    </style>
+    <style name="ic_add_spring" >
+        <item name="android:src">@drawable/ic_add_spring</item>
+    </style>
+    <style name="toolbar_background_spring" >
+        <item name="android:background">@color/theme_spring_accent</item>
+    </style>
+    <style name="text_accent_spring" >
+        <item name="android:textColor">@color/theme_spring_accent</item>
+    </style>
+    <style name="text_default_spring" > </style>
+
+<!--    <style name="button_white" > </style>-->
+<!--    <style name="button_transparent" > </style>-->
+<!--    <style name="badge_filter_indicator" > </style>-->
+<!--    <style name="background_gradient" > </style>-->
+<!--    <style name="background_accent" > </style>-->
+<!--    <style name="bottom_navigation" > </style>-->
+<!--    <style name="filter_view_gradient" > </style>-->
+<!--    <style name="ic_tune" > </style>-->
+<!--    <style name="ic_add" > </style>-->
+<!--    <style name="toolbar_background" > </style>-->
+<!--    <style name="text_accent" > </style>-->
+<!--    <style name="text_default" > </style>-->
+
+
 </resources>

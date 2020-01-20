@@ -3,9 +3,17 @@
     android:shape="rectangle">
 
     <gradient
-        android:angle="135"
-        android:endColor="@color/theme_blue"
-        android:startColor="#6B0485" />
+        android:angle="90"
+        android:endColor="@color/theme_ocean_gradient_1"
+        android:centerColor="@color/theme_ocean_gradient_2"
+        android:startColor="@color/theme_ocean_gradient_3" />
+
+<!--    <gradient-->
+<!--        android:angle="135"-->
+<!--        android:endColor="@color/theme_blue"-->
+<!--        android:startColor="#6B0485" />-->
+
+<!--        android:startColor="#6B0485" />-->
 <!--        android:startColor="#8519A0" />-->
 
 </shape>

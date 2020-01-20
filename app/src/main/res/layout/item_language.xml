@@ -50,7 +50,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
             android:layout_toStartOf="@+id/view_check"
-            style="?attr/accent_text"/>
+            style="?attr/text_accent"/>
 
 
         <com.vocabulary.customViews.CheckView

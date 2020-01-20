@@ -10,4 +10,15 @@
 
     <dimen name="card_check_size">30dp</dimen>
     <dimen name="card_check_corner_radius">15dp</dimen>
+
+    <dimen name="button_text_min_width">66dp</dimen>
+    <dimen name="button_padding_with_icon">8dp</dimen>
+    <dimen name="button_padding_with_text">8dp</dimen>
+    <dimen name="button_square_corner_radius">8dp</dimen>
+    <dimen name="button_border_height">36dp</dimen>
+    <dimen name="button_container_height">30dp</dimen>
+    <dimen name="button_border_circle_corner_radius">18dp</dimen>
+    <dimen name="button_container_circle_corner_radius">15dp</dimen>
+    <dimen name="button_icon_size">15dp</dimen>
+    <dimen name="button_text_size">14sp</dimen>
 </resources>

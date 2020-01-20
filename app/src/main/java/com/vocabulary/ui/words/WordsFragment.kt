@@ -82,7 +82,7 @@ class WordsFragment : BaseFragment(), WordsFilterFragment.OnFilterStateChangeLis
         }
 
         btn_add_word.setOnClickListener {
-            Injector.themeManager.changeToTheme(activity as MainActivity)
+            //Injector.themeManager.changeToTheme(activity as MainActivity)
         }
 
         tiet_search.setOnEditorActionListener { v, actionId, event ->
@@ -112,12 +112,6 @@ class WordsFragment : BaseFragment(), WordsFilterFragment.OnFilterStateChangeLis
         hideFilter()
         hideBadge()
         viewModel.resetFilters()
-    }
-
-    override fun onEditPressed() {
-        hideFilter()
-        this.swipeController.setSwipe()
-        // TODO enable editing
     }
 
     override fun onLanguagePressed() {

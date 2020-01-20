@@ -27,22 +27,22 @@ class WordsViewModel : ViewModel() {
     )
 
     fun loadWords() {
-        val adapterList = ArrayList<WordBaseItem>()
-        var letter = ""
-
-        for(item in dbWords) {
-            val wordStart = item.word.first().toString()
-            if(wordStart != letter) {
-                val letterModel = LetterModel(wordStart)
-                adapterList.add(letterModel)
-                filters.add(letterModel)
-                letter = wordStart
-            }
-
-            adapterList.add(item)
-        }
-
-        words.value = adapterList
+//        val adapterList = ArrayList<WordBaseItem>()
+//        var letter = ""
+//
+//        for(item in dbWords) {
+//            val wordStart = item.word.first().toString()
+//            if(wordStart != letter) {
+//                val letterModel = LetterModel(wordStart)
+//                adapterList.add(letterModel)
+//                filters.add(letterModel)
+//                letter = wordStart
+//            }
+//
+//            adapterList.add(item)
+//        }
+//
+//        words.value = adapterList
     }
 
     fun filterWords() {

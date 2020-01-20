@@ -10,31 +10,7 @@
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
-    style="?attr/accent_background">
-
-    <View
-        android:id="@+id/edit_circle"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/circle_white"
-        app:layout_constraintTop_toTopOf="@+id/btn_edit"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_edit"
-        app:layout_constraintStart_toStartOf="@+id/btn_edit"
-        app:layout_constraintEnd_toEndOf="@+id/btn_edit"
-        android:visibility="gone"/>
-
-    <ImageView
-        android:id="@+id/btn_edit"
-        android:layout_width="33dp"
-        android:layout_height="33dp"
-        android:background="?selectableItemBackgroundBorderless"
-        android:layout_marginEnd="16dp"
-        android:padding="4dp"
-        android:src="@drawable/ic_edit"
-        app:layout_constraintTop_toTopOf="@+id/btn_language"
-        app:layout_constraintEnd_toStartOf="@+id/btn_language"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_language"/>
-
+    style="?attr/background_accent">
 
 
     <ImageView

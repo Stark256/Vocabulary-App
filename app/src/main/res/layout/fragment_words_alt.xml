@@ -31,7 +31,7 @@
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
-                style="?attr/toolbar_back"
+                style="?attr/toolbar_background"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
 
@@ -98,7 +98,7 @@
         android:id="@+id/trans"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        style="?attr/filter_view"
+        style="?attr/background_filter_gradient"
         android:clickable="true"
         android:elevation="3dp"
         android:focusable="true"

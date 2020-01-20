@@ -8,15 +8,15 @@ import com.vocabulary.models.CustomTheme
 
 object ThemeUtils {
 
-    private var sTheme: CustomTheme = CustomTheme.THEME_BLUE
+    private var sTheme: CustomTheme = CustomTheme.THEME_OCEAN
 
 
     fun changeToTheme(activity: Activity) {
-        if(sTheme == CustomTheme.THEME_BLUE) {
-            sTheme = CustomTheme.THEME_RED
-        } else {
-            sTheme = CustomTheme.THEME_BLUE
-        }
+//        if(sTheme == CustomTheme.THEME_BLUE) {
+//            sTheme = CustomTheme.THEME_RED
+//        } else {
+//            sTheme = CustomTheme.THEME_BLUE
+//        }
 
 
 
@@ -29,11 +29,11 @@ object ThemeUtils {
     }
 
     fun onActivityCreateSetTheme(activity: Activity) {
-        when (sTheme) {
-            CustomTheme.THEME_BLUE -> activity.setTheme(R.style.Theme_Custom_Blue)
-            CustomTheme.THEME_RED -> activity.setTheme(R.style.Theme_Custom_Red)
-            else -> activity.setTheme(R.style.Theme_Custom_Blue)
-        }
+//        when (sTheme) {
+//            CustomTheme.THEME_BLUE -> activity.setTheme(R.style.Theme_Custom_Blue)
+//            CustomTheme.THEME_RED -> activity.setTheme(R.style.Theme_Custom_Red)
+//            else -> activity.setTheme(R.style.Theme_Custom_Blue)
+//        }
     }
 
 }

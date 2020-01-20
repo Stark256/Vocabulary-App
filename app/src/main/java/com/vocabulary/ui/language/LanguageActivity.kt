@@ -4,12 +4,14 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.vocabulary.R
+import com.vocabulary.customViews.EmptyListMessageView
 import com.vocabulary.managers.Injector
 import com.vocabulary.models.LanguageModel
 import com.vocabulary.ui.common.DeletingDialog
@@ -30,6 +32,7 @@ class LanguageActivity : AppCompatActivity(), LanguageAdapter.LanguageClickListe
 
         this.viewModel = ViewModelProviders.of(this).get(LanguageViewModel::class.java)
 
+        this.view_empty_languages.initView(EmptyListMessageView.ListType.LANGUAGES)
         this.adapter = LanguageAdapter(this)
         rv_languages.layoutManager = LinearLayoutManager(this)
         rv_languages.adapter = adapter
@@ -70,9 +73,23 @@ class LanguageActivity : AppCompatActivity(), LanguageAdapter.LanguageClickListe
 
         viewModel.apply {
             languages.observe(this@LanguageActivity, Observer<ArrayList<LanguageModel>>{
-               adapter.replaceAll(it)
+                adapter.replaceAll(it)
+                initList(it)
             })
             getLanguages()
+            this@LanguageActivity.pb_languages.visibility = View.VISIBLE
+        }
+    }
+
+    private fun initList(arr: ArrayList<LanguageModel>) {
+        if(arr.isNotEmpty()) {
+            this.pb_languages.visibility = View.GONE
+            this.view_empty_languages.visibility = View.GONE
+            this.rv_languages.visibility = View.VISIBLE
+        } else {
+            this.pb_languages.visibility = View.GONE
+            this.rv_languages.visibility = View.GONE
+            this.view_empty_languages.visibility = View.VISIBLE
         }
     }
 

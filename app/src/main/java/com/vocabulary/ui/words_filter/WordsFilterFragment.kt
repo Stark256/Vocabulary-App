@@ -31,7 +31,7 @@ class WordsFilterFragment : Fragment(){
         rv_letters.layoutManager = GridLayoutManager(context, 6)
         adapter.replaceAll(filters)
 
-        Injector.themeManager.customizeWordEditBackground(activity as MainActivity, edit_circle, btn_edit, isSwipeEnabled)
+//        Injector.themeManager.customizeWordEditBackground(activity as MainActivity, edit_circle, btn_edit, isSwipeEnabled)
 
 //        val arr = ArrayList<LetterModel>()
 ////        arr.add(LetterModel("A"))
@@ -77,11 +77,6 @@ class WordsFilterFragment : Fragment(){
             listener.onResetPressed()
         }
 
-        btn_edit.setOnClickListener {
-            listener.onEditPressed()
-            Injector.themeManager.customizeWordEditBackground(activity as MainActivity, edit_circle, btn_edit, !isSwipeEnabled)
-        }
-
         btn_language.setOnClickListener {
             listener.onLanguagePressed()
         }
@@ -90,7 +85,6 @@ class WordsFilterFragment : Fragment(){
     interface OnFilterStateChangeListener {
         fun onApplyPressed(filters: ArrayList<LetterModel>)
         fun onResetPressed()
-        fun onEditPressed()
         fun onLanguagePressed()
     }
 

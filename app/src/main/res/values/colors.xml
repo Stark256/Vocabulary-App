@@ -23,4 +23,127 @@
     <color name="theme_red">#F33022</color>
     <color name="half_red">#80F33022</color>
 
+    <color name="text_grey">#9E9E9E</color>
+
+
+
+
+
+
+
+    <color name="theme_sunrise_accent">#1BA8BA</color>
+    <color name="theme_sunrise_accent_half">#801BA8BA</color>
+    <color name="theme_sunrise_gradient_1">#1BA8BA</color>
+    <color name="theme_sunrise_gradient_2">#72EADF</color>
+    <color name="theme_sunrise_gradient_3">#FBB97C</color>
+
+    <color name="theme_sundown_accent">#FA3058</color>
+    <color name="theme_sundown_accent_half">#80FA3058</color>
+    <color name="theme_sundown_gradient_1">#FA3058</color>
+    <color name="theme_sundown_gradient_2">#F8804B</color>
+    <color name="theme_sundown_gradient_3">#FFEB70</color>
+
+    <color name="theme_grape_accent">#6C54B2</color>
+    <color name="theme_grape_accent_half">#806C54B2</color>
+    <color name="theme_grape_gradient_1">#6C54B2</color>
+    <color name="theme_grape_gradient_2">#CE7A9C</color>
+    <color name="theme_grape_gradient_3">#FDB6B4</color>
+
+    <color name="theme_razz_accent">#CB1395</color>
+    <color name="theme_razz_accent_half">#80CB1395</color>
+    <color name="theme_razz_gradient_1">#CB1395</color>
+    <color name="theme_razz_gradient_2">#F78B88</color>
+    <color name="theme_razz_gradient_3">#FFEACA</color>
+
+    <color name="theme_ocean_accent">#45FAC7</color>
+    <color name="theme_ocean_accent_half">#8045FAC7</color>
+    <color name="theme_ocean_gradient_1">#45FAC7</color>
+    <color name="theme_ocean_gradient_2">#21EBED</color>
+    <color name="theme_ocean_gradient_3">#05B1FB</color>
+
+    <color name="theme_spring_accent">#C2E567</color>
+    <color name="theme_spring_accent_half">#80C2E567</color>
+    <color name="theme_spring_gradient_1">#C2E567</color>
+    <color name="theme_spring_gradient_2">#93D162</color>
+    <color name="theme_spring_gradient_3">#34AD60</color>
+
+    <color name="theme_autumn_accent">#36B856</color>
+    <color name="theme_autumn_accent_half">#8036B856</color>
+    <color name="theme_autumn_gradient_1">#36B856</color>
+    <color name="theme_autumn_gradient_2">#02A1B9</color>
+    <color name="theme_autumn_gradient_3">#00BAED</color>
+
+
+
+    <color name="color_bubblegum_1">#171D29</color>
+    <color name="color_bubblegum_2">#202632</color>
+    <color name="color_bubblegum_3">#FF0657</color>
+    <color name="color_bubblegum_4">#E1008A</color>
+    <color name="color_bubblegum_5">#56606A</color>
+
+
+
+    <color name="color_lilac_1">#9E70F5</color>
+    <color name="color_lilac_2">#5236E2</color>
+    <color name="color_lilac_22">#580EFF</color>
+    <color name="color_lilac_23">#2B46FF</color>
+    <color name="color_lilac_3">#283550</color>
+    <color name="color_lilac_4">#A7A8AF</color>
+
+
+
+    <color name="color_eclipse_1">#194576</color>
+    <color name="color_eclipse_2">#E8F0FB</color>
+    <color name="color_eclipse_3">#205990</color>
+    <color name="color_eclipse_4">#FF1E4C</color>
+
+
+
+
+
+    <color name="color_azure_1">#264A84</color>
+    <color name="color_azure_2">#241445</color>
+    <color name="color_azure_3">#0570B4</color>
+    <color name="color_new_delete">#FA441F</color>
+    <color name="color_new_edit">#4CDA60</color>
+
+
+
+    <color name="btn_blue_light_1">#0293FC</color>
+    <color name="btn_blue_light_2">#00BAFF</color>
+    <color name="btn_blue_light_3">#04DDFE</color>
+
+    <color name="btn_blue_dark_1">#0075AD</color>
+    <color name="btn_blue_dark_2">#0296D2</color>
+    <color name="btn_blue_dark_3">#00BBFD</color>
+
+    <color name="btn_violet_light_1">#4F2996</color>
+    <color name="btn_violet_light_2">#A41C80</color>
+    <color name="btn_violet_light_3">#DB1C79</color>
+
+    <color name="btn_violet_dark_1">#4F1876</color>
+    <color name="btn_violet_dark_2">#9212C1</color>
+    <color name="btn_violet_dark_3">#D408F3</color>
+
+    <color name="btn_ping_1">#CA0A9D</color>
+    <color name="btn_ping_2">#E30574</color>
+    <color name="btn_ping_3">#F9044A</color>
+
+    <color name="btn_orange_1">#BF0A1B</color>
+    <color name="btn_orange_2">#D9360D</color>
+    <color name="btn_orange_3">#F55602</color>
+
+
+
+    <!--delete-->
+    <color name="color_t4_1">#1A2030</color>
+    <color name="color_t4_2">#22273B</color>
+    <color name="color_t4_3">#574CB5</color>
+    <color name="color_t4_4">#06A1C0</color>
+
+
+    <color name="color_t6_1">#720D5D</color>
+    <color name="color_t6_2">#5D1049</color>
+    <color name="color_t6_3">#E30425</color>
+
 </resources>
