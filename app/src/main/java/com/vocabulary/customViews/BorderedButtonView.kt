@@ -43,6 +43,15 @@ class BorderedButtonView @JvmOverloads constructor(
         this.buttonText = view.tv_button_text
     }
 
+    fun inivView(sett: BorderedButtonSett) {
+        initView(type = sett.type,
+            borderBackgroundColorRes = sett.borderBackgroundColorRes,
+            backgroundColorRes = sett.backgroundColorRes,
+            backgroundDrawableRes = sett.backgroundDrawableRes,
+            text = sett.text,
+            iconRes = sett.iconRes)
+    }
+
     fun initView(
         type: BorderedButtonType,
         borderBackgroundColorRes: Int? = null,
@@ -234,7 +243,12 @@ class BorderedButtonView @JvmOverloads constructor(
         buttonIcon?.visibility = View.GONE
     }
 
-
+    class BorderedButtonSett(var type: BorderedButtonType,
+                             var borderBackgroundColorRes: Int? = null,
+                             var backgroundColorRes: Int? = null,
+                             var backgroundDrawableRes: Int? = null,
+                             var text: String? = null,
+                             var iconRes: Int? = null)
 
 
 

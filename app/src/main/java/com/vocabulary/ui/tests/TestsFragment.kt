@@ -5,14 +5,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.vocabulary.R
 import com.vocabulary.customViews.BorderedButtonView
-import com.vocabulary.ui.MainActivity
+import com.vocabulary.ui.main.MainActivity
 import kotlinx.android.synthetic.main.fragment_tests.*
 
 class TestsFragment : Fragment() {
@@ -40,6 +39,38 @@ class TestsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         dashboardViewModel = ViewModelProviders.of(this).get(TestsViewModel::class.java)
 
+
+//        swipe_test.initLanguageView()
+//        swipe_test.setLanguageModel(LanguageModel(15, "TEST_SWIPE", "dada","das", 5L),
+//            object : SwipeLanguageClickListener{
+//                override fun onViewPressed(languageModel: LanguageModel) {
+//                    Log.i("SWIPE", "VIEW PRESSED")
+//                }
+//
+//                override fun onEditPressed(languageModel: LanguageModel) {
+//                    Log.i("SWIPE", "EDIT PRESSED")
+//                }
+//
+//                override fun onDeletePressed(languageModel: LanguageModel) {
+//                    Log.i("SWIPE", "DELETE PRESSED")
+//                }
+//            })
+//
+//        swipe_test1.initLanguageView()
+//        swipe_test1.setLanguageModel(LanguageModel(16, "TEST_SWIPE1", "dada","das", 5L),
+//            object : SwipeLanguageClickListener{
+//                override fun onViewPressed(languageModel: LanguageModel) {
+//                    Log.i("SWIPE1", "VIEW PRESSED")
+//                }
+//
+//                override fun onEditPressed(languageModel: LanguageModel) {
+//                    Log.i("SWIPE1", "EDIT PRESSED")
+//                }
+//
+//                override fun onDeletePressed(languageModel: LanguageModel) {
+//                    Log.i("SWIPE1", "DELETE PRESSED")
+//                }
+//            })
 
         btn_bordered.initView(
 //            BorderedButtonView.BorderedButtonType.TYPE_SQUARE_SOLID_TEXT,

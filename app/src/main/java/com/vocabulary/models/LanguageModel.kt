@@ -6,7 +6,7 @@ import com.vocabulary.db.FieldType
 import java.io.Serializable
 
 class LanguageModel(
-    var id: Int = 0,
+    var id: Long = 0,
     var name: String,
     var tableWords: String,
     var tableTestFails: String,

@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import com.vocabulary.R
+import com.vocabulary.customViews.BorderedButtonView
 import com.vocabulary.models.CustomTheme
 import com.vocabulary.models.ThemeColorModel
 
@@ -28,7 +29,7 @@ class ThemeManager {
         ThemeColorModel(R.string.theme_spring, CustomTheme.THEME_SPRING, colorRes = R.color.theme_spring_accent)
 
     )
-//
+
     fun setTheme(currentTheme: String?) {
         when(currentTheme) {
             CustomTheme.THEME_OCEAN.value -> this.currentTheme = CustomTheme.THEME_OCEAN
@@ -43,11 +44,6 @@ class ThemeManager {
     }
 
     fun setTheme(theme: CustomTheme, activity: Activity) {
-//        when(currentTheme) {
-//            CustomTheme.THEME_BLUE.value -> this.currentTheme = CustomTheme.THEME_BLUE
-//            CustomTheme.THEME_RED.value -> this.currentTheme = CustomTheme.THEME_RED
-//            else -> this.currentTheme = CustomTheme.THEME_BLUE
-//        }
         if(theme != this.currentTheme) {
             this.currentTheme = theme
             Injector.storageManager.setTheme(currentTheme.value)
@@ -55,23 +51,6 @@ class ThemeManager {
             activity.startActivity(Intent(activity, activity.javaClass))
         }
     }
-
-//    fun changeToTheme(activity: Activity) {
-//        if(currentTheme == CustomTheme.THEME_BLUE) {
-//            currentTheme = CustomTheme.THEME_RED
-//        } else {
-//            currentTheme = CustomTheme.THEME_BLUE
-//        }
-//        Injector.storageManager.setTheme(currentTheme.value)
-//
-//
-//        activity.finish()
-//        activity.startActivity(Intent(activity, activity.javaClass))
-////        activity.overridePendingTransition(
-////            android.R.anim.fade_in,
-////            android.R.anim.fade_out
-////        )
-//    }
 
     fun onActivityCreateSetTheme(activity: Activity) {
         when (currentTheme) {
@@ -98,6 +77,50 @@ class ThemeManager {
             else -> ContextCompat.getColor(context, R.color.theme_ocean_accent)
         }
 
+    }
+
+    fun getBorderedButton() : BorderedButtonView.BorderedButtonSett {
+        return when (currentTheme) {
+            CustomTheme.THEME_OCEAN -> BorderedButtonView.BorderedButtonSett(
+                type = BorderedButtonView.BorderedButtonType.TYPE_CIRCLE_BORDER_TEXT,
+                borderBackgroundColorRes = R.color.white,
+                backgroundDrawableRes = R.drawable.button_gradient_blue_dark
+            )
+            CustomTheme.THEME_SUNRISE -> BorderedButtonView.BorderedButtonSett(
+                type = BorderedButtonView.BorderedButtonType.TYPE_CIRCLE_BORDER_TEXT,
+                borderBackgroundColorRes = R.color.white,
+                backgroundDrawableRes = R.drawable.button_gradient_blue_light
+            )
+            CustomTheme.THEME_SUNDOWN -> BorderedButtonView.BorderedButtonSett(
+                type = BorderedButtonView.BorderedButtonType.TYPE_CIRCLE_BORDER_TEXT,
+                borderBackgroundColorRes = R.color.white,
+                backgroundDrawableRes = R.drawable.button_gradient_orange
+            )
+            CustomTheme.THEME_RAZZ -> BorderedButtonView.BorderedButtonSett(
+                type = BorderedButtonView.BorderedButtonType.TYPE_CIRCLE_BORDER_TEXT,
+                borderBackgroundColorRes = R.color.white,
+                backgroundDrawableRes = R.drawable.button_gradient_ping
+            )
+            CustomTheme.THEME_GRAPE -> BorderedButtonView.BorderedButtonSett(
+                type = BorderedButtonView.BorderedButtonType.TYPE_CIRCLE_BORDER_TEXT,
+                borderBackgroundColorRes = R.color.white,
+                backgroundDrawableRes = R.drawable.button_gradient_violet_light
+            )
+            CustomTheme.THEME_AUTUMN -> BorderedButtonView.BorderedButtonSett(
+                type = BorderedButtonView.BorderedButtonType.TYPE_CIRCLE_BORDER_TEXT,
+                borderBackgroundColorRes = R.color.white,
+                backgroundDrawableRes = R.drawable.button_gradient_blue_dark
+            )
+            CustomTheme.THEME_SPRING -> BorderedButtonView.BorderedButtonSett(
+                type = BorderedButtonView.BorderedButtonType.TYPE_CIRCLE_BORDER_TEXT,
+                borderBackgroundColorRes = R.color.white,
+                backgroundDrawableRes = R.drawable.button_gradient_blue_light
+            )
+            else -> BorderedButtonView.BorderedButtonSett(
+                type = BorderedButtonView.BorderedButtonType.TYPE_SQUARE_SOLID_TEXT,
+                backgroundColorRes = R.color.white
+            )
+        }
     }
 
     fun customizeCheckView(context: Context, circle: View, imageView: ImageView, isChecked: Boolean) {

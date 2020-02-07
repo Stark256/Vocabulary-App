@@ -53,13 +53,32 @@ class DBManager(private val context: Context) {
 
     // ----------------------------------------
     // LANGUAGES
+    fun getLanguageByID(languageID: Long, result: (LanguageModel?) -> Unit) {
+        val languages = ArrayList<LanguageModel>()
+        val cursor = db.readableDatabase.
+            rawQuery("SELECT * FROM ${LanguageModel.TABLE_NAME} WHERE ${LanguageModel.key_id}=${languageID};", null)
+        if(cursor.moveToFirst()) {
+            do {
+                val lang = LanguageModel(
+                    id = cursor.getLong(cursor.getColumnIndex(LanguageModel.key_id)),
+                    name = cursor.getString(cursor.getColumnIndex(LanguageModel.key_name)),
+                    tableWords = cursor.getString(cursor.getColumnIndex(LanguageModel.key_table_words)),
+                    tableTestFails = cursor.getString(cursor.getColumnIndex(LanguageModel.key_table_test_fails)))
+                lang.wordsCount = DatabaseUtils.queryNumEntries(db.readableDatabase, lang.tableWords)
+                languages.add(lang)
+            } while(cursor.moveToNext())
+        }
+        db.close()
+        result.invoke(languages.firstOrNull())
+    }
+
     fun getLanguages(result: (ArrayList<LanguageModel>) -> Unit) {
         val languages = ArrayList<LanguageModel>()
         val cursor = db.readableDatabase.rawQuery("SELECT * FROM ${LanguageModel.TABLE_NAME}", null)
         if(cursor.moveToFirst()) {
             do {
                 val lang = LanguageModel(
-                    id = cursor.getInt(cursor.getColumnIndex(LanguageModel.key_id)),
+                    id = cursor.getLong(cursor.getColumnIndex(LanguageModel.key_id)),
                     name = cursor.getString(cursor.getColumnIndex(LanguageModel.key_name)),
                     tableWords = cursor.getString(cursor.getColumnIndex(LanguageModel.key_table_words)),
                     tableTestFails = cursor.getString(cursor.getColumnIndex(LanguageModel.key_table_test_fails)))

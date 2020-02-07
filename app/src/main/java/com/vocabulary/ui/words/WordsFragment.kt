@@ -24,7 +24,7 @@ import com.vocabulary.ui.common.BaseFragment
 import com.vocabulary.managers.Injector
 import com.vocabulary.models.LetterModel
 import com.vocabulary.models.WordBaseItem
-import com.vocabulary.ui.MainActivity
+import com.vocabulary.ui.main.MainActivity
 import com.vocabulary.ui.language.LanguageActivity
 import com.vocabulary.ui.words_filter.WordsFilterFragment
 import kotlinx.android.synthetic.main.button_badge_1.*

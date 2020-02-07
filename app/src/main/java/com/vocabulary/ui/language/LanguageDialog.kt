@@ -58,14 +58,15 @@ class LanguageDialog: BaseDialogFragment() {
             showKeyboard(it)
         }
 
-        btn_cancel.setOnClickListener { dismiss() }
+        btn_cancel.setOnClickListener {
+            context?.let{ closeKeyboard(it) }
+            dismiss()
+        }
         btn_ok.setOnClickListener {
-
             okPressed()
             listener.onOKPressed(et_language.text.toString()) {
                 setResult(it)
             }
-//            dismiss()
         }
     }
 

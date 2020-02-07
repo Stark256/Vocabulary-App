@@ -23,5 +23,4 @@ object Injector {
     fun initDBManager(context: Context) {
         this.dbManager = DBManager(context)
     }
-
 }

@@ -37,6 +37,9 @@ class LanguageViewModel: ViewModel() {
     }
 
     fun deleteLanguage(languageModel: LanguageModel, result: () -> Unit) {
+        if(Injector.languageManager.isSelected(languageModel)) {
+            Injector.languageManager.deleteCurrentLanguage()
+        }
         Injector.dbManager.deleteLanguage(languageModel) {
             result.invoke()
             getLanguages()
@@ -51,6 +54,8 @@ class LanguageViewModel: ViewModel() {
     }
 
     fun selectLanguage(languageModel: LanguageModel) {
-        Injector.languageManager.currentLanguage = languageModel
+        if(!Injector.languageManager.isSelected(languageModel)) {
+            Injector.languageManager.setCurrentLanguage(languageModel)
+        }
     }
 }

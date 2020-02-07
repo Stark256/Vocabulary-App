@@ -59,6 +59,7 @@ abstract class SwipeHelper(private val context: Context, private val recyclerVie
                 swipedPos = -1
                 recoverSwipedItem()
             }
+
         }
         false
     }

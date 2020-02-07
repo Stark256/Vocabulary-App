@@ -1,10 +1,11 @@
-package com.vocabulary.ui
+package com.vocabulary.ui.main
 
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -20,6 +21,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +33,11 @@ class MainActivity : AppCompatActivity() {
         replaceFragment(WordsFragment())
 
         Injector.initDBManager(this@MainActivity)
+
+
+        this.viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+        this.viewModel.loadAppData()
+
     }
 
     fun changeFragment(id: Int) {

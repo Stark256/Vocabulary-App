@@ -29,6 +29,7 @@
 
 
     <style name="Theme.Custom_Ocean" parent="AppThemeOcean">
+        <item name="button_accent">@style/button_accent_ocean</item>
         <item name="button_white">@style/button_white_ocean</item>
         <item name="button_transparent">@style/button_transparent</item>
         <item name="badge_filter_indicator">@style/badge_filter_indicator_ocean</item>
@@ -45,6 +46,7 @@
     </style>
 
     <style name="Theme.Custom_Grape" parent="AppThemeGrape">
+        <item name="button_accent">@style/button_accent_grape</item>
         <item name="button_white">@style/button_white_grape</item>
         <item name="button_transparent">@style/button_transparent</item>
         <item name="badge_filter_indicator">@style/badge_filter_indicator_grape</item>
@@ -61,6 +63,7 @@
     </style>
 
     <style name="Theme.Custom_Razz" parent="AppThemeRazz">
+        <item name="button_accent">@style/button_accent_razz</item>
         <item name="button_white">@style/button_white_razz</item>
         <item name="button_transparent">@style/button_transparent</item>
         <item name="badge_filter_indicator">@style/badge_filter_indicator_razz</item>
@@ -77,6 +80,7 @@
     </style>
 
     <style name="Theme.Custom_Sunrise" parent="AppThemeSunrise">
+        <item name="button_accent">@style/button_accent_sunrise</item>
         <item name="button_white">@style/button_white_sunrise</item>
         <item name="button_transparent">@style/button_transparent</item>
         <item name="badge_filter_indicator">@style/badge_filter_indicator_sunrise</item>
@@ -93,6 +97,7 @@
     </style>
 
     <style name="Theme.Custom_Sundown" parent="AppThemeSundown">
+        <item name="button_accent">@style/button_accent_sundown</item>
         <item name="button_white">@style/button_white_sundown</item>
         <item name="button_transparent">@style/button_transparent</item>
         <item name="badge_filter_indicator">@style/badge_filter_indicator_sundown</item>
@@ -109,6 +114,7 @@
     </style>
 
     <style name="Theme.Custom_Autumn" parent="AppThemeAutumn">
+        <item name="button_accent">@style/button_accent_autumn</item>
         <item name="button_white">@style/button_white_autumn</item>
         <item name="button_transparent">@style/button_transparent</item>
         <item name="badge_filter_indicator">@style/badge_filter_indicator_autumn</item>
@@ -125,6 +131,7 @@
     </style>
 
     <style name="Theme.Custom_Spring" parent="AppThemeSpring">
+        <item name="button_accent">@style/button_accent_spring</item>
         <item name="button_white">@style/button_white_spring</item>
         <item name="button_transparent">@style/button_transparent</item>
         <item name="badge_filter_indicator">@style/badge_filter_indicator_spring</item>

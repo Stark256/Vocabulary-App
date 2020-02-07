@@ -21,4 +21,10 @@
     <dimen name="button_container_circle_corner_radius">15dp</dimen>
     <dimen name="button_icon_size">15dp</dimen>
     <dimen name="button_text_size">14sp</dimen>
+
+<!--    <dimen name="swipeable_view_difference">164dp</dimen>-->
+    <dimen name="swipeable_button_full_width">62dp</dimen>
+    <dimen name="swipeable_button_zero_width">0dp</dimen>
+    <dimen name="swipeable_button_marginEnd">4dp</dimen>
+    <dimen name="swipeable_view_marginEnd">16dp</dimen>
 </resources>

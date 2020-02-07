@@ -7,7 +7,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
-import com.vocabulary.ui.MainActivity
+import com.vocabulary.ui.main.MainActivity
 
 open class BaseFragment(): Fragment(){
 

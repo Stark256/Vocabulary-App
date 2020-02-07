@@ -93,7 +93,6 @@ class DeletingDialog : DialogFragment(){
 
         btn_cancel.setOnClickListener { dismiss() }
         btn_ok.setOnClickListener {
-
             okPressed()
             listener.onOKPressed() { dismiss() }
         }

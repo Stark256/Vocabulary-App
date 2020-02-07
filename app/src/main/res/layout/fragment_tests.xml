@@ -81,6 +81,17 @@
 
 
 
+        <com.vocabulary.customViews.swipeable_view.SwipeableItemView
+            android:id="@+id/swipe_test"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.vocabulary.customViews.swipeable_view.SwipeableItemView
+            android:id="@+id/swipe_test1"
+            android:layout_below="@+id/swipe_test"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
 
     </RelativeLayout>
 

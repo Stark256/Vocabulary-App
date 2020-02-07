@@ -6,12 +6,18 @@ class StorageManager: PreferenceHelper(){
         private const val CURRENT_LANGUAGE_KEY = "language"
     }
 
-
-    fun setLanguage(language: String){
-        storeValue(Injector.application!!, CURRENT_LANGUAGE_KEY, language)
+    /*-----LANGUAGES-----*/
+    fun setCurrentLanguageID(languageID: Long){
+        storeLong(Injector.application!!, CURRENT_LANGUAGE_KEY, languageID)
     }
 
-    fun getLanguage(): String? = getStringValue(Injector.application!!, CURRENT_LANGUAGE_KEY)
+    fun getCurrentLanguageID(): Long? = getLongValue(Injector.application!!, CURRENT_LANGUAGE_KEY)
+
+    fun removeCurrentLanguageID() {
+        storeLong(Injector.application!!, CURRENT_LANGUAGE_KEY, null)
+    }
+    /*-------------------*/
+
 
     fun setTheme(theme: String){
         storeValue(Injector.application!!, CUSTOM_THEME_KEY, theme)

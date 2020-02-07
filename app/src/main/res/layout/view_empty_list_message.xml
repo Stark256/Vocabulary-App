@@ -32,13 +32,14 @@
         android:textColor="@color/white"
         android:layout_marginTop="8dp"/>
 
-    <com.vocabulary.customViews.BorderedButtonView
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_add_new"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"/>
+        android:layout_marginBottom="8dp"
+        style="?attr/button_accent"/>
 
 
 </LinearLayout>
