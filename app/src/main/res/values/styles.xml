@@ -138,6 +138,9 @@
         <item name="colorPrimaryDark">@color/theme_ocean_accent</item>
         <item name="colorAccent">@color/theme_ocean_accent</item>
     </style>
+    <style name="progress_bar_ocean">
+        <item name="android:indeterminateDrawable">@drawable/progress_gradient_ocean</item>
+    </style>
     <style name="button_accent_ocean" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="android:backgroundTint">@color/theme_ocean_accent</item>
         <item name="android:textColor">@color/white</item>
@@ -190,6 +193,9 @@
         <item name="colorPrimary">@color/theme_sunrise_accent</item>
         <item name="colorPrimaryDark">@color/theme_sunrise_accent</item>
         <item name="colorAccent">@color/theme_sunrise_accent</item>
+    </style>
+    <style name="progress_bar_sunrise">
+        <item name="android:indeterminateDrawable">@drawable/progress_gradient_sunrise</item>
     </style>
     <style name="button_accent_sunrise" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="android:backgroundTint">@color/theme_sunrise_accent</item>
@@ -244,6 +250,9 @@
         <item name="colorPrimaryDark">@color/theme_sundown_accent</item>
         <item name="colorAccent">@color/theme_sundown_accent</item>
     </style>
+    <style name="progress_bar_sundown">
+        <item name="android:indeterminateDrawable">@drawable/progress_gradient_sundown</item>
+    </style>
     <style name="button_accent_sundown" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="android:backgroundTint">@color/theme_sundown_accent</item>
         <item name="android:textColor">@color/white</item>
@@ -296,6 +305,9 @@
         <item name="colorPrimary">@color/theme_razz_accent</item>
         <item name="colorPrimaryDark">@color/theme_razz_accent</item>
         <item name="colorAccent">@color/theme_razz_accent</item>
+    </style>
+    <style name="progress_bar_razz">
+        <item name="android:indeterminateDrawable">@drawable/progress_gradient_razz</item>
     </style>
     <style name="button_accent_razz" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="android:backgroundTint">@color/theme_razz_accent</item>
@@ -350,6 +362,9 @@
         <item name="colorPrimaryDark">@color/theme_grape_accent</item>
         <item name="colorAccent">@color/theme_grape_accent</item>
     </style>
+    <style name="progress_bar_grape">
+        <item name="android:indeterminateDrawable">@drawable/progress_gradient_grape</item>
+    </style>
     <style name="button_accent_grape" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="android:backgroundTint">@color/theme_grape_accent</item>
         <item name="android:textColor">@color/white</item>
@@ -402,6 +417,10 @@
         <item name="colorPrimary">@color/theme_autumn_accent</item>
         <item name="colorPrimaryDark">@color/theme_autumn_accent</item>
         <item name="colorAccent">@color/theme_autumn_accent</item>
+    </style>
+
+    <style name="progress_bar_autumn">
+        <item name="android:indeterminateDrawable">@drawable/progress_gradient_autumn</item>
     </style>
     <style name="button_accent_autumn" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="android:backgroundTint">@color/theme_autumn_accent</item>
@@ -457,6 +476,9 @@
         <item name="colorAccent">@color/theme_spring_accent</item>
     </style>
 
+    <style name="progress_bar_spring">
+        <item name="android:indeterminateDrawable">@drawable/progress_gradient_spring</item>
+    </style>
     <style name="button_accent_spring" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="android:backgroundTint">@color/theme_spring_accent</item>
         <item name="android:textColor">@color/white</item>

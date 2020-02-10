@@ -11,7 +11,7 @@
         android:id="@+id/iv_icon_empty"
         android:layout_width="96dp"
         android:layout_height="96dp"
-        android:src="@drawable/ic_calendar_search"
+        android:src="@drawable/ic_document_search"
         android:layout_gravity="center"/>
 
     <TextView

@@ -60,6 +60,9 @@
     <string name="no_languages_found_message">Please add new language.</string>
     <string name="button_add_new_language">Add new language</string>
 
+    <string name="no_languages_select_message">Please select the language.</string>
+    <string name="button_select_new_language">Select language</string>
+
     <string name="no_words_found_title">NO WORDS FOUND</string>
     <string name="no_words_found_message">Please add new word.</string>
     <string name="button_add_new_word">Add new word</string>

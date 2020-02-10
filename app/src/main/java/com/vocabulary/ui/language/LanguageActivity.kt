@@ -30,7 +30,7 @@ class LanguageActivity : AppCompatActivity(), SwipeLanguageClickListener {
 
         this.viewModel = ViewModelProviders.of(this).get(LanguageViewModel::class.java)
 
-        this.view_empty_languages.initView(EmptyListMessageView.ListType.LANGUAGES)
+        this.view_empty_languages.initView(EmptyListMessageView.ListType.ADD_LANGUAGES)
         this.view_empty_languages.btnClickListener { showLanguageDialog() }
 
 
@@ -74,6 +74,11 @@ class LanguageActivity : AppCompatActivity(), SwipeLanguageClickListener {
         btn_add_language.setOnClickListener { showLanguageDialog() }
 
         viewModel.apply {
+            isLoading.observe(this@LanguageActivity, Observer<Boolean>{
+                this@LanguageActivity.pb_languages.visibility = View.VISIBLE
+                this@LanguageActivity.view_empty_languages.visibility = View.GONE
+                this@LanguageActivity.rv_languages.visibility = View.GONE
+            })
             languages.observe(this@LanguageActivity, Observer<ArrayList<LanguageModel>>{
                 adapter.replaceAll(it)
                 initList(it)

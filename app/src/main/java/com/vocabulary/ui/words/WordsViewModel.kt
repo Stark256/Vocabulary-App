@@ -9,7 +9,8 @@ import com.vocabulary.models.WordModel
 
 class WordsViewModel : ViewModel() {
 
-    val words = MutableLiveData<ArrayList<WordBaseItem>>()
+    val words = MutableLiveData<ArrayList<WordBaseItem>?>()
+    val isLoading = MutableLiveData<Boolean>()
     val filters = ArrayList<LetterModel>()
 
 

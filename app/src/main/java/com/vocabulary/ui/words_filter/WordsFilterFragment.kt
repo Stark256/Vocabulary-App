@@ -15,7 +15,6 @@ class WordsFilterFragment : Fragment(){
     private lateinit var listener: OnFilterStateChangeListener
     private lateinit var adapter: WordsFilterAdapter
     private var filters = ArrayList<LetterModel>()
-    private var isSwipeEnabled: Boolean = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_words_filter, container, false)
@@ -86,14 +85,12 @@ class WordsFilterFragment : Fragment(){
         fun onLanguagePressed()
     }
 
-    fun setFilterData(filters: ArrayList<LetterModel>, isSwipeEnabled: Boolean) {
+    fun setFilterData(filters: ArrayList<LetterModel>) {
         if(filters.isNotEmpty()) {
             this.filters.clear()
             this.filters.addAll(filters)
         }
-        this.isSwipeEnabled = isSwipeEnabled
         adapter.replaceAll(filters)
-
     }
 
     companion object {

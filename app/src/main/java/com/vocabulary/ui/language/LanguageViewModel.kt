@@ -9,6 +9,7 @@ class LanguageViewModel: ViewModel() {
 
 
     val languages = MutableLiveData<ArrayList<LanguageModel>>()
+    val isLoading = MutableLiveData<Boolean>()
 
     fun addEditLanguage(languageModel: LanguageModel? = null, newLanguage: String? = null, result: (String?) -> Unit) {
         if(languageModel != null && newLanguage != null) {
@@ -48,6 +49,7 @@ class LanguageViewModel: ViewModel() {
 
 
     fun getLanguages() {
+        isLoading.value = true
         Injector.dbManager.getLanguages { result ->
             languages.value = result
         }

@@ -20,10 +20,12 @@ import androidx.transition.ChangeBounds
 import androidx.transition.Transition
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.vocabulary.R
+import com.vocabulary.customViews.EmptyListMessageView
 import com.vocabulary.ui.common.BaseFragment
 import com.vocabulary.managers.Injector
 import com.vocabulary.models.LetterModel
 import com.vocabulary.models.WordBaseItem
+import com.vocabulary.models.WordModel
 import com.vocabulary.ui.main.MainActivity
 import com.vocabulary.ui.language.LanguageActivity
 import com.vocabulary.ui.words_filter.WordsFilterFragment
@@ -39,11 +41,12 @@ class WordsFragment : BaseFragment(), WordsFilterFragment.OnFilterStateChangeLis
         }
         return@OnNavigationItemSelectedListener true
     }
+    private enum class SelectOrAdd { SELECT_LANGUAGE, ADD_WORD }
     private val filterFragmentKey = "FILTER_FRAGMENT"
     private lateinit var viewModel: WordsViewModel
     private lateinit var wordsAdapter: WordsAdapter
-    private lateinit var swipeController: WordsSwipeController
     private var isActive = false
+    private var isAddOrSelect: SelectOrAdd = SelectOrAdd.ADD_WORD
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_words, container, false)
@@ -57,22 +60,21 @@ class WordsFragment : BaseFragment(), WordsFilterFragment.OnFilterStateChangeLis
         bnv_words.selectedItemId = R.id.mi_words
         bnv_words.setOnNavigationItemSelectedListener(onNavListener)
 
-        // Swipe controller should be initialized before filter initializing
-        this.swipeController = WordsSwipeController(
-            ContextCompat.getDrawable(contextMain, R.drawable.ic_edit)!!,
-            ContextCompat.getDrawable(contextMain, R.drawable.ic_delete)!!,
-            Injector.themeManager.getAccentColor(contextMain),
-            Color.RED)
-
         setupFilterFragment()
+
+        this.view_empty_words.btnClickListener {
+            when(isAddOrSelect) {
+                SelectOrAdd.ADD_WORD -> { /* TODO open add word dialog */}
+                SelectOrAdd.SELECT_LANGUAGE -> {
+                    startActivity(Intent(this@WordsFragment.contextMain, LanguageActivity::class.java))
+                }
+            }
+        }
 
         this.wordsAdapter = WordsAdapter()
         rv_words.layoutManager = LinearLayoutManager(contextMain)
         rv_words.adapter = wordsAdapter
 
-
-
-        ItemTouchHelper(swipeController).attachToRecyclerView(rv_words)
 
         btn_filter.setOnClickListener {
             hideSoftKeyboard(contextMain, tiet_search)
@@ -93,10 +95,36 @@ class WordsFragment : BaseFragment(), WordsFilterFragment.OnFilterStateChangeLis
         }
 
         viewModel.apply {
-            words.observe(this@WordsFragment, Observer<ArrayList<WordBaseItem>>{
-                wordsAdapter.replaceAll(it)
+            isLoading.observe(this@WordsFragment, Observer<Boolean>{
+                this@WordsFragment.pb_words.visibility = View.VISIBLE
+                this@WordsFragment.view_empty_words.visibility = View.GONE
+                this@WordsFragment.rv_words.visibility = View.GONE
+            })
+            words.observe(this@WordsFragment, Observer<ArrayList<WordBaseItem>?>{
+                initList(it)
+                if(!it.isNullOrEmpty()) { wordsAdapter.replaceAll(it) }
             })
             loadWords()
+        }
+    }
+
+    private fun initList(arr: ArrayList<WordBaseItem>?) {
+        if(arr != null) {
+            if(arr.isEmpty()) {
+                this.view_empty_words.initView(EmptyListMessageView.ListType.ADD_WORDS)
+                this.pb_words.visibility = View.GONE
+                this.view_empty_words.visibility = View.VISIBLE
+                this.rv_words.visibility = View.GONE
+            } else {
+                this.pb_words.visibility = View.GONE
+                this.view_empty_words.visibility = View.GONE
+                this.rv_words.visibility = View.VISIBLE
+            }
+        } else {
+            this.view_empty_words.initView(EmptyListMessageView.ListType.SELECT_LANGUAGES)
+            this.pb_words.visibility = View.GONE
+            this.view_empty_words.visibility = View.VISIBLE
+            this.rv_words.visibility = View.GONE
         }
     }
 
@@ -116,14 +144,13 @@ class WordsFragment : BaseFragment(), WordsFilterFragment.OnFilterStateChangeLis
 
     override fun onLanguagePressed() {
         hideFilter()
-        // TODO open language activity
         startActivity(Intent(this@WordsFragment.contextMain, LanguageActivity::class.java))
     }
 
     private fun showFilter() {
         val fragment = childFragmentManager.findFragmentByTag(filterFragmentKey)
         if(fragment is WordsFilterFragment) {
-            (fragment as WordsFilterFragment).setFilterData(viewModel.filters, swipeController.getSwipeEnabled())
+            (fragment as WordsFilterFragment).setFilterData(viewModel.filters)
         }
         isActive = true
         updateConstrains()

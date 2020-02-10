@@ -34,17 +34,22 @@ class EmptyListMessageView @JvmOverloads constructor(
     fun initView(type: ListType) {
 
         when(type) {
-            ListType.WORDS -> {
+            ListType.ADD_WORDS -> {
                 this.textTitle?.text = context.getString(R.string.no_words_found_title)
                 this.textMessage?.text = context.getString(R.string.no_words_found_message)
                 this.btnAdd?.text = context.getString(R.string.button_add_new_word)
             }
-            ListType.LANGUAGES -> {
+            ListType.SELECT_LANGUAGES -> {
+                this.textTitle?.text = context.getString(R.string.no_words_found_title)
+                this.textMessage?.text = context.getString(R.string.no_words_found_message)
+                this.btnAdd?.text = context.getString(R.string.button_add_new_word)
+            }
+            ListType.ADD_LANGUAGES -> {
                 this.textTitle?.text = context.getString(R.string.no_languages_found_title)
                 this.textMessage?.text = context.getString(R.string.no_languages_found_message)
                 this.btnAdd?.text = context.getString(R.string.button_add_new_language)
             }
-            ListType.TESTS -> {
+            ListType.ADD_GAMES -> {
                 this.textTitle?.text = context.getString(R.string.no_tests_found_title)
                 this.textMessage?.text = context.getString(R.string.no_tests_found_message)
                 this.btnAdd?.text = context.getString(R.string.button_add_new_test)
@@ -54,9 +59,10 @@ class EmptyListMessageView @JvmOverloads constructor(
 
 
     enum class ListType {
-        LANGUAGES,
-        WORDS,
-        TESTS
+        ADD_LANGUAGES,
+        SELECT_LANGUAGES,
+        ADD_WORDS,
+        ADD_GAMES
     }
 
 }
