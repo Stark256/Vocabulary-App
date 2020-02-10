@@ -138,6 +138,11 @@
         <item name="colorPrimaryDark">@color/theme_ocean_accent</item>
         <item name="colorAccent">@color/theme_ocean_accent</item>
     </style>
+
+    <style name="background_navigation_ocean">
+        <item name="android:background">@drawable/background_nav_filter_ocean</item>
+    </style>
+
     <style name="progress_bar_ocean">
         <item name="android:indeterminateDrawable">@drawable/progress_gradient_ocean</item>
     </style>
@@ -194,6 +199,11 @@
         <item name="colorPrimaryDark">@color/theme_sunrise_accent</item>
         <item name="colorAccent">@color/theme_sunrise_accent</item>
     </style>
+
+    <style name="background_navigation_sunrise">
+        <item name="android:background">@drawable/background_nav_filter_sunrise</item>
+    </style>
+
     <style name="progress_bar_sunrise">
         <item name="android:indeterminateDrawable">@drawable/progress_gradient_sunrise</item>
     </style>
@@ -250,6 +260,11 @@
         <item name="colorPrimaryDark">@color/theme_sundown_accent</item>
         <item name="colorAccent">@color/theme_sundown_accent</item>
     </style>
+
+    <style name="background_navigation_sundown">
+        <item name="android:background">@drawable/background_nav_filter_sundown</item>
+    </style>
+
     <style name="progress_bar_sundown">
         <item name="android:indeterminateDrawable">@drawable/progress_gradient_sundown</item>
     </style>
@@ -306,6 +321,11 @@
         <item name="colorPrimaryDark">@color/theme_razz_accent</item>
         <item name="colorAccent">@color/theme_razz_accent</item>
     </style>
+
+    <style name="background_navigation_razz">
+        <item name="android:background">@drawable/background_nav_filter_razz</item>
+    </style>
+
     <style name="progress_bar_razz">
         <item name="android:indeterminateDrawable">@drawable/progress_gradient_razz</item>
     </style>
@@ -362,6 +382,11 @@
         <item name="colorPrimaryDark">@color/theme_grape_accent</item>
         <item name="colorAccent">@color/theme_grape_accent</item>
     </style>
+
+    <style name="background_navigation_grape">
+        <item name="android:background">@drawable/background_nav_filter_grape</item>
+    </style>
+
     <style name="progress_bar_grape">
         <item name="android:indeterminateDrawable">@drawable/progress_gradient_grape</item>
     </style>
@@ -417,6 +442,10 @@
         <item name="colorPrimary">@color/theme_autumn_accent</item>
         <item name="colorPrimaryDark">@color/theme_autumn_accent</item>
         <item name="colorAccent">@color/theme_autumn_accent</item>
+    </style>
+
+    <style name="background_navigation_autumn">
+        <item name="android:background">@drawable/background_nav_filter_autumn</item>
     </style>
 
     <style name="progress_bar_autumn">
@@ -476,9 +505,14 @@
         <item name="colorAccent">@color/theme_spring_accent</item>
     </style>
 
+    <style name="background_navigation_spring">
+        <item name="android:background">@drawable/background_nav_filter_spring</item>
+    </style>
+
     <style name="progress_bar_spring">
         <item name="android:indeterminateDrawable">@drawable/progress_gradient_spring</item>
     </style>
+
     <style name="button_accent_spring" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="android:backgroundTint">@color/theme_spring_accent</item>
         <item name="android:textColor">@color/white</item>

@@ -29,6 +29,7 @@
 
 
     <style name="Theme.Custom_Ocean" parent="AppThemeOcean">
+        <item name="background_navigation">@style/background_navigation_ocean</item>
         <item name="progress_bar">@style/progress_bar_ocean</item>
         <item name="button_accent">@style/button_accent_ocean</item>
         <item name="button_white">@style/button_white_ocean</item>
@@ -47,6 +48,7 @@
     </style>
 
     <style name="Theme.Custom_Grape" parent="AppThemeGrape">
+        <item name="background_navigation">@style/background_navigation_grape</item>
         <item name="progress_bar">@style/progress_bar_grape</item>
         <item name="button_accent">@style/button_accent_grape</item>
         <item name="button_white">@style/button_white_grape</item>
@@ -65,6 +67,7 @@
     </style>
 
     <style name="Theme.Custom_Razz" parent="AppThemeRazz">
+        <item name="background_navigation">@style/background_navigation_razz</item>
         <item name="progress_bar">@style/progress_bar_razz</item>
         <item name="button_accent">@style/button_accent_razz</item>
         <item name="button_white">@style/button_white_razz</item>
@@ -83,6 +86,7 @@
     </style>
 
     <style name="Theme.Custom_Sunrise" parent="AppThemeSunrise">
+        <item name="background_navigation">@style/background_navigation_sunrise</item>
         <item name="progress_bar">@style/progress_bar_sunrise</item>
         <item name="button_accent">@style/button_accent_sunrise</item>
         <item name="button_white">@style/button_white_sunrise</item>
@@ -101,6 +105,7 @@
     </style>
 
     <style name="Theme.Custom_Sundown" parent="AppThemeSundown">
+        <item name="background_navigation">@style/background_navigation_sundown</item>
         <item name="progress_bar">@style/progress_bar_sundown</item>
         <item name="button_accent">@style/button_accent_sundown</item>
         <item name="button_white">@style/button_white_sundown</item>
@@ -119,6 +124,7 @@
     </style>
 
     <style name="Theme.Custom_Autumn" parent="AppThemeAutumn">
+        <item name="background_navigation">@style/background_navigation_autumn</item>
         <item name="progress_bar">@style/progress_bar_autumn</item>
         <item name="button_accent">@style/button_accent_autumn</item>
         <item name="button_white">@style/button_white_autumn</item>
@@ -137,6 +143,7 @@
     </style>
 
     <style name="Theme.Custom_Spring" parent="AppThemeSpring">
+        <item name="background_navigation">@style/background_navigation_spring</item>
         <item name="progress_bar">@style/progress_bar_spring</item>
         <item name="button_accent">@style/button_accent_spring</item>
         <item name="button_white">@style/button_white_spring</item>

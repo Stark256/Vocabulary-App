@@ -27,4 +27,6 @@
     <dimen name="swipeable_button_zero_width">0dp</dimen>
     <dimen name="swipeable_button_marginEnd">4dp</dimen>
     <dimen name="swipeable_view_marginEnd">16dp</dimen>
+
+    <dimen name="bottom_nav_elevated_view_height">64dp</dimen>
 </resources>

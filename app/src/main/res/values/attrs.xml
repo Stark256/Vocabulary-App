@@ -15,6 +15,7 @@
     <attr name="button_white" format="reference"/>
     <attr name="button_transparent" format="reference"/>
     <attr name="badge_filter_indicator" format="reference"/>
+    <attr name="background_navigation" format="reference"/>
     <attr name="background_filter_gradient" format="reference"/>
     <attr name="background_gradient" format="reference"/>
     <attr name="background_accent" format="reference"/>

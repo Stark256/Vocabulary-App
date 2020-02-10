@@ -16,18 +16,18 @@ import kotlinx.android.synthetic.main.fragment_tests.*
 
 class TestsFragment : Fragment() {
 
-    private val onNavListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
-        //        when(item.itemId) {
-//            R.id.mi_words -> {  }
-//            R.id.mi_tests -> {  }
-//            R.id.mi_settings -> { }
+//    private val onNavListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+//        //        when(item.itemId) {
+////            R.id.mi_words -> {  }
+////            R.id.mi_tests -> {  }
+////            R.id.mi_settings -> { }
+////        }
+//        if(item.itemId != R.id.mi_tests) {
+//            (activity as MainActivity).changeFragment(item.itemId)
 //        }
-        if(item.itemId != R.id.mi_tests) {
-            (activity as MainActivity).changeFragment(item.itemId)
-        }
-
-        return@OnNavigationItemSelectedListener true
-    }
+//
+//        return@OnNavigationItemSelectedListener true
+//    }
 
     private lateinit var dashboardViewModel: TestsViewModel
 
@@ -94,7 +94,7 @@ class TestsFragment : Fragment() {
         dashboardViewModel.text.observe(this, Observer {
 
         })
-        bnv_tests.selectedItemId = R.id.mi_tests
-        bnv_tests.setOnNavigationItemSelectedListener(onNavListener)
+//        bnv_tests.selectedItemId = R.id.mi_tests
+//        bnv_tests.setOnNavigationItemSelectedListener(onNavListener)
     }
 }

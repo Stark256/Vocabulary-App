@@ -35,12 +35,12 @@ import kotlinx.android.synthetic.main.fragment_words.*
 
 class WordsFragment : BaseFragment(), WordsFilterFragment.OnFilterStateChangeListener {
 
-    private val onNavListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
-        if(item.itemId != R.id.mi_words) {
-            (activity as MainActivity).changeFragment(item.itemId)
-        }
-        return@OnNavigationItemSelectedListener true
-    }
+//    private val onNavListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+//        if(item.itemId != R.id.mi_words) {
+//            (activity as MainActivity).changeFragment(item.itemId)
+//        }
+//        return@OnNavigationItemSelectedListener true
+//    }
     private enum class SelectOrAdd { SELECT_LANGUAGE, ADD_WORD }
     private val filterFragmentKey = "FILTER_FRAGMENT"
     private lateinit var viewModel: WordsViewModel
@@ -57,8 +57,8 @@ class WordsFragment : BaseFragment(), WordsFilterFragment.OnFilterStateChangeLis
 
         viewModel = ViewModelProviders.of(this).get(WordsViewModel::class.java)
 
-        bnv_words.selectedItemId = R.id.mi_words
-        bnv_words.setOnNavigationItemSelectedListener(onNavListener)
+//        bnv_words.selectedItemId = R.id.mi_words
+//        bnv_words.setOnNavigationItemSelectedListener(onNavListener)
 
         setupFilterFragment()
 
@@ -153,11 +153,13 @@ class WordsFragment : BaseFragment(), WordsFilterFragment.OnFilterStateChangeLis
             (fragment as WordsFilterFragment).setFilterData(viewModel.filters)
         }
         isActive = true
+        contextMain.showBackView()
         updateConstrains()
     }
 
     private fun hideFilter() {
         isActive = false
+        contextMain.hideBackView()
         updateConstrains()
     }
 
