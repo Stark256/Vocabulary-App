@@ -71,4 +71,22 @@ class WordsViewModel : ViewModel() {
         // TODO reload words
     }
 
+    fun addEditWord(
+        wordModel: WordModel? = null,
+        newWord: String? = null,
+        newTranslation: String? = null,
+        result: (String?) -> Unit) {
+
+        if(wordModel != null && newWord != null && newTranslation != null) {
+            // TODO edit word
+        } else if(newWord != null && newTranslation != null) {
+            // TODO add new word
+        }
+
+    }
+
+    fun deleteWord(wordModel: WordModel, result: () -> Unit) {
+        // TODO delete word from db
+    }
+
 }

@@ -32,6 +32,9 @@ class BottomNavigationElevatedView @JvmOverloads constructor(
     private val whiteColor: Int = ContextCompat.getColor(context, R.color.white)
     private val accentColor: Int = Injector.themeManager.getAccentColor(context)
 
+    private val BUTTON_ANIMATION_TIME: Long = 500L
+    private val COLOR_ANIMATION_TIME: Long = BUTTON_ANIMATION_TIME / 2
+
     private var cardElevated: LinearLayout? = null
     private var btnContainer: LinearLayout? = null
     private var backgroundView: LinearLayout? = null
@@ -154,23 +157,23 @@ class BottomNavigationElevatedView @JvmOverloads constructor(
     private fun changeToAccent(tv: TextView, iv: ImageView) {
         tv.animate()
             .alpha(0f)
-            .setDuration(125)
+            .setDuration(COLOR_ANIMATION_TIME)
             .withEndAction {
                 tv.setTextColor(accentColor)
                 tv.animate()
                     .alpha(1f)
-                    .setDuration(125)
+                    .setDuration(COLOR_ANIMATION_TIME)
                     .start()
             }
             .start()
         iv.animate()
             .alpha(0f)
-            .setDuration(125)
+            .setDuration(COLOR_ANIMATION_TIME)
             .withEndAction {
                 iv.imageTintList = ColorStateList.valueOf(accentColor)
                 iv.animate()
                     .alpha(1f)
-                    .setDuration(125)
+                    .setDuration(COLOR_ANIMATION_TIME)
                     .start()
             }
             .start()
@@ -179,23 +182,23 @@ class BottomNavigationElevatedView @JvmOverloads constructor(
     private fun changeToWhite(tv: TextView, iv: ImageView) {
         tv.animate()
             .alpha(0f)
-            .setDuration(250)
+            .setDuration(COLOR_ANIMATION_TIME)
             .withEndAction {
                 tv.setTextColor(whiteColor)
                 tv.animate()
                     .alpha(1f)
-                    .setDuration(250)
+                    .setDuration(COLOR_ANIMATION_TIME)
                     .start()
             }
             .start()
         iv.animate()
             .alpha(0f)
-            .setDuration(250)
+            .setDuration(COLOR_ANIMATION_TIME)
             .withEndAction {
                 iv.imageTintList = ColorStateList.valueOf(whiteColor)
                 iv.animate()
                     .alpha(1f)
-                    .setDuration(250)
+                    .setDuration(COLOR_ANIMATION_TIME)
                     .start()
             }
             .start()
@@ -268,7 +271,7 @@ class BottomNavigationElevatedView @JvmOverloads constructor(
 
         val slideAnimator = ValueAnimator
             .ofFloat(currentX, newX)
-            .setDuration(500)
+            .setDuration(BUTTON_ANIMATION_TIME)
 
         slideAnimator.addUpdateListener { animation ->
             val value = animation.animatedValue as Float

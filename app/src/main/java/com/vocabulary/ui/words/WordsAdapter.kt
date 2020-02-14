@@ -51,7 +51,7 @@ class WordsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
         when(item.getType()) {
             WordBaseItem.WordItemType.TYPE_WORD -> {
                 (holder as WordViewHolder).word.text = (item as WordModel).word
-                (holder as WordViewHolder).translate.text = (item as WordModel).translate
+                (holder as WordViewHolder).translate.text = (item as WordModel).translation
             }
 
             WordBaseItem.WordItemType.TYPE_LETTER -> {

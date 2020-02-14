@@ -26,6 +26,7 @@ import com.vocabulary.managers.Injector
 import com.vocabulary.models.LetterModel
 import com.vocabulary.models.WordBaseItem
 import com.vocabulary.models.WordModel
+import com.vocabulary.ui.common.DeletingDialog
 import com.vocabulary.ui.main.MainActivity
 import com.vocabulary.ui.language.LanguageActivity
 import com.vocabulary.ui.words_filter.WordsFilterFragment
@@ -56,7 +57,6 @@ class WordsFragment : BaseFragment(), WordsFilterFragment.OnFilterStateChangeLis
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProviders.of(this).get(WordsViewModel::class.java)
-
 //        bnv_words.selectedItemId = R.id.mi_words
 //        bnv_words.setOnNavigationItemSelectedListener(onNavListener)
 
@@ -83,6 +83,10 @@ class WordsFragment : BaseFragment(), WordsFilterFragment.OnFilterStateChangeLis
             }, 150)
         }
 
+        trans.setOnClickListener {
+            hideFilter()
+        }
+
         btn_add_word.setOnClickListener {
             //Injector.themeManager.changeToTheme(activity as MainActivity)
         }
@@ -106,6 +110,13 @@ class WordsFragment : BaseFragment(), WordsFilterFragment.OnFilterStateChangeLis
             })
             loadWords()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+//        if(::viewModel.isInitialized){
+//            viewModel.loadWords()
+//        }
     }
 
     private fun initList(arr: ArrayList<WordBaseItem>?) {
@@ -201,5 +212,37 @@ class WordsFragment : BaseFragment(), WordsFilterFragment.OnFilterStateChangeLis
             ?.setInterpolator(LinearInterpolator())
             ?.setDuration(250)
             ?.start()
+    }
+
+    private fun showDeletingDialog(wordModel: WordModel) {
+        val dialog = DeletingDialog.newInstance(wordModel, object : DeletingDialog.DeletingDialogListener {
+            override fun onOKPressed(result: () -> Unit) {
+                viewModel.deleteWord(wordModel) {
+                    result.invoke()
+                }
+            }
+        })
+    }
+
+    private fun showWordDialog(wordModel: WordModel? = null) {
+        val dialog = WordDialog.newInstance(
+            word = wordModel?.word,
+            translation = wordModel?.translation,
+            listener = object : WordDialog.WordsDialogListener {
+                override fun onOKPressed(
+                    word: String,
+                    translation: String,
+                    result: (String?) -> Unit
+                ) {
+                    viewModel.addEditWord(
+                        wordModel = wordModel,
+                        newWord = word,
+                        newTranslation =  translation
+                    ) { res ->
+                        result.invoke(res)
+                    }
+                }
+            })
+        dialog.show(contextMain.supportFragmentManager, dialog.tag)
     }
 }

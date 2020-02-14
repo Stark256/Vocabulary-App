@@ -24,7 +24,7 @@ class DeletingDialog : DialogFragment(){
 
 
         fun newInstance(languageModel: LanguageModel,
-                        listener: SureingDialogListener): DeletingDialog {
+                        listener: DeletingDialogListener): DeletingDialog {
             return DeletingDialog().apply {
                 arguments = Bundle().apply {
                     putSerializable(ARG_LANGUAGE_MODEL, languageModel)
@@ -35,7 +35,7 @@ class DeletingDialog : DialogFragment(){
         }
 
         fun newInstance(wordModel: WordModel,
-                        listener: SureingDialogListener): DeletingDialog {
+                        listener: DeletingDialogListener): DeletingDialog {
             return DeletingDialog().apply {
                 arguments = Bundle().apply {
                     putSerializable(ARG_WORD_MODEL, wordModel)
@@ -46,7 +46,7 @@ class DeletingDialog : DialogFragment(){
         }
     }
 
-    private lateinit var listener: SureingDialogListener
+    private lateinit var listener: DeletingDialogListener
 
     private var type: Int = 0
     private var languageModel: LanguageModel? = null
@@ -106,7 +106,7 @@ class DeletingDialog : DialogFragment(){
         btn_cancel.visibility = View.GONE
     }
 
-    interface SureingDialogListener {
+    interface DeletingDialogListener {
         fun onOKPressed(result: () -> Unit)
     }
 

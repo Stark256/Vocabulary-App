@@ -120,7 +120,7 @@ class LanguageActivity : AppCompatActivity(), SwipeLanguageClickListener {
 
     private fun showDeletingDialog(languageModel: LanguageModel) {
 //        this.swipeHelper.recoverItems()
-        val dialog = DeletingDialog.newInstance(languageModel, object : DeletingDialog.SureingDialogListener {
+        val dialog = DeletingDialog.newInstance(languageModel, object : DeletingDialog.DeletingDialogListener {
             override fun onOKPressed(result: () -> Unit) {
                 viewModel.deleteLanguage(languageModel) {
                     result.invoke()

@@ -8,14 +8,14 @@ import java.io.Serializable
 class WordModel(
     var id: Int = 0,
     var word: String,
-    var translate: String,
+    var translation: String,
     var tableName: String
 ) : WordBaseItem(), Serializable {
 
     fun getContentValues() : ContentValues {
        return ContentValues().apply {
         put(key_word, word)
-        put(key_translate, translate)
+        put(key_translate, translation)
        }
     }
 
