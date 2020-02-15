@@ -191,6 +191,9 @@
     <style name="text_accent_ocean" >
         <item name="android:textColor">@color/theme_ocean_accent</item>
     </style>
+    <style name="tint_accent_ocean">
+        <item name="android:tint">@color/theme_ocean_accent</item>
+    </style>
     <style name="text_default_ocean" > </style>
 
 
@@ -251,6 +254,9 @@
     </style>
     <style name="text_accent_sunrise" >
         <item name="android:textColor">@color/theme_sunrise_accent</item>
+    </style>
+    <style name="tint_accent_sunrise">
+        <item name="android:tint">@color/theme_sunrise_accent</item>
     </style>
     <style name="text_default_sunrise" > </style>
 
@@ -313,6 +319,9 @@
     <style name="text_accent_sundown" >
         <item name="android:textColor">@color/theme_sundown_accent</item>
     </style>
+    <style name="tint_accent_sundown">
+        <item name="android:tint">@color/theme_sundown_accent</item>
+    </style>
     <style name="text_default_sundown" > </style>
 
 
@@ -373,6 +382,9 @@
     </style>
     <style name="text_accent_razz" >
         <item name="android:textColor">@color/theme_razz_accent</item>
+    </style>
+    <style name="tint_accent_razz">
+        <item name="android:tint">@color/theme_razz_accent</item>
     </style>
     <style name="text_default_razz" > </style>
 
@@ -435,6 +447,9 @@
     <style name="text_accent_grape" >
         <item name="android:textColor">@color/theme_grape_accent</item>
     </style>
+    <style name="tint_accent_grape">
+        <item name="android:tint">@color/theme_grape_accent</item>
+    </style>
     <style name="text_default_grape" > </style>
 
 
@@ -495,6 +510,9 @@
     </style>
     <style name="text_accent_autumn" >
     -    <item name="android:textColor">@color/theme_autumn_accent</item>
+    </style>
+    <style name="tint_accent_autumn">
+        <item name="android:tint">@color/theme_autumn_accent</item>
     </style>
     <style name="text_default_autumn" > </style>
 
@@ -558,6 +576,9 @@
     </style>
     <style name="text_accent_spring" >
         <item name="android:textColor">@color/theme_spring_accent</item>
+    </style>
+    <style name="tint_accent_spring">
+        <item name="android:tint">@color/theme_spring_accent</item>
     </style>
     <style name="text_default_spring" > </style>
 

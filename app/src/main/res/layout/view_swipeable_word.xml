@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="106dp"
+    android:layout_height="@dimen/swipeable_view_height"
     android:background="@color/transparent">
 
     <RelativeLayout
@@ -24,10 +24,10 @@
         android:layout_marginEnd="16dp">
 
         <include
-            android:id="@+id/inc_language"
+            android:id="@+id/inc_word"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            layout="@layout/layout_language"/>
+            layout="@layout/layout_word"/>
 
     </RelativeLayout>
 

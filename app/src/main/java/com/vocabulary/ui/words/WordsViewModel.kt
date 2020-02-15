@@ -23,27 +23,27 @@ class WordsViewModel : ViewModel() {
         WordModel(5, "ctest6", "cтест6", "test"),
         WordModel(6, "dtest7", "dтест7", "test"),
         WordModel(7, "dtest8", "dтест8", "test"),
-        WordModel(0, "etest9", "eтест9", "test"),
-        WordModel(0, "etest10", "eтест10", "test")
+        WordModel(8, "etest9", "eтест9", "test"),
+        WordModel(9, "etest10", "eтест10", "test")
     )
 
     fun loadWords() {
-//        val adapterList = ArrayList<WordBaseItem>()
-//        var letter = ""
-//
-//        for(item in dbWords) {
-//            val wordStart = item.word.first().toString()
-//            if(wordStart != letter) {
-//                val letterModel = LetterModel(wordStart)
-//                adapterList.add(letterModel)
-//                filters.add(letterModel)
-//                letter = wordStart
-//            }
-//
-//            adapterList.add(item)
-//        }
-//
-//        words.value = adapterList
+        val adapterList = ArrayList<WordBaseItem>()
+        var letter = ""
+
+        for(item in dbWords) {
+            val wordStart = item.word.first().toString()
+            if(wordStart != letter) {
+                val letterModel = LetterModel(wordStart)
+                adapterList.add(letterModel)
+                filters.add(letterModel)
+                letter = wordStart
+            }
+
+            adapterList.add(item)
+        }
+
+        words.value = adapterList
     }
 
     fun filterWords() {

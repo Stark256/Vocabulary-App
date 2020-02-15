@@ -21,6 +21,8 @@ import androidx.transition.Transition
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.vocabulary.R
 import com.vocabulary.customViews.EmptyListMessageView
+import com.vocabulary.customViews.swipeable_view.OnSwipeTouchListener
+import com.vocabulary.customViews.swipeable_view.SwipeWordClickListener
 import com.vocabulary.ui.common.BaseFragment
 import com.vocabulary.managers.Injector
 import com.vocabulary.models.LetterModel
@@ -34,7 +36,9 @@ import kotlinx.android.synthetic.main.button_badge_1.*
 import kotlinx.android.synthetic.main.button_badge_2.*
 import kotlinx.android.synthetic.main.fragment_words.*
 
-class WordsFragment : BaseFragment(), WordsFilterFragment.OnFilterStateChangeListener {
+class WordsFragment : BaseFragment(),
+    SwipeWordClickListener,
+    WordsFilterFragment.OnFilterStateChangeListener {
 
 //    private val onNavListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
 //        if(item.itemId != R.id.mi_words) {
@@ -71,10 +75,10 @@ class WordsFragment : BaseFragment(), WordsFilterFragment.OnFilterStateChangeLis
             }
         }
 
-        this.wordsAdapter = WordsAdapter()
+        this.wordsAdapter = WordsAdapter(this)
         rv_words.layoutManager = LinearLayoutManager(contextMain)
         rv_words.adapter = wordsAdapter
-
+        object : OnSwipeTouchListener(contextMain, rv_words){}
 
         btn_filter.setOnClickListener {
             hideSoftKeyboard(contextMain, tiet_search)
@@ -114,9 +118,9 @@ class WordsFragment : BaseFragment(), WordsFilterFragment.OnFilterStateChangeLis
 
     override fun onResume() {
         super.onResume()
-//        if(::viewModel.isInitialized){
-//            viewModel.loadWords()
-//        }
+        if(::viewModel.isInitialized){
+            viewModel.loadWords()
+        }
     }
 
     private fun initList(arr: ArrayList<WordBaseItem>?) {
@@ -139,7 +143,17 @@ class WordsFragment : BaseFragment(), WordsFilterFragment.OnFilterStateChangeLis
         }
     }
 
+    override fun onViewPressed(wordModel: WordModel) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
+    override fun onEditPressed(wordModel: WordModel) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onDeletePressed(wordModel: WordModel) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
     override fun onApplyPressed(filters: ArrayList<LetterModel>) {
         hideFilter()

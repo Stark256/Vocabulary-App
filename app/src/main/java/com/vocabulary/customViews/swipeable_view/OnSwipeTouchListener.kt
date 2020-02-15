@@ -59,7 +59,7 @@ open class OnSwipeTouchListener(
         private fun swipeLeft(e: MotionEvent) {
             val holder = getViewHolderInEvent(e) as? SwipeableViewHolderInterface
             holder?.let {
-                val swipableItemView = it.getSwipableItemView()
+                val swipeableItemView = it.getSwipableItemView()
                 if(openedItemPosition != -1) {
                 // TODO close view in this position
                     (getViewHolderByPosition(openedItemPosition)
@@ -68,8 +68,8 @@ open class OnSwipeTouchListener(
                         it.getSwipableItemView().closeViewAfterOpening()
                     }
                 }
-                swipableItemView.leftSwipe()
-                openedItemPosition = swipableItemView.itemPosition
+                swipeableItemView.leftSwipe()
+                openedItemPosition = swipeableItemView.itemPosition
 
             }
         }

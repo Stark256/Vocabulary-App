@@ -11,6 +11,8 @@ import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.vocabulary.R
 import com.vocabulary.customViews.BorderedButtonView
+import com.vocabulary.customViews.swipeable_view.SwipeWordClickListener
+import com.vocabulary.models.WordModel
 import com.vocabulary.ui.main.MainActivity
 import kotlinx.android.synthetic.main.fragment_tests.*
 
@@ -39,6 +41,21 @@ class TestsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         dashboardViewModel = ViewModelProviders.of(this).get(TestsViewModel::class.java)
 
+
+        swipe_test.initWordView()
+        swipe_test.setWordModel(0, WordModel(word = "Peoples", translation = "Люди", tableName = "test"), object : SwipeWordClickListener{
+            override fun onViewPressed(wordModel: WordModel) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onEditPressed(wordModel: WordModel) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onDeletePressed(wordModel: WordModel) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+        })
 
 //        swipe_test.initLanguageView()
 //        swipe_test.setLanguageModel(LanguageModel(15, "TEST_SWIPE", "dada","das", 5L),

@@ -10,6 +10,7 @@
 
 
 
+    <attr name="tint_accent" format="reference"/>
     <attr name="progress_bar" format="reference"/>
     <attr name="button_accent" format="reference"/>
     <attr name="button_white" format="reference"/>

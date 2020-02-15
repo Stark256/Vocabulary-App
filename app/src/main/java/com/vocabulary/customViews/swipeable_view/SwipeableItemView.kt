@@ -12,21 +12,29 @@ import android.widget.TextView
 import androidx.core.animation.doOnEnd
 import androidx.core.animation.doOnStart
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import com.vocabulary.R
 import com.vocabulary.customViews.CheckView
 import com.vocabulary.managers.Injector
 import com.vocabulary.models.LanguageModel
+import com.vocabulary.models.WordModel
 import com.vocabulary.models.safeLet
 import kotlinx.android.synthetic.main.layout_language.view.*
+import kotlinx.android.synthetic.main.layout_word.view.*
 import kotlinx.android.synthetic.main.view_swipeable_language.view.*
+import kotlinx.android.synthetic.main.view_swipeable_language.view.card_delete
+import kotlinx.android.synthetic.main.view_swipeable_language.view.card_edit
+import kotlinx.android.synthetic.main.view_swipeable_language.view.card_view
+import kotlinx.android.synthetic.main.view_swipeable_language.view.tv_swipeable_delete
+import kotlinx.android.synthetic.main.view_swipeable_language.view.tv_swipeable_edit
+import kotlinx.android.synthetic.main.view_swipeable_word.view.*
 
 
 class SwipeableItemView  @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0): RelativeLayout(context, attrs, defStyleAttr) {
+
+    private val ANIMATION_SLIDE_TIME = 500L
 
     private val buttonWitdh: Int = context.resources.getDimension(R.dimen.swipeable_button_full_width).toInt()
     private val zeroWitdh: Int = context.resources.getDimension(R.dimen.swipeable_button_zero_width).toInt()
@@ -40,15 +48,14 @@ class SwipeableItemView  @JvmOverloads constructor(
     private var textEdit: TextView? = null
     private var textDelete: TextView? = null
 
-//    private var isOpened = MutableLiveData<Boolean>(false)
-//    private var toClose = MutableLiveData<Boolean>(false)
     private var closeDetached = false
     private var shouldClose = false
     private var isOpened = false
     private var isSwiping: Boolean = false
     lateinit var type: SwipeableInnerViewType
     lateinit var languageListener: SwipeLanguageClickListener
-//    private var animatorSet = AnimatorSet()
+    lateinit var wordListener: SwipeWordClickListener
+
     var itemPosition: Int = -1
 
     /*     Language Views     */
@@ -57,35 +64,11 @@ class SwipeableItemView  @JvmOverloads constructor(
     private var checkView: CheckView? = null
     /*                        */
 
-
-
-//    init {
-//        val view = LayoutInflater.from(context).inflate(R.layout.view_swipeable_language, this, true)
-//
-//        this.cardView = view.card_view
-//        this.cardEdit = view.card_edit
-//        this.cardDelete = view.card_delete
-//        this.textEdit = view.tv_swipeable_edit
-//        this.textDelete = view.tv_swipeable_delete
-//
-//
-//        this.cardView?.setOnTouchListener(object : OnSwipeTouchListener() {
-//            override fun onSwipeRight() {
-//                if(!isSwiping) { closeView() }
-//            }
-//
-//            override fun onSwipeLeft() {
-//                if(!isSwiping) { openView() }
-//            }
-//        })
-//
-//        if(false) {
-//            view_check.check()
-//        } else {
-//            view_check.uncheck()
-//        }
-//    }
-
+    /*     Word Views     */
+    private var textWord: TextView? = null
+    private var textTranslation: TextView? = null
+    private var centralLine: View? = null
+    /*                        */
 
     private fun initView() {
         when(type) {
@@ -103,7 +86,20 @@ class SwipeableItemView  @JvmOverloads constructor(
                         this@SwipeableItemView.textCount = inc_language.tv_language_words_count
 
                     }
-//            SwipeableInnerViewType.VIEW_WORD -> LayoutInflater.from(context).inflate(R.layout.view_swipeable_language, this, true)
+            SwipeableInnerViewType.VIEW_WORD ->
+                LayoutInflater.from(context).inflate(R.layout.view_swipeable_word, this, true)
+                    .apply {
+                        this@SwipeableItemView.cardView = card_view
+                        this@SwipeableItemView.cardEdit = card_edit
+                        this@SwipeableItemView.cardDelete = card_delete
+                        this@SwipeableItemView.textEdit = tv_swipeable_edit
+                        this@SwipeableItemView.textDelete = tv_swipeable_delete
+
+                        this@SwipeableItemView.textWord = inc_word.tv_word
+                        this@SwipeableItemView.textTranslation = inc_word.tv_translation
+                        this@SwipeableItemView.centralLine = inc_word.view_central_line
+
+                    }
 //            SwipeableInnerViewType.VIEW_GAME -> LayoutInflater.from(context).inflate(R.layout.view_swipeable_language, this, true)
 //            SwipeableInnerViewType.VIEW_CATEGORY -> LayoutInflater.from(context).inflate(R.layout.view_swipeable_language, this, true)
 
@@ -140,18 +136,58 @@ class SwipeableItemView  @JvmOverloads constructor(
     }
 
     fun initWordView() {
-//        this.type = SwipeableInnerViewType.VIEW_WORD
-        // TODO
+        this.type = SwipeableInnerViewType.VIEW_WORD
+        initView()
     }
 
-    fun initCategoryView() {
-//        this.type = SwipeableInnerViewType.VIEW_CATEGORY
+    fun setWordModel(position: Int, wordModel: WordModel, listener: SwipeWordClickListener) {
+        this.itemPosition = position
+        this.wordListener = listener
+
+        this.textWord?.text = wordModel.word
+        this.textTranslation?.text = wordModel.translation
         // TODO
+        this.checkView?.setOnClickListener { wordListener.onViewPressed(wordModel) }
+        this.cardEdit?.setOnClickListener { wordListener.onEditPressed(wordModel) }
+        this.cardDelete?.setOnClickListener { wordListener.onDeletePressed(wordModel) }
     }
 
     fun initGameView() {
 //        this.type = SwipeableInnerViewType.VIEW_GAME
         // TODO
+    }
+
+    private fun doOnOpeningStart() {
+        when(type) {
+            SwipeableInnerViewType.VIEW_WORD -> {
+                this.centralLine
+                    ?.animate()
+                    ?.rotation(0f)
+                    ?.setDuration(ANIMATION_SLIDE_TIME)
+                    ?.start()
+            }
+        }
+    }
+
+
+    private fun doOnClosingStart() {
+        when(type) {
+            SwipeableInnerViewType.VIEW_WORD -> {
+                this.centralLine
+                    ?.animate()
+                    ?.rotation(45f)
+                    ?.setDuration(ANIMATION_SLIDE_TIME)
+                    ?.start()
+            }
+        }
+    }
+
+    private fun doOnClosingImmediate() {
+        when(type) {
+            SwipeableInnerViewType.VIEW_WORD -> {
+                this.centralLine?.rotation = 45f
+            }
+        }
     }
 
 
@@ -177,6 +213,7 @@ class SwipeableItemView  @JvmOverloads constructor(
                     (view.layoutParams as RelativeLayout.LayoutParams).marginEnd = buttonMarginEnd
                     (delete.layoutParams as RelativeLayout.LayoutParams).marginEnd = viewMarginEnd
                     (edit.layoutParams as RelativeLayout.LayoutParams).marginEnd = buttonMarginEnd
+                    doOnOpeningStart()
                 }, {
                     this.textEdit?.visibility = View.VISIBLE
                     this.textDelete?.visibility = View.VISIBLE
@@ -220,6 +257,7 @@ class SwipeableItemView  @JvmOverloads constructor(
                     (edit.layoutParams as RelativeLayout.LayoutParams).marginEnd = zeroWitdh
                     (view.layoutParams as RelativeLayout.LayoutParams).marginEnd = viewMarginEnd
                     (delete.layoutParams as RelativeLayout.LayoutParams).marginEnd = zeroWitdh
+                    doOnClosingImmediate()
                 }
         }
     }
@@ -237,6 +275,7 @@ class SwipeableItemView  @JvmOverloads constructor(
                     (edit.layoutParams as RelativeLayout.LayoutParams).marginEnd = zeroWitdh
                     this.textEdit?.visibility = View.GONE
                     this.textDelete?.visibility = View.GONE
+                    doOnClosingStart()
                 }, {
                     (view.layoutParams as RelativeLayout.LayoutParams).marginEnd = viewMarginEnd
                     (delete.layoutParams as RelativeLayout.LayoutParams).marginEnd = zeroWitdh
@@ -256,7 +295,7 @@ class SwipeableItemView  @JvmOverloads constructor(
 
         val slideAnimator = ValueAnimator
             .ofInt(currentWidth, newWidth)
-            .setDuration(500)
+            .setDuration(ANIMATION_SLIDE_TIME)
 
         slideAnimator.addUpdateListener { animation ->
             val value = animation.animatedValue as Int
@@ -276,11 +315,9 @@ class SwipeableItemView  @JvmOverloads constructor(
 
 
     enum class SwipeableInnerViewType {
-        VIEW_LANGUAGE
-//        ,
-//        VIEW_WORD,
-//        VIEW_GAME,
-//        VIEW_CATEGORY
+        VIEW_LANGUAGE,
+        VIEW_WORD,
+//        VIEW_GAME
     }
 
 }
