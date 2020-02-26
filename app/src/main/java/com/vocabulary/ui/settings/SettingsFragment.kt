@@ -18,13 +18,6 @@ import kotlinx.android.synthetic.main.fragment_settings.*
 
 class SettingsFragment : BaseFragment() {
 
-//    private val onNavListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
-//        if(item.itemId != R.id.mi_settings) {
-//            (activity as MainActivity).changeFragment(item.itemId)
-//        }
-//        return@OnNavigationItemSelectedListener true
-//    }
-
     private lateinit var settingsViewModel: SettingsViewModel
     private lateinit var themeAdapter: ThemesColorAdapter
 
@@ -42,11 +35,6 @@ class SettingsFragment : BaseFragment() {
         settingsViewModel.text.observe(this, Observer {
 
         })
-
-
-//        bnv_settings.selectedItemId = R.id.mi_settings
-//        bnv_settings.setOnNavigationItemSelectedListener(onNavListener)
-
 
         this.themeAdapter = ThemesColorAdapter(Injector.themeManager.currentTheme, Injector.themeManager.getThemes(),
             object : ThemesColorAdapter.ThemeColorClickListener {

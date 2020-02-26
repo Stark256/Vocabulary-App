@@ -6,6 +6,6 @@ abstract class WordBaseItem {
         TYPE_LETTER(0),
         TYPE_WORD(1)
     }
-
+    abstract fun getSortString() : String
     abstract fun getType(): WordItemType
 }

@@ -6,7 +6,7 @@ import com.vocabulary.db.FieldType
 import java.io.Serializable
 
 class WordModel(
-    var id: Int = 0,
+    var id: Long = 0,
     var word: String,
     var translation: String,
     var tableName: String
@@ -16,7 +16,23 @@ class WordModel(
        return ContentValues().apply {
         put(key_word, word)
         put(key_translate, translation)
+        put(key_table_name, tableName)
        }
+    }
+
+    fun getContentValuesUpdated() : ContentValues {
+        return ContentValues().apply {
+            put(key_word, word)
+            put(key_translate, translation)
+        }
+    }
+
+    override fun getSortString(): String {
+        return word
+    }
+
+    fun isSmallLengthSize() : Boolean {
+        return (word.length <= 10 && translation.length <= 10)
     }
 
     override fun getType(): WordItemType = WordItemType.TYPE_WORD

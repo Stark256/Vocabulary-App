@@ -34,7 +34,7 @@ class SwipeableItemView  @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0): RelativeLayout(context, attrs, defStyleAttr) {
 
-    private val ANIMATION_SLIDE_TIME = 500L
+    private val ANIMATION_SLIDE_TIME = 250L
 
     private val buttonWitdh: Int = context.resources.getDimension(R.dimen.swipeable_button_full_width).toInt()
     private val zeroWitdh: Int = context.resources.getDimension(R.dimen.swipeable_button_zero_width).toInt()
@@ -53,9 +53,11 @@ class SwipeableItemView  @JvmOverloads constructor(
     private var isOpened = false
     private var isSwiping: Boolean = false
     lateinit var type: SwipeableInnerViewType
+
     lateinit var languageListener: SwipeLanguageClickListener
     lateinit var wordListener: SwipeWordClickListener
 
+    private var animateLine = false
     var itemPosition: Int = -1
 
     /*     Language Views     */
@@ -65,8 +67,12 @@ class SwipeableItemView  @JvmOverloads constructor(
     /*                        */
 
     /*     Word Views     */
-    private var textWord: TextView? = null
-    private var textTranslation: TextView? = null
+    private var textWordSmall: TextView? = null
+    private var textTranslationSmall: TextView? = null
+    private var textWordBig: TextView? = null
+    private var textTranslationBig: TextView? = null
+    private var smallContainer: RelativeLayout? = null
+    private var bigContainer: RelativeLayout? = null
     private var centralLine: View? = null
     /*                        */
 
@@ -95,9 +101,13 @@ class SwipeableItemView  @JvmOverloads constructor(
                         this@SwipeableItemView.textEdit = tv_swipeable_edit
                         this@SwipeableItemView.textDelete = tv_swipeable_delete
 
-                        this@SwipeableItemView.textWord = inc_word.tv_word
-                        this@SwipeableItemView.textTranslation = inc_word.tv_translation
-                        this@SwipeableItemView.centralLine = inc_word.view_central_line
+                        this@SwipeableItemView.textWordSmall = inc_word.tv_word_small
+                        this@SwipeableItemView.textTranslationSmall = inc_word.tv_translation_small
+                        this@SwipeableItemView.textWordBig = inc_word.tv_word_big
+                        this@SwipeableItemView.textTranslationBig = inc_word.tv_translation_big
+                        this@SwipeableItemView.smallContainer = inc_word.rl_word_small_container
+                        this@SwipeableItemView.bigContainer = inc_word.rl_word_big_container
+                        this@SwipeableItemView.centralLine = inc_word.view_central_line_small
 
                     }
 //            SwipeableInnerViewType.VIEW_GAME -> LayoutInflater.from(context).inflate(R.layout.view_swipeable_language, this, true)
@@ -144,10 +154,25 @@ class SwipeableItemView  @JvmOverloads constructor(
         this.itemPosition = position
         this.wordListener = listener
 
-        this.textWord?.text = wordModel.word
-        this.textTranslation?.text = wordModel.translation
+        if(wordModel.isSmallLengthSize()){
+            this.animateLine = true
+            this.bigContainer?.visibility = View.GONE
+            this.smallContainer?.visibility = View.VISIBLE
+            this.textWordSmall?.text = wordModel.word
+            this.textTranslationSmall?.text = wordModel.translation
+        } else {
+            this.animateLine = false
+            this.smallContainer?.visibility = View.GONE
+            this.bigContainer?.visibility = View.VISIBLE
+            this.textWordBig?.text = wordModel.word
+            this.textTranslationBig?.text = wordModel.translation
+        }
+
+
+//        this.textWord?.text = wordModel.word
+//        this.textTranslation?.text = wordModel.translation
         // TODO
-        this.checkView?.setOnClickListener { wordListener.onViewPressed(wordModel) }
+//        this.checkView?.setOnClickListener { wordListener.onViewPressed(wordModel) }
         this.cardEdit?.setOnClickListener { wordListener.onEditPressed(wordModel) }
         this.cardDelete?.setOnClickListener { wordListener.onDeletePressed(wordModel) }
     }
@@ -158,35 +183,29 @@ class SwipeableItemView  @JvmOverloads constructor(
     }
 
     private fun doOnOpeningStart() {
-        when(type) {
-            SwipeableInnerViewType.VIEW_WORD -> {
+        if(animateLine && type == SwipeableInnerViewType.VIEW_WORD ) {
                 this.centralLine
                     ?.animate()
                     ?.rotation(0f)
                     ?.setDuration(ANIMATION_SLIDE_TIME)
                     ?.start()
-            }
         }
     }
 
 
     private fun doOnClosingStart() {
-        when(type) {
-            SwipeableInnerViewType.VIEW_WORD -> {
+        if(animateLine && type == SwipeableInnerViewType.VIEW_WORD ) {
                 this.centralLine
                     ?.animate()
                     ?.rotation(45f)
                     ?.setDuration(ANIMATION_SLIDE_TIME)
                     ?.start()
-            }
         }
     }
 
     private fun doOnClosingImmediate() {
-        when(type) {
-            SwipeableInnerViewType.VIEW_WORD -> {
+        if(animateLine && type == SwipeableInnerViewType.VIEW_WORD ) {
                 this.centralLine?.rotation = 45f
-            }
         }
     }
 

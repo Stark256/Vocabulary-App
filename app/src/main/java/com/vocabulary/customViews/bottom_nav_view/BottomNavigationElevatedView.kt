@@ -97,6 +97,9 @@ class BottomNavigationElevatedView @JvmOverloads constructor(
                 moveToSettings()
             }
         }
+        this.backgroundView?.setOnClickListener {
+            listener.backViewClicked()
+        }
 
     }
 
@@ -289,5 +292,6 @@ class BottomNavigationElevatedView @JvmOverloads constructor(
 
     interface NavigationMoveListener {
         fun onMove(fromD: MOVE_DIRECTION, toD: MOVE_DIRECTION)
+        fun backViewClicked()
     }
 }

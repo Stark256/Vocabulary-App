@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="50dp"
     android:layout_height="50dp"
     android:layout_margin="8dp"
-    app:cardCornerRadius="25dp">
+    app:cardCornerRadius="25dp"
+    app:cardElevation="4dp">
 
     <RelativeLayout
         android:id="@+id/rl_letter_container"

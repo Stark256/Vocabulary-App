@@ -20,12 +20,14 @@
     <attr name="background_filter_gradient" format="reference"/>
     <attr name="background_gradient" format="reference"/>
     <attr name="background_accent" format="reference"/>
+    <attr name="background_card_accent" format="reference"/>
     <attr name="bottom_navigation" format="reference"/>
     <attr name="filter_view_gradient" format="reference"/>
     <attr name="ic_tune" format="reference"/>
     <attr name="ic_add" format="reference"/>
     <attr name="toolbar_background" format="reference"/>
     <attr name="text_accent" format="reference"/>
+    <attr name="text_secondary" format="reference"/>
     <attr name="text_default" format="reference"/>
 
 </resources>

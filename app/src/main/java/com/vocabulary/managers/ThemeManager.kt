@@ -3,11 +3,13 @@ package com.vocabulary.managers
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.view.View
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import com.vocabulary.R
@@ -76,7 +78,41 @@ class ThemeManager {
             CustomTheme.THEME_SPRING -> ContextCompat.getColor(context, R.color.theme_spring_accent)
             else -> ContextCompat.getColor(context, R.color.theme_ocean_accent)
         }
+    }
 
+    fun getSecondaryColor(context: Context) : Int {
+        return when (currentTheme) {
+            CustomTheme.THEME_OCEAN -> ContextCompat.getColor(context, R.color.theme_ocean_gradient_3)
+            CustomTheme.THEME_SUNRISE -> ContextCompat.getColor(context, R.color.theme_sunrise_gradient_3)
+            CustomTheme.THEME_SUNDOWN -> ContextCompat.getColor(context, R.color.theme_sundown_gradient_3)
+            CustomTheme.THEME_RAZZ -> ContextCompat.getColor(context, R.color.theme_razz_gradient_3)
+            CustomTheme.THEME_GRAPE -> ContextCompat.getColor(context, R.color.theme_grape_gradient_3)
+            CustomTheme.THEME_AUTUMN -> ContextCompat.getColor(context, R.color.theme_autumn_gradient_3)
+            CustomTheme.THEME_SPRING -> ContextCompat.getColor(context, R.color.theme_spring_gradient_3)
+            else -> ContextCompat.getColor(context, R.color.theme_ocean_gradient_3)
+        }
+    }
+
+    fun customizeSortSettItem(context: Context, isSelected: Boolean, cardView: CardView, text: TextView) {
+        if(isSelected) {
+            cardView.setCardBackgroundColor(context.getColor(R.color.white))
+            text.setTextColor(getAccentColor(context))
+        } else {
+            cardView.setCardBackgroundColor(getAccentColor(context))
+            text.setTextColor(context.getColor(R.color.white))
+        }
+    }
+
+    fun changeImageViewTintToAccent(context: Context, iv: ImageView) {
+        iv.imageTintList = ColorStateList.valueOf(getAccentColor(context))
+    }
+
+    fun changeImageViewTintToSecondary(context: Context, iv: ImageView) {
+        iv.imageTintList = ColorStateList.valueOf(getSecondaryColor(context))
+    }
+
+    fun changeImageViewTintToGrey(context: Context, iv: ImageView) {
+        iv.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.grey))
     }
 
     fun getBorderedButton() : BorderedButtonView.BorderedButtonSett {

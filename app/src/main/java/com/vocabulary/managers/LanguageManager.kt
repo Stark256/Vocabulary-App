@@ -6,6 +6,15 @@ class LanguageManager {
 
     private var currentLanguage : LanguageModel? = null
 
+    var isNeedUpdate = false
+
+    fun resetNeedUpdate() { isNeedUpdate = false }
+    fun needUpdate(need: Boolean) { isNeedUpdate = need }
+
+    fun getCurrentLanguageIfSelected() : LanguageModel? {
+        return currentLanguage
+    }
+
     fun isSelected(languageModel: LanguageModel) : Boolean {
         if(this.currentLanguage != null && this.currentLanguage?.id == languageModel.id) {
             return true
@@ -24,5 +33,6 @@ class LanguageManager {
 
     fun deleteCurrentLanguage() {
         Injector.storageManager.removeCurrentLanguageID()
+        this.currentLanguage = null
     }
 }

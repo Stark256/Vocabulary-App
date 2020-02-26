@@ -84,7 +84,7 @@ class DeletingDialog : DialogFragment(){
             TYPE_WORD -> {
                 tv_dialog_title?.text = context?.getString(R.string.message_sure_word)
                 tv_model_title?.visibility = View.VISIBLE
-                tv_model_title?.text = wordModel?.word
+                tv_model_title?.text = String.format(context!!.getString(R.string.delete_word_model), wordModel!!.word, wordModel!!.translation)
             }
         }
 

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.vocabulary.R
+import com.vocabulary.customViews.sort_sett_view.SortSettView
 import com.vocabulary.models.LetterModel
 import kotlinx.android.synthetic.main.fragment_words_filter.*
 
@@ -25,49 +26,11 @@ class WordsFilterFragment : Fragment(){
 
         this.adapter = WordsFilterAdapter()
         rv_letters.adapter = adapter
-        rv_letters.layoutManager = GridLayoutManager(context, 6)
-        adapter.replaceAll(filters)
-
-//        Injector.themeManager.customizeWordEditBackground(activity as MainActivity, edit_circle, btn_edit, isSwipeEnabled)
-
-//        val arr = ArrayList<LetterModel>()
-////        arr.add(LetterModel("A"))
-////        arr.add(LetterModel("B"))
-////        arr.add(LetterModel("C"))
-////        arr.add(LetterModel("D"))
-////        arr.add(LetterModel("E"))
-////        arr.add(LetterModel("S"))
-////        arr.add(LetterModel("S"))
-////        arr.add(LetterModel("S"))
-////        arr.add(LetterModel("S"))
-////        arr.add(LetterModel("S"))
-////        arr.add(LetterModel("S"))
-////        arr.add(LetterModel("S"))
-////        arr.add(LetterModel("S"))
-////        arr.add(LetterModel("S"))
-////        arr.add(LetterModel("S"))
-////        arr.add(LetterModel("S"))
-////        arr.add(LetterModel("S"))
-////        arr.add(LetterModel("S"))
-////        arr.add(LetterModel("S"))
-////        arr.add(LetterModel("S"))
-////        arr.add(LetterModel("S"))
-////        arr.add(LetterModel("S"))
-////        arr.add(LetterModel("S"))
-////        arr.add(LetterModel("S"))
-////        arr.add(LetterModel("S"))
-////        arr.add(LetterModel("S"))
-////        arr.add(LetterModel("S"))
-////        arr.add(LetterModel("S"))
-////        arr.add(LetterModel("S"))
-////        arr.add(LetterModel("S"))
-////        arr.add(LetterModel("S"))
-////        arr.add(LetterModel("S"))
-////        arr.add(LetterModel("S"))
-
+        rv_letters.layoutManager = GridLayoutManager(context, 5)
+//        adapter.replaceAll(filters)
 
         btn_apply.setOnClickListener {
-            listener.onApplyPressed(this.filters)
+            listener.onApplyPressed(this.ssv_words_filter.getSelectedSortSett(), this.filters)
         }
 
         btn_reset.setOnClickListener {
@@ -80,17 +43,31 @@ class WordsFilterFragment : Fragment(){
     }
 
     interface OnFilterStateChangeListener {
-        fun onApplyPressed(filters: ArrayList<LetterModel>)
+        fun onApplyPressed(sortSett: SortSettView.SORT_SETT, filters: ArrayList<LetterModel>)
         fun onResetPressed()
         fun onLanguagePressed()
     }
 
-    fun setFilterData(filters: ArrayList<LetterModel>) {
-        if(filters.isNotEmpty()) {
-            this.filters.clear()
-            this.filters.addAll(filters)
+    fun setFilterData(sortSett: SortSettView.SORT_SETT, filters: ArrayList<LetterModel>) {
+
+        this.filters.clear()
+        this.filters.addAll(filters)
+        this.filters.sortBy { it.letter }
+
+        this.ssv_words_filter.setSelectedSortSett(sortSett)
+        adapter.replaceAll(this.filters)
+
+        if(this.filters.isEmpty()) {
+            tv_filter_empty_title.visibility = View.VISIBLE
+            rv_letters.visibility = View.INVISIBLE
+            tv_sort_title.visibility = View.INVISIBLE
+            ssv_words_filter.visibility = View.INVISIBLE
+        } else {
+            tv_filter_empty_title.visibility = View.GONE
+            rv_letters.visibility = View.VISIBLE
+            tv_sort_title.visibility = View.VISIBLE
+            ssv_words_filter.visibility = View.VISIBLE
         }
-        adapter.replaceAll(filters)
     }
 
     companion object {

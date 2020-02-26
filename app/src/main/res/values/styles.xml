@@ -143,6 +143,10 @@
         <item name="android:background">@drawable/background_nav_filter_ocean</item>
     </style>
 
+    <style name="background_card_ocean" parent="CardView">
+        <item name="cardBackgroundColor">@color/theme_ocean_accent</item>
+    </style>
+
     <style name="progress_bar_ocean">
         <item name="android:indeterminateDrawable">@drawable/progress_gradient_ocean</item>
     </style>
@@ -191,6 +195,9 @@
     <style name="text_accent_ocean" >
         <item name="android:textColor">@color/theme_ocean_accent</item>
     </style>
+    <style name="text_secondary_ocean">
+        <item name="android:textColor">@color/theme_ocean_gradient_3</item>
+    </style>
     <style name="tint_accent_ocean">
         <item name="android:tint">@color/theme_ocean_accent</item>
     </style>
@@ -205,6 +212,10 @@
 
     <style name="background_navigation_sunrise">
         <item name="android:background">@drawable/background_nav_filter_sunrise</item>
+    </style>
+
+    <style name="background_card_sunrise" parent="CardView">
+        <item name="cardBackgroundColor">@color/theme_sunrise_accent</item>
     </style>
 
     <style name="progress_bar_sunrise">
@@ -255,6 +266,9 @@
     <style name="text_accent_sunrise" >
         <item name="android:textColor">@color/theme_sunrise_accent</item>
     </style>
+    <style name="text_secondary_sunrise">
+        <item name="android:textColor">@color/theme_sunrise_gradient_3</item>
+    </style>
     <style name="tint_accent_sunrise">
         <item name="android:tint">@color/theme_sunrise_accent</item>
     </style>
@@ -269,6 +283,10 @@
 
     <style name="background_navigation_sundown">
         <item name="android:background">@drawable/background_nav_filter_sundown</item>
+    </style>
+
+    <style name="background_card_sundown" parent="CardView">
+        <item name="cardBackgroundColor">@color/theme_sundown_accent</item>
     </style>
 
     <style name="progress_bar_sundown">
@@ -319,6 +337,9 @@
     <style name="text_accent_sundown" >
         <item name="android:textColor">@color/theme_sundown_accent</item>
     </style>
+    <style name="text_secondary_sundown">
+        <item name="android:textColor">@color/theme_sundown_gradient_3</item>
+    </style>
     <style name="tint_accent_sundown">
         <item name="android:tint">@color/theme_sundown_accent</item>
     </style>
@@ -333,6 +354,10 @@
 
     <style name="background_navigation_razz">
         <item name="android:background">@drawable/background_nav_filter_razz</item>
+    </style>
+
+    <style name="background_card_razz" parent="CardView">
+        <item name="cardBackgroundColor">@color/theme_razz_accent</item>
     </style>
 
     <style name="progress_bar_razz">
@@ -383,6 +408,9 @@
     <style name="text_accent_razz" >
         <item name="android:textColor">@color/theme_razz_accent</item>
     </style>
+    <style name="text_secondary_razz">
+        <item name="android:textColor">@color/theme_razz_gradient_3</item>
+    </style>
     <style name="tint_accent_razz">
         <item name="android:tint">@color/theme_razz_accent</item>
     </style>
@@ -397,6 +425,10 @@
 
     <style name="background_navigation_grape">
         <item name="android:background">@drawable/background_nav_filter_grape</item>
+    </style>
+
+    <style name="background_card_grape" parent="CardView">
+        <item name="cardBackgroundColor">@color/theme_grape_accent</item>
     </style>
 
     <style name="progress_bar_grape">
@@ -447,6 +479,9 @@
     <style name="text_accent_grape" >
         <item name="android:textColor">@color/theme_grape_accent</item>
     </style>
+    <style name="text_secondary_grape">
+        <item name="android:textColor">@color/theme_grape_gradient_3</item>
+    </style>
     <style name="tint_accent_grape">
         <item name="android:tint">@color/theme_grape_accent</item>
     </style>
@@ -461,6 +496,10 @@
 
     <style name="background_navigation_autumn">
         <item name="android:background">@drawable/background_nav_filter_autumn</item>
+    </style>
+
+    <style name="background_card_autumn" parent="CardView">
+        <item name="cardBackgroundColor">@color/theme_autumn_accent</item>
     </style>
 
     <style name="progress_bar_autumn">
@@ -511,6 +550,9 @@
     <style name="text_accent_autumn" >
     -    <item name="android:textColor">@color/theme_autumn_accent</item>
     </style>
+    <style name="text_secondary_autumn">
+        <item name="android:textColor">@color/theme_autumn_gradient_3</item>
+    </style>
     <style name="tint_accent_autumn">
         <item name="android:tint">@color/theme_autumn_accent</item>
     </style>
@@ -525,6 +567,10 @@
 
     <style name="background_navigation_spring">
         <item name="android:background">@drawable/background_nav_filter_spring</item>
+    </style>
+
+    <style name="background_card_spring" parent="CardView">
+        <item name="cardBackgroundColor">@color/theme_spring_accent</item>
     </style>
 
     <style name="progress_bar_spring">
@@ -579,6 +625,9 @@
     </style>
     <style name="tint_accent_spring">
         <item name="android:tint">@color/theme_spring_accent</item>
+    </style>
+    <style name="text_secondary_spring">
+        <item name="android:textColor">@color/theme_spring_gradient_3</item>
     </style>
     <style name="text_default_spring" > </style>
 

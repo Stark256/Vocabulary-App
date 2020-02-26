@@ -6,11 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import android.view.inputmethod.EditorInfo
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.DialogFragment
 import com.vocabulary.R
 import com.vocabulary.ui.common.BaseDialogFragment
 import kotlinx.android.synthetic.main.dialog_word.*
+
 
 class WordDialog: BaseDialogFragment() {
 
@@ -24,6 +25,7 @@ class WordDialog: BaseDialogFragment() {
                     putString(ARG_WORD_STRING, word)
                     putString(ARG_TRANSLATION_STRING, translation)
                 }
+                this.listener = listener
             }
         }
     }
@@ -57,15 +59,28 @@ class WordDialog: BaseDialogFragment() {
             btn_ok.text = context?.getString(R.string.add)
         }
 
+        context?.let {
+            et_word.requestFocus()
+            showKeyboard(it)
+        }
+
+        et_word.filters = getInputFilters()
+        et_translation.filters = getInputFilters()
+
+        et_translation.setOnEditorActionListener { _, actionId, _ ->
+            if(actionId == EditorInfo.IME_ACTION_DONE) {
+                okPressed()
+            }
+            false
+        }
+
         btn_cancel.setOnClickListener {
             context?.let { closeKeyboard(it) }
             dismiss()
         }
+
         btn_ok.setOnClickListener {
             okPressed()
-            listener.onOKPressed(et_word.text.toString(), et_translation.text.toString()) {
-                setResult(it)
-            }
         }
     }
 
@@ -76,6 +91,13 @@ class WordDialog: BaseDialogFragment() {
         btn_cancel.visibility = View.GONE
         iv_warning.visibility = View.GONE
         tv_warning.visibility = View.GONE
+
+        listener.onOKPressed(
+            replaceWithPattern(et_word.text.toString()),
+            replaceWithPattern(et_translation.text.toString()))
+        {
+            setResult(it)
+        }
     }
 
     private fun setResult(warning: String?) {
@@ -96,5 +118,4 @@ class WordDialog: BaseDialogFragment() {
     interface WordsDialogListener {
         fun onOKPressed(word: String, translation: String, result: (String?) -> Unit)
     }
-
 }

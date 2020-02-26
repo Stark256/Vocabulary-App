@@ -27,7 +27,6 @@ class LanguageAdapter(val listener: SwipeLanguageClickListener): RecyclerView.Ad
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LanguageViewHolder {
         this.context = parent.context
-
         return LanguageViewHolder(LayoutInflater.from(context).inflate(R.layout.item_language, parent, false))
     }
 
@@ -38,29 +37,7 @@ class LanguageAdapter(val listener: SwipeLanguageClickListener): RecyclerView.Ad
 
     override fun onBindViewHolder(holder: LanguageViewHolder, position: Int) {
         val item = dataArr[position]
-//        holder.name.text = item.name
-//        holder.count.text = item.wordsCount.toString()
-//
-//        if(Injector.languageManager.isSelected(item)) {
-//            holder.check.check()
-//        } else {
-//            holder.check.uncheck()
-//        }
-//
-//        holder.container.setOnClickListener {
-//            if(!Injector.languageManager.isSelected(item)) {
-//                this.listener.onLanguagePressed(item)
-//            }
-//        }
-//
-//        holder.check.setOnClickListener {
-//            if(!Injector.languageManager.isSelected(item)) {
-//                this.listener.onLanguagePressed(item)
-//            }
-//        }
-
         holder.swipeableView.setLanguageModel(position, item, listener)
-
     }
 
     override fun onViewDetachedFromWindow(holder: LanguageViewHolder) {
@@ -78,7 +55,4 @@ class LanguageAdapter(val listener: SwipeLanguageClickListener): RecyclerView.Ad
             return this.swipeableView
         }
     }
-
-
-
 }

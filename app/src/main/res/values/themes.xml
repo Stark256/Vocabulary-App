@@ -29,6 +29,8 @@
 
 
     <style name="Theme.Custom_Ocean" parent="AppThemeOcean">
+        <item name="text_secondary">@style/text_secondary_ocean</item>
+        <item name="background_card_accent">@style/background_card_ocean</item>
         <item name="tint_accent">@style/tint_accent_ocean</item>
         <item name="background_navigation">@style/background_navigation_ocean</item>
         <item name="progress_bar">@style/progress_bar_ocean</item>
@@ -49,6 +51,8 @@
     </style>
 
     <style name="Theme.Custom_Grape" parent="AppThemeGrape">
+        <item name="text_secondary">@style/text_secondary_grape</item>
+        <item name="background_card_accent">@style/background_card_grape</item>
         <item name="tint_accent">@style/tint_accent_grape</item>
         <item name="background_navigation">@style/background_navigation_grape</item>
         <item name="progress_bar">@style/progress_bar_grape</item>
@@ -69,6 +73,8 @@
     </style>
 
     <style name="Theme.Custom_Razz" parent="AppThemeRazz">
+        <item name="text_secondary">@style/text_secondary_razz</item>
+        <item name="background_card_accent">@style/background_card_razz</item>
         <item name="tint_accent">@style/tint_accent_razz</item>
         <item name="background_navigation">@style/background_navigation_razz</item>
         <item name="progress_bar">@style/progress_bar_razz</item>
@@ -89,6 +95,8 @@
     </style>
 
     <style name="Theme.Custom_Sunrise" parent="AppThemeSunrise">
+        <item name="text_secondary">@style/text_secondary_sunrise</item>
+        <item name="background_card_accent">@style/background_card_sunrise</item>
         <item name="tint_accent">@style/tint_accent_sunrise</item>
         <item name="background_navigation">@style/background_navigation_sunrise</item>
         <item name="progress_bar">@style/progress_bar_sunrise</item>
@@ -109,6 +117,8 @@
     </style>
 
     <style name="Theme.Custom_Sundown" parent="AppThemeSundown">
+        <item name="text_secondary">@style/text_secondary_sundown</item>
+        <item name="background_card_accent">@style/background_card_sundown</item>
         <item name="tint_accent">@style/tint_accent_sundown</item>
         <item name="background_navigation">@style/background_navigation_sundown</item>
         <item name="progress_bar">@style/progress_bar_sundown</item>
@@ -129,6 +139,8 @@
     </style>
 
     <style name="Theme.Custom_Autumn" parent="AppThemeAutumn">
+        <item name="text_secondary">@style/text_secondary_autumn</item>
+        <item name="background_card_accent">@style/background_card_autumn</item>
         <item name="tint_accent">@style/tint_accent_autumn</item>
         <item name="background_navigation">@style/background_navigation_autumn</item>
         <item name="progress_bar">@style/progress_bar_autumn</item>
@@ -149,6 +161,8 @@
     </style>
 
     <style name="Theme.Custom_Spring" parent="AppThemeSpring">
+        <item name="text_secondary">@style/text_secondary_spring</item>
+        <item name="background_card_accent">@style/background_card_spring</item>
         <item name="tint_accent">@style/tint_accent_spring</item>
         <item name="background_navigation">@style/background_navigation_spring</item>
         <item name="progress_bar">@style/progress_bar_spring</item>

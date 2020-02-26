@@ -13,6 +13,19 @@
     style="?attr/background_accent">
 
 
+    <TextView
+        android:id="@+id/tv_filter_empty_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:text="@string/no_words_found_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_language"
+        app:layout_constraintBottom_toTopOf="@+id/filter_btn_container"/>
+
     <ImageView
         android:id="@+id/btn_language"
         android:layout_width="25dp"
@@ -25,32 +38,50 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
 
-    <View
-        android:id="@+id/filter_line"
+    <TextView
+        android:id="@+id/tv_sort_title"
         android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="@color/white"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="4dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_language" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_language"
+        android:textSize="16sp"
+        android:text="@string/sort_by"
+        android:textColor="@color/white"
+        android:visibility="invisible"/>
+
+    <com.vocabulary.customViews.sort_sett_view.SortSettView
+        android:id="@+id/ssv_words_filter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_sort_title"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:visibility="invisible"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_letters"
-        app:layout_constraintTop_toBottomOf="@+id/filter_line"
+        app:layout_constraintTop_toBottomOf="@+id/ssv_words_filter"
         android:layout_marginTop="4dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="320dp"
         android:minHeight="150dp"
         android:maxHeight="380dp"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"/>
+        android:layout_marginEnd="8dp"
+        android:visibility="invisible"/>
 
 
     <LinearLayout
+        android:id="@+id/filter_btn_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"

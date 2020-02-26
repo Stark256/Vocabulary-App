@@ -4,74 +4,159 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <View
-        android:id="@+id/view_central"
-        android:layout_width="1dp"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true"
-        android:visibility="invisible"/>
-
-    <View
-        android:id="@+id/view_central_line"
-        android:layout_width="1dp"
-        android:layout_height="match_parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:layout_centerInParent="true"
-        style="?attr/background_accent"
-        android:rotation="45"/>
-
     <RelativeLayout
-        android:id="@+id/rl_word_container_left"
-        android:layout_width="wrap_content"
+        android:id="@+id/rl_word_big_container"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/view_central">
+        android:visibility="gone">
 
-        <TextView
-            android:id="@+id/tv_word"
-            android:textSize="20sp"
+        <View
+            android:id="@+id/view_central_big"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="1dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:visibility="invisible"/>
+
+        <View
+            android:id="@+id/view_central_line_big"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:layout_centerInParent="true"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="4dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:gravity="start"
-            style="?attr/text_accent"/>
+            style="?attr/background_accent" />
+
+        <RelativeLayout
+            android:id="@+id/rl_word_container_top_big"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_above="@+id/view_central_big">
+
+            <TextView
+                android:id="@+id/tv_word_big"
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:gravity="start"
+                style="?attr/text_accent"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_word_container_bottom_big"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/view_central_big">
+
+            <TextView
+                android:id="@+id/tv_translation_big"
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:gravity="start"
+                android:textColor="@color/grey"/>
+
+        </RelativeLayout>
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/rl_word_container_right"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/view_central">
+        android:id="@+id/rl_word_small_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tv_translation"
-            android:textSize="20sp"
-            android:layout_width="wrap_content"
+        <View
+            android:id="@+id/view_central_small"
+            android:layout_width="1dp"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:visibility="invisible"/>
+
+        <View
+            android:id="@+id/view_central_line_small"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:layout_centerInParent="true"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="4dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:gravity="start"
-            android:textColor="@color/grey"/>
+            style="?attr/background_accent"
+            android:rotation="45"/>
+
+        <RelativeLayout
+            android:id="@+id/rl_word_container_left_small"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/view_central_small">
+
+            <TextView
+                android:id="@+id/tv_word_small"
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:gravity="start"
+                style="?attr/text_accent"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_word_container_right_small"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/view_central_small">
+
+            <TextView
+                android:id="@+id/tv_translation_small"
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:gravity="start"
+                android:textColor="@color/grey"/>
+
+        </RelativeLayout>
 
     </RelativeLayout>
 

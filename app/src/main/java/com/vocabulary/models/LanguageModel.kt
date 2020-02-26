@@ -20,7 +20,7 @@ class LanguageModel(
         }
     }
 
-    fun getContentValueName() : ContentValues {
+    fun getContentValuesUpdated() : ContentValues {
         return ContentValues().apply {
             put(key_name, name)
         }

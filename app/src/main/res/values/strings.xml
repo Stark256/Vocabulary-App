@@ -32,7 +32,7 @@
     <string name="edit_word">Edit Word</string>
 
     <string name="word">Word</string>
-    <string name="translate">Translate</string>
+    <string name="translate">Translation</string>
     <string name="language">Language</string>
     <string name="words_count_title">Words:</string>
 
@@ -57,17 +57,22 @@
 
 
     <string name="no_languages_found_title">NO LANGUAGES FOUND</string>
-    <string name="no_languages_found_message">Please add new language.</string>
+    <string name="no_languages_found_message">Please add new language</string>
     <string name="button_add_new_language">Add new language</string>
 
-    <string name="no_languages_select_message">Please select the language.</string>
+    <string name="no_languages_select_message">Please select the language</string>
     <string name="button_select_new_language">Select language</string>
 
     <string name="no_words_found_title">NO WORDS FOUND</string>
-    <string name="no_words_found_message">Please add new word.</string>
+    <string name="no_words_found_message">Please add new word</string>
     <string name="button_add_new_word">Add new word</string>
 
     <string name="no_tests_found_title">NO TESTS FOUND</string>
-    <string name="no_tests_found_message">Please add new test.</string>
+    <string name="no_tests_found_message">Please add new test</string>
     <string name="button_add_new_test">Add new test</string>
+
+    <string name="sort_by">Sort By</string>
+
+    <string name="sort_sett_az">A-Z</string>
+    <string name="sort_sett_za">Z-A</string>
 </resources>

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import android.view.inputmethod.EditorInfo
 import androidx.core.content.ContextCompat
 import com.vocabulary.R
 import com.vocabulary.ui.common.BaseDialogFragment
@@ -58,15 +59,20 @@ class LanguageDialog: BaseDialogFragment() {
             showKeyboard(it)
         }
 
+        et_language.filters = getInputFilters()
+        et_language.setOnEditorActionListener { _, actionId, _ ->
+            if(actionId == EditorInfo.IME_ACTION_DONE) {
+                okPressed()
+            }
+            false
+        }
+
         btn_cancel.setOnClickListener {
             context?.let{ closeKeyboard(it) }
             dismiss()
         }
         btn_ok.setOnClickListener {
             okPressed()
-            listener.onOKPressed(et_language.text.toString()) {
-                setResult(it)
-            }
         }
     }
 
@@ -77,6 +83,10 @@ class LanguageDialog: BaseDialogFragment() {
         btn_cancel.visibility = View.GONE
         iv_warning.visibility = View.GONE
         tv_warning.visibility = View.GONE
+
+        listener.onOKPressed(replaceWithPattern(et_language.text.toString())) {
+            setResult(it)
+        }
     }
 
     fun setResult(warning: String?) {

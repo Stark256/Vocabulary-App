@@ -35,24 +35,37 @@ class EmptyListMessageView @JvmOverloads constructor(
 
         when(type) {
             ListType.ADD_WORDS -> {
+                this.textMessage?.visibility = View.VISIBLE
+                this.btnAdd?.visibility = View.VISIBLE
                 this.textTitle?.text = context.getString(R.string.no_words_found_title)
                 this.textMessage?.text = context.getString(R.string.no_words_found_message)
                 this.btnAdd?.text = context.getString(R.string.button_add_new_word)
             }
             ListType.SELECT_LANGUAGES -> {
-                this.textTitle?.text = context.getString(R.string.no_words_found_title)
-                this.textMessage?.text = context.getString(R.string.no_words_found_message)
-                this.btnAdd?.text = context.getString(R.string.button_add_new_word)
+                this.textMessage?.visibility = View.VISIBLE
+                this.btnAdd?.visibility = View.VISIBLE
+                this.textTitle?.text = context.getString(R.string.no_languages_found_title)
+                this.textMessage?.text = context.getString(R.string.no_languages_select_message)
+                this.btnAdd?.text = context.getString(R.string.button_select_new_language)
             }
             ListType.ADD_LANGUAGES -> {
+                this.textMessage?.visibility = View.VISIBLE
+                this.btnAdd?.visibility = View.VISIBLE
                 this.textTitle?.text = context.getString(R.string.no_languages_found_title)
                 this.textMessage?.text = context.getString(R.string.no_languages_found_message)
                 this.btnAdd?.text = context.getString(R.string.button_add_new_language)
             }
             ListType.ADD_GAMES -> {
+                this.textMessage?.visibility = View.VISIBLE
+                this.btnAdd?.visibility = View.VISIBLE
                 this.textTitle?.text = context.getString(R.string.no_tests_found_title)
                 this.textMessage?.text = context.getString(R.string.no_tests_found_message)
                 this.btnAdd?.text = context.getString(R.string.button_add_new_test)
+            }
+            ListType.FILTER_NOT_FOUND -> {
+                this.textMessage?.visibility = View.GONE
+                this.btnAdd?.visibility = View.GONE
+                this.textTitle?.text = context.getString(R.string.no_words_found_title)
             }
         }
     }
@@ -62,7 +75,8 @@ class EmptyListMessageView @JvmOverloads constructor(
         ADD_LANGUAGES,
         SELECT_LANGUAGES,
         ADD_WORDS,
-        ADD_GAMES
+        ADD_GAMES,
+        FILTER_NOT_FOUND
     }
 
 }

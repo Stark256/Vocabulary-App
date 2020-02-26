@@ -90,6 +90,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/appBarLayout"
             android:layout_alignParentBottom="true"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:clipToPadding="false"
             android:visibility="gone"/>
 
         <com.vocabulary.customViews.EmptyListMessageView

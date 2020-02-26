@@ -43,9 +43,9 @@
                 android:focusable="true"
                 android:inputType="text"
                 android:background="@null"
-                android:hint="@string/language"
-                android:maxLength="20"
-                android:imeOptions="actionDone"
+                android:hint="@string/word"
+                android:maxLength="25"
+                android:imeOptions="actionNext"
                 android:lines="1" />
 
         </androidx.cardview.widget.CardView>
@@ -70,8 +70,8 @@
                 android:focusable="true"
                 android:inputType="text"
                 android:background="@null"
-                android:hint="@string/language"
-                android:maxLength="20"
+                android:hint="@string/translate"
+                android:maxLength="25"
                 android:imeOptions="actionDone"
                 android:lines="1" />
 

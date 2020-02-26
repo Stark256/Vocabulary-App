@@ -13,14 +13,12 @@ import com.vocabulary.customViews.swipeable_view.SwipeLanguageClickListener
 import com.vocabulary.managers.Injector
 import com.vocabulary.models.LanguageModel
 import com.vocabulary.ui.common.DeletingDialog
-import com.vocabulary.ui.common.SwipeHelper
 import kotlinx.android.synthetic.main.activity_language.*
 
 class LanguageActivity : AppCompatActivity(), SwipeLanguageClickListener {
 
     private lateinit var viewModel: LanguageViewModel
     private lateinit var adapter: LanguageAdapter
-//    private lateinit var swipeHelper: SwipeHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,64 +37,42 @@ class LanguageActivity : AppCompatActivity(), SwipeLanguageClickListener {
         rv_languages.adapter = adapter
         object : OnSwipeTouchListener(this, rv_languages){}
 
-//        this.swipeHelper = object : SwipeHelper(this@LanguageActivity, rv_languages){
-//            override fun instantiateUnderlayButton(
-//                viewHolder: RecyclerView.ViewHolder,
-//                underlayButtons: java.util.ArrayList<UnderlayButton>
-//            ) {
-//                underlayButtons.add(UnderlayButton(
-//                    getString(R.string.delete),
-//                    ContextCompat.getColor(this@LanguageActivity, R.color.color_new_delete),
-//                    resources.getDimension(R.dimen.swipe_helper_text_size),
-//                    object : SwipeHelper.UnderlayButtonClickListener{
-//                        override fun onClick(pos: Int) {
-//                            showDeletingDialog(adapter.getItemByPosition(pos))
-//                        }
-//                    }
-//
-//                ))
-//
-//                underlayButtons.add(UnderlayButton(
-//                    getString(R.string.edit),
-//                    ContextCompat.getColor(this@LanguageActivity, R.color.color_new_edit),
-//                    resources.getDimension(R.dimen.swipe_helper_text_size),
-//                    object : SwipeHelper.UnderlayButtonClickListener{
-//                        override fun onClick(pos: Int) {
-//                            showLanguageDialog(adapter.getItemByPosition(pos))
-//                        }
-//                    }
-//
-//                ))
-//            }
-//        }
-
-        btn_back.setOnClickListener { finish() }
+        btn_back.setOnClickListener {
+            viewModel.checkIfNeedUpdate()
+            finish()
+        }
         btn_add_language.setOnClickListener { showLanguageDialog() }
 
         viewModel.apply {
-            isLoading.observe(this@LanguageActivity, Observer<Boolean>{
-                this@LanguageActivity.pb_languages.visibility = View.VISIBLE
-                this@LanguageActivity.view_empty_languages.visibility = View.GONE
-                this@LanguageActivity.rv_languages.visibility = View.GONE
-            })
             languages.observe(this@LanguageActivity, Observer<ArrayList<LanguageModel>>{
                 adapter.replaceAll(it)
-                initList(it)
+            })
+            initializingView.observe(this@LanguageActivity,
+                Observer<LanguageViewModel.LanguageInitType>{
+                initView(it)
             })
             getLanguages()
             this@LanguageActivity.pb_languages.visibility = View.VISIBLE
         }
     }
 
-    private fun initList(arr: ArrayList<LanguageModel>) {
-        if(arr.isNotEmpty()) {
-            this.pb_languages.visibility = View.GONE
-            this.view_empty_languages.visibility = View.GONE
-            this.rv_languages.visibility = View.VISIBLE
-        } else {
-            this.pb_languages.visibility = View.GONE
-            this.rv_languages.visibility = View.GONE
-            this.view_empty_languages.visibility = View.VISIBLE
+    private fun initView(type: LanguageViewModel.LanguageInitType) {
+        when(type) {
+            LanguageViewModel.LanguageInitType.LANGUAGES_LOADING -> {
+                this@LanguageActivity.pb_languages.visibility = View.VISIBLE
+                this@LanguageActivity.view_empty_languages.visibility = View.GONE
+                this@LanguageActivity.rv_languages.visibility = View.GONE
+            }
+            LanguageViewModel.LanguageInitType.LANGUAGES_EMPTY -> {
+                this.pb_languages.visibility = View.GONE
+                this.rv_languages.visibility = View.GONE
+                this.view_empty_languages.visibility = View.VISIBLE
+            }
+            LanguageViewModel.LanguageInitType.LANGUAGES_NOT_EMPTY -> {
+                this.pb_languages.visibility = View.GONE
+                this.view_empty_languages.visibility = View.GONE
+                this.rv_languages.visibility = View.VISIBLE
+            }
         }
     }
 
@@ -113,13 +89,7 @@ class LanguageActivity : AppCompatActivity(), SwipeLanguageClickListener {
         showDeletingDialog(languageModel)
     }
 
-//    override fun onLanguagePressed(languageModel: LanguageModel) {
-//        this.viewModel.selectLanguage(languageModel)
-//        this.adapter.notifyDataSetChanged()
-//    }
-
     private fun showDeletingDialog(languageModel: LanguageModel) {
-//        this.swipeHelper.recoverItems()
         val dialog = DeletingDialog.newInstance(languageModel, object : DeletingDialog.DeletingDialogListener {
             override fun onOKPressed(result: () -> Unit) {
                 viewModel.deleteLanguage(languageModel) {
@@ -131,7 +101,6 @@ class LanguageActivity : AppCompatActivity(), SwipeLanguageClickListener {
     }
 
     private fun showLanguageDialog(languageModel: LanguageModel? = null) {
-//        this.swipeHelper.recoverItems()
         val dialog = LanguageDialog.newInstance(language = languageModel?.name, listener = object : LanguageDialog.LanguageDialogListener {
             override fun onOKPressed(title: String, result: (String?) -> Unit) {
                 viewModel.addEditLanguage(languageModel = languageModel, newLanguage = title){ res ->

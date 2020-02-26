@@ -20,3 +20,13 @@ fun <T1: Any, T2: Any, T3: Any, T4: Any, T5: Any, T6: Any, R: Any> safeLet(p1: T
     return if (p1 != null && p2 != null && p3 != null && p4 != null && p5 != null && p6 != null) block(p1, p2, p3, p4, p5, p6) else null
 }
 
+fun ArrayList<LetterModel>.cloneList() : ArrayList<LetterModel> {
+    val newArr = ArrayList<LetterModel>()
+    for(item in this) {
+        val letter = LetterModel(item.letter)
+        letter.isSelected = item.isSelected
+        newArr.add(letter)
+    }
+    return newArr
+}
+

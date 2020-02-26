@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv_segment_root_card"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="36dp"
+    app:cardCornerRadius="10dp"
+    app:cardBackgroundColor="@color/white">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_segment_inner_card"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_margin="2dp"
+            app:cardCornerRadius="8dp"
+            android:layout_gravity="center"
+            app:cardElevation="0dp"
+            android:elevation="0dp"
+            app:cardBackgroundColor="@color/white">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                style="?attr/background_accent">
+
+                <LinearLayout
+                    android:id="@+id/ll_segment_view_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:orientation="horizontal"
+                    android:background="@color/transparent">
+
+                    <View
+                        android:id="@+id/view_segment_left"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                    <View
+                        android:id="@+id/view_segment_right"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_segment_button_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:orientation="horizontal"
+                    android:background="@color/transparent">
+
+                    <LinearLayout
+                        android:id="@+id/btn_segment_left"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:foreground="?selectableItemBackground"
+                        android:background="@color/transparent">
+
+                        <TextView
+                            android:id="@+id/tv_segment_left"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sort_sett_az"
+                            android:textSize="14sp"
+                            android:maxLines="1"
+                            android:textColor="@color/white"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/btn_segment_right"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:foreground="?selectableItemBackground"
+                        android:background="@color/transparent">
+
+                        <TextView
+                            android:id="@+id/tv_segment_right"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sort_sett_za"
+                            android:textSize="14sp"
+                            android:maxLines="1"
+                            android:textColor="@color/white"
+                            />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+</androidx.cardview.widget.CardView>

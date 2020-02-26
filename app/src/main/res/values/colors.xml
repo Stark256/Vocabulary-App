@@ -55,11 +55,17 @@
     <color name="theme_razz_gradient_2">#F78B88</color>
     <color name="theme_razz_gradient_3">#FFEACA</color>
 
-    <color name="theme_ocean_accent">#45FAC7</color>
-    <color name="theme_ocean_accent_half">#8045FAC7</color>
-    <color name="theme_ocean_gradient_1">#45FAC7</color>
+<!--    <color name="theme_ocean_accent">#45FAC7</color>-->
+<!--    <color name="theme_ocean_accent_half">#8045FAC7</color>-->
+<!--    <color name="theme_ocean_gradient_1">#45FAC7</color>-->
+<!--    <color name="theme_ocean_gradient_2">#21EBED</color>-->
+<!--    <color name="theme_ocean_gradient_3">#05B1FB</color>-->
+
+    <color name="theme_ocean_accent">#05B1FB</color>
+    <color name="theme_ocean_accent_half">#8005B1FB</color>
+    <color name="theme_ocean_gradient_1">#05B1FB</color>
     <color name="theme_ocean_gradient_2">#21EBED</color>
-    <color name="theme_ocean_gradient_3">#05B1FB</color>
+    <color name="theme_ocean_gradient_3">#45FAC7</color>
 
     <color name="theme_spring_accent">#C2E567</color>
     <color name="theme_spring_accent_half">#80C2E567</color>

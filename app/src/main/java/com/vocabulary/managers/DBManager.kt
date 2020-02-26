@@ -14,11 +14,12 @@ import com.vocabulary.models.WordModel
 import org.intellij.lang.annotations.Language
 import java.lang.Exception
 import android.widget.Toast
-
+import java.util.regex.Pattern
 
 
 class DBManager(private val context: Context) {
 
+    private val TEXT_REGEX = "^[a-zA-Z ]+$"
     private var db: DBHelper
 //    private var context: Context
 
@@ -114,14 +115,14 @@ class DBManager(private val context: Context) {
         }
     }
 
-    fun updateLanguageName(languageModel: LanguageModel, newName: String, result: (String?) -> Unit) {
+    fun updateLanguageName(languageModel: LanguageModel, newName: String?, result: (String?) -> Unit) {
         val isValid = validateLanguage(newName)
 
         if(isValid == null) {
-            languageModel.name = newName
+            languageModel.name = newName!!
             db.writableDatabase.update(
                 LanguageModel.TABLE_NAME,
-                languageModel.getContentValueName(),
+                languageModel.getContentValuesUpdated(),
                 "${LanguageModel.key_id} = ?",
                 arrayOf(languageModel.id.toString()))
             db.close()
@@ -192,22 +193,110 @@ class DBManager(private val context: Context) {
 //        db.close()
     }
 
-    fun addWord(word: WordModel) {
-        db.writableDatabase.insert(word.tableName, null, word.getContentValues())
+    fun addWord(wordTable : String, word: String?, translation: String?, result: (String?) -> Unit) {
+        val isValid = validateWord(wordTable, word, translation)
+
+        if(isValid == null) {
+            val wordModel = WordModel(
+                word = word!!,
+                translation = translation!!,
+                tableName = wordTable
+            )
+
+            db.writableDatabase.insert(wordModel.tableName, null, wordModel.getContentValues())
+            db.close()
+            result.invoke(isValid)
+        } else {
+            result.invoke(isValid)
+        }
+    }
+
+    fun updateWord(wordModel: WordModel, newWord: String?, newTranslation: String?, result: (String?) -> Unit) {
+        val isValid = validateWord(wordModel.tableName, newWord, newTranslation)
+
+        if(isValid == null) {
+            wordModel.word = newWord!!
+            wordModel.translation = newTranslation!!
+            db.writableDatabase.update(
+                wordModel.tableName,
+                wordModel.getContentValuesUpdated(),
+                "${WordModel.key_id} = ?",
+                arrayOf(wordModel.id.toString()))
+            db.close()
+            result.invoke(isValid)
+        } else {
+            result.invoke(isValid)
+        }
+    }
+
+    fun deleteWord(wordModel: WordModel, result: () -> Unit) {
+        db.writableDatabase.delete(
+            wordModel.tableName,
+            "${WordModel.key_id} = ?",
+            arrayOf(wordModel.id.toString()))
         db.close()
+        result.invoke()
     }
 
-    fun updateWord() {
-        //TODO
+    fun getAllWords(currentLanguage: LanguageModel, result: (ArrayList<WordModel>) -> Unit) {
+        val words = ArrayList<WordModel>()
+        val cursor = db.readableDatabase.rawQuery(
+            "SELECT * FROM ${currentLanguage.tableWords} ORDER BY ${WordModel.key_word}", null)
+        if(cursor.moveToFirst()) {
+            do {
+                val word = WordModel(
+                    id = cursor.getLong(cursor.getColumnIndex(WordModel.key_id)),
+                    word = cursor.getString(cursor.getColumnIndex(WordModel.key_word)),
+                    translation = cursor.getString(cursor.getColumnIndex(WordModel.key_translate)),
+                    tableName = cursor.getString(cursor.getColumnIndex(WordModel.key_table_name)))
+                words.add(word)
+
+            } while(cursor.moveToNext())
+        }
+        db.close()
+        result.invoke(words)
     }
 
-    fun deleteWord() {
-        //TODO
+    private fun isWordAlreadyExist(tableWords: String, word: String) : Boolean {
+        try {
+            val cursor = db.readableDatabase.rawQuery(
+                DBUtil.selectWhereString(context,
+                    tableWords,
+                    WordModel.key_word,
+                    word), null)
+            if(cursor.moveToFirst()) {
+                db.close()
+                cursor.close()
+                return true
+            }
+            db.close()
+            cursor.close()
+        } catch (e: Exception) { }
+        return false
     }
 
-    fun getAllWords() {
-        //TODO
+    private fun validateWord(tableWords: String, newWord: String?, newTranslation: String?) : String? {
+        return if(!newWord.isNullOrEmpty() && !newTranslation.isNullOrEmpty())
+            return if(isWordAlreadyExist(tableWords, newWord))
+                context.getString(com.vocabulary.R.string.message_word_exist)
+            else null
+        else context.getString(com.vocabulary.R.string.message_empty_field)
+
+
+
+//        return if(!newWord.isNullOrEmpty() && !newTranslation.isNullOrEmpty())
+//            return if(Pattern.compile(TEXT_REGEX).matcher(newWord).matches())
+//                return if(Pattern.compile(TEXT_REGEX).matcher(newTranslation).matches())
+//                    return if(isWordAlreadyExist(tableWords, newWord))
+//                        context.getString(com.vocabulary.R.string.message_word_exist)
+//                    else null
+//                 else // TODO return string error
+//            else      // TODO return string error
+//         else context.getString(com.vocabulary.R.string.message_empty_field)
+
+
     }
+
 
     fun searchWords() {
         //TODO

@@ -1,8 +1,6 @@
 package com.vocabulary.ui.main
 
-import android.R.attr
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
@@ -22,7 +20,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Injector.themeManager.onActivityCreateSetTheme(this)
-        Log.d("THEME_CHANGING", "THEME CHANGED CHANGED CHANGED")
 
         setContentView(R.layout.activity_main)
 
@@ -51,6 +48,11 @@ class MainActivity : AppCompatActivity() {
                     changeFragmentToSettings()
                 }
             }
+
+            override fun backViewClicked() {
+                // TODO get current selected fragment
+                //  if fragment is words fragment then hide filter view
+            }
         })
 
     }
@@ -75,15 +77,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
-    fun changeFragment(id: Int) {
-        when(id) {
-            R.id.mi_words -> { replaceFragment(WordsFragment()) }
-            R.id.mi_tests -> { replaceFragment(TestsFragment()) }
-            R.id.mi_settings -> { replaceFragment(SettingsFragment()) }
-        }
-    }
-
     private fun replaceFragment(fragment: Fragment) {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.frame_layout, fragment)
@@ -92,7 +85,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun replaceFragment(fragment: Fragment, toLeft: Boolean) {
         val transaction = supportFragmentManager.beginTransaction()
-//        transaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right);
 
         if(toLeft) {
             transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right)
@@ -100,7 +92,7 @@ class MainActivity : AppCompatActivity() {
             transaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left)
         }
         transaction.replace(R.id.frame_layout, fragment)
-        transaction.addToBackStack(null)
+        //transaction.addToBackStack(null)
         transaction.commit()
     }
 

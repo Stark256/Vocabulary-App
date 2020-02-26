@@ -14,8 +14,11 @@ open class OnSwipeTouchListener(
     private val gestureDetector = GestureDetector(context, GestureListener())
 
     override fun onTouch(v: View, event: MotionEvent): Boolean {
-        return gestureDetector.onTouchEvent(event)
+//        return gestureDetector.onTouchEvent(event)
+        gestureDetector.onTouchEvent(event)
+        return recyclerView.onTouchEvent(event)
     }
+
 
 //    fun onTouch(event: MotionEvent): Boolean {
 //        return gestureDetector.onTouchEvent(event)
@@ -29,6 +32,10 @@ open class OnSwipeTouchListener(
 
         private val SWIPE_THRESHOLD = 100
         private val SWIPE_VELOCITY_THRESHOLD = 100
+
+//        override fun onSingleTapConfirmed(e: MotionEvent?): Boolean {
+//            return true
+//        }
 
         override fun onDown(e: MotionEvent): Boolean {
             return true
