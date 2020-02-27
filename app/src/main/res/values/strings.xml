@@ -76,4 +76,8 @@
 
     <string name="sort_sett_az">A-Z</string>
     <string name="sort_sett_za">Z-A</string>
+
+    <string name="btn_i_dont_know">I Don\'t Know</string>
+    <string name="btn_check">CHECK</string>
+    <string name="btn_next">NEXT</string>
 </resources>

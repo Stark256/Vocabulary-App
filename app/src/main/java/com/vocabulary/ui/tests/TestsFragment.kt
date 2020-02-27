@@ -1,5 +1,6 @@
 package com.vocabulary.ui.tests
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,10 +14,12 @@ import com.vocabulary.R
 import com.vocabulary.customViews.BorderedButtonView
 import com.vocabulary.customViews.swipeable_view.SwipeWordClickListener
 import com.vocabulary.models.WordModel
+import com.vocabulary.ui.common.BaseFragment
+import com.vocabulary.ui.game.GameActivity
 import com.vocabulary.ui.main.MainActivity
 import kotlinx.android.synthetic.main.fragment_tests.*
 
-class TestsFragment : Fragment() {
+class TestsFragment : BaseFragment() {
 
 
     private lateinit var dashboardViewModel: TestsViewModel
@@ -32,5 +35,9 @@ class TestsFragment : Fragment() {
         dashboardViewModel.text.observe(this, Observer {
 
         })
+
+        btn_dasdasda?.setOnClickListener {
+            startActivity(Intent(contextMain, GameActivity::class.java))
+        }
     }
 }
