@@ -7,6 +7,7 @@ import com.vocabulary.managers.Injector
 import com.vocabulary.models.LetterModel
 import com.vocabulary.models.WordBaseItem
 import com.vocabulary.models.WordModel
+import java.util.regex.Pattern
 
 class WordsViewModel : ViewModel() {
 
@@ -15,6 +16,8 @@ class WordsViewModel : ViewModel() {
     val words = MutableLiveData<ArrayList<WordBaseItem>>()
     val showBadge = MutableLiveData<Boolean>()
     val filters = ArrayList<LetterModel>()
+    private var needToUpdateAfterSearch = false
+
 
     private val allWords: ArrayList<WordModel> = ArrayList()
 
@@ -103,6 +106,34 @@ class WordsViewModel : ViewModel() {
         }
     }
 
+    fun searchWords(searchText: String) {
+        initializingView.value = WordInitType.WORDS_LOADING
+        this.needToUpdateAfterSearch = true
+        val currentLanguage = Injector.languageManager.getCurrentLanguageIfSelected()
+
+        if(currentLanguage != null) {
+            Injector.dbManager.searchWords(
+                currentLanguage.tableWords,
+                replaceWithPattern(searchText)) { res ->
+
+                if(res.isNotEmpty()) {
+                    initializingView.value = WordInitType.SEARCH_NOT_EMPTY
+                    this.words.value = generateWordsListWithLetters(res)
+                } else {
+                    initializingView.value = WordInitType.SEARCH_EMPTY
+                }
+            }
+        }
+    }
+
+    fun updateAfterSearch() {
+        if(needToUpdateAfterSearch) {
+            needToUpdateAfterSearch = false
+            // TODO refresh list
+            filterWords(true)
+        }
+    }
+
     private fun initWordsList(arr: ArrayList<WordModel>) {
         this.allWords.clear()
         this.allWords.addAll(arr)
@@ -143,6 +174,24 @@ class WordsViewModel : ViewModel() {
             initializingView.value = WordInitType.LANGUAGE_NOT_SELECTED
             words.value = ArrayList()
         }
+    }
+
+    private fun generateWordsListWithLetters(words: ArrayList<WordModel>) : ArrayList<WordBaseItem> {
+        val searchArr = ArrayList<WordBaseItem>()
+        var letter = ""
+
+        for(item in words) {
+            val wordStart = item.word.first().toString()
+            if(wordStart != letter) {
+                val letterModel = LetterModel(wordStart)
+                searchArr.add(letterModel)
+                filters.add(letterModel)
+                letter = wordStart
+            }
+            searchArr.add(item)
+        }
+
+        return searchArr
     }
 
     fun setFilterData(sortSett: SortSettView.SORT_SETT, filters: ArrayList<LetterModel>) {
@@ -235,7 +284,15 @@ class WordsViewModel : ViewModel() {
         WORDS_NOT_EMPTY,
         WORDS_LOADING,
         LANGUAGE_NOT_SELECTED,
-        FILTER_EMPTY
+        FILTER_EMPTY,
+        SEARCH_NOT_EMPTY,
+        SEARCH_EMPTY
+    }
+
+    private fun replaceWithPattern(string: String) : String {
+        val ptn = Pattern.compile("\\s+")
+        val mtch = ptn.matcher(string.trim().toLowerCase())
+        return mtch.replaceAll(" ")
     }
 
 }

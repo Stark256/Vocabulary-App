@@ -9,6 +9,7 @@
     <string name="query_create_table">CREATE TABLE %s ( %s )</string>
     <string name="query_drop_table">DROP TABLE IF EXISTS %s</string>
     <string name="query_select_where">SELECT * FROM %s WHERE %s=\'%s\'</string>
+    <string name="query_search_words">SELECT * FROM %s WHERE %s LIKE \'%%%s%%\' OR %s LIKE \'%%%s%%\' ORDER BY %s</string>
 
     <string name="message_empty_field">This field can not be empty</string>
     <string name="message_language_exist">This language already exist</string>

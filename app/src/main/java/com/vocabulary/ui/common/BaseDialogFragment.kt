@@ -56,6 +56,5 @@ open class BaseDialogFragment: DialogFragment() {
         val ptn = Pattern.compile("\\s+")
         val mtch = ptn.matcher(string.trim().toLowerCase())
         return mtch.replaceAll(" ")
-
     }
  }

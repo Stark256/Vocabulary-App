@@ -1,32 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:app="http://schemas.android.com/apk/res-auto">
 
-<!--    <style name="Theme.Custom_Blue" parent="AppThemeBlue">-->
-<!--        <item name="toolbar_back">@style/toolber_blue</item>-->
-<!--        <item name="filter_view">@style/filter_view_blue</item>-->
-<!--        <item name="accent_background">@style/filter_background_blue</item>-->
-<!--        <item name="accent_text">@style/text_blue</item>-->
-<!--        <item name="bottom_navigation">@style/navigation_blue</item>-->
-<!--        <item name="button_white">@style/button_white_blue</item>-->
-<!--        <item name="button_transparent">@style/button_transparent</item>-->
-<!--        <item name="badge_filter">@style/badge_filter_blue</item>-->
-<!--        <item name="ic_tune">@style/ic_tune_blue</item>-->
-<!--        <item name="ic_add">@style/ic_add_blue</item>-->
-<!--    </style>-->
-
-<!--    <style name="Theme.Custom_Red" parent="AppThemeRed">-->
-<!--        <item name="toolbar_back">@style/toolber_red</item>-->
-<!--        <item name="filter_view">@style/filter_view_red</item>-->
-<!--        <item name="accent_background">@style/filter_background_red</item>-->
-<!--        <item name="accent_text">@style/text_red</item>-->
-<!--        <item name="bottom_navigation">@style/navigation_red</item>-->
-<!--        <item name="button_white">@style/button_white_red</item>-->
-<!--        <item name="button_transparent">@style/button_transparent</item>-->
-<!--        <item name="badge_filter">@style/badge_filter_red</item>-->
-<!--        <item name="ic_tune">@style/ic_tune_red</item>-->
-<!--        <item name="ic_add">@style/ic_add_red</item>-->
-<!--    </style>-->
-
 
     <style name="Theme.Custom_Ocean" parent="AppThemeOcean">
         <item name="text_secondary">@style/text_secondary_ocean</item>

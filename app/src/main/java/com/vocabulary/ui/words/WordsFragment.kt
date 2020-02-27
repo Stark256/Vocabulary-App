@@ -46,6 +46,8 @@ class WordsFragment : BaseFragment(),
     private var isAddOrSelect: SelectOrAdd = SelectOrAdd.ADD_WORD
 
     private var isSearchFocused = false
+    private val isSearchEmpty: Boolean
+        get() { return tiet_search?.text?.isEmpty() ?: true }
 
     private var isSearchEnabled = false
     private var isAddEnabled = false
@@ -97,7 +99,7 @@ class WordsFragment : BaseFragment(),
 
         btn_add_word.setOnClickListener {
             if(isAddEnabled) {
-                if (isSearchFocused) {
+                if (isSearchFocused || !isSearchEmpty) {
                     tiet_search?.text?.clear()
                     hideSoftKeyboard(contextMain, tiet_search)
                     searchUnfocused()
@@ -118,6 +120,8 @@ class WordsFragment : BaseFragment(),
         tiet_search.setOnEditorActionListener { v, actionId, event ->
             if(actionId == EditorInfo.IME_ACTION_SEARCH) {
                 hideSoftKeyboard(contextMain, tiet_search)
+                searchUnfocused()
+                searchPressed()
             }
             return@setOnEditorActionListener false
         }
@@ -191,6 +195,23 @@ class WordsFragment : BaseFragment(),
                 updateAddEnabled(true)
                 updateFilterEnabled(true)
             }
+            WordsViewModel.WordInitType.SEARCH_EMPTY -> {
+                this.view_empty_words.initView(EmptyListMessageView.ListType.FILTER_NOT_FOUND)
+                this.view_empty_words.visibility = View.VISIBLE
+                this.pb_words.visibility = View.GONE
+                this.rv_words.visibility = View.GONE
+                updateSearchEnabled(true)
+                updateAddEnabled(true)
+                updateFilterEnabled(false)
+            }
+            WordsViewModel.WordInitType.SEARCH_NOT_EMPTY -> {
+                this.view_empty_words.visibility = View.GONE
+                this.pb_words.visibility = View.GONE
+                this.rv_words.visibility = View.VISIBLE
+                updateSearchEnabled(true)
+                updateAddEnabled(true)
+                updateFilterEnabled(false)
+            }
         }
     }
 
@@ -207,19 +228,24 @@ class WordsFragment : BaseFragment(),
 
     override fun onApplyPressed(sortSett: SortSettView.SORT_SETT, filters: ArrayList<LetterModel>) {
         hideFilter()
-//        showBadge()
         viewModel.setFilterData(sortSett, filters)
     }
 
     override fun onResetPressed() {
         hideFilter()
-//        hideBadge()
         viewModel.resetFilters()
     }
 
     override fun onLanguagePressed() {
         hideFilter()
         startActivity(Intent(this@WordsFragment.contextMain, LanguageActivity::class.java))
+    }
+
+    private fun searchPressed() {
+        // TODO search words
+        if(tiet_search?.text?.isNotBlank() ?: false) {
+            viewModel.searchWords(tiet_search.text.toString())
+        }
     }
 
     private fun updateSearchEnabled(isEnable: Boolean) {
@@ -231,7 +257,12 @@ class WordsFragment : BaseFragment(),
         this.isAddEnabled = isEnable
         btn_add_word.isEnabled = isEnable
         if(this.isAddEnabled) {
-            Injector.themeManager.changeImageViewTintToAccent(contextMain, btn_add_word)
+            if(isSearchEmpty) {
+                Injector.themeManager.changeImageViewTintToAccent(contextMain, btn_add_word)
+            } else {
+                Injector.themeManager.changeImageViewTintToSecondary(contextMain, btn_add_word)
+            }
+
         } else {
             Injector.themeManager.changeImageViewTintToGrey(contextMain, btn_add_word)
         }
@@ -317,15 +348,19 @@ class WordsFragment : BaseFragment(),
     }
 
     private fun searchUnfocused() {
-        btn_add_word
-            ?.animate()
-            ?.rotation(0f)
-            ?.setDuration(ANIMATION_TIME)
-            ?.withStartAction { isSearchFocused = false }
-            ?.withEndAction {
-                Injector.themeManager.changeImageViewTintToAccent(contextMain, btn_add_word)
-            }
-            ?.start()
+        if(isSearchEmpty) {
+            btn_add_word
+                ?.animate()
+                ?.rotation(0f)
+                ?.setDuration(ANIMATION_TIME)
+                ?.withStartAction { isSearchFocused = false }
+                ?.withEndAction {
+                    Injector.themeManager.changeImageViewTintToAccent(contextMain, btn_add_word)
+                }
+                ?.start()
+
+            viewModel.updateAfterSearch()
+        }
     }
 
     private fun showDeletingDialog(wordModel: WordModel) {

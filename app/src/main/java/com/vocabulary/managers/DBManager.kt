@@ -298,8 +298,32 @@ class DBManager(private val context: Context) {
     }
 
 
-    fun searchWords() {
-        //TODO
+    fun searchWords(wordTable: String, searchText: String, result: (ArrayList<WordModel>) -> Unit) {
+        val selectQuery = String.format(
+            context.getString(R.string.query_search_words),
+            wordTable,
+            WordModel.key_word,
+            searchText,
+            WordModel.key_translate,
+            searchText,
+            WordModel.key_word)
+
+        val words = ArrayList<WordModel>()
+        val cursor = db.readableDatabase.rawQuery(selectQuery, null)
+        if(cursor.moveToFirst()) {
+            do {
+                val word = WordModel(
+                    id = cursor.getLong(cursor.getColumnIndex(WordModel.key_id)),
+                    word = cursor.getString(cursor.getColumnIndex(WordModel.key_word)),
+                    translation = cursor.getString(cursor.getColumnIndex(WordModel.key_translate)),
+                    tableName = cursor.getString(cursor.getColumnIndex(WordModel.key_table_name)))
+                words.add(word)
+
+            } while(cursor.moveToNext())
+        }
+        db.close()
+        result.invoke(words)
+
     }
     // ----------------------------------------
 
