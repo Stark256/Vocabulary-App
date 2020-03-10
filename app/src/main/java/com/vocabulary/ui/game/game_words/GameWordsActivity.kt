@@ -10,8 +10,10 @@ import androidx.lifecycle.ViewModelProviders
 import com.vocabulary.R
 import com.vocabulary.customViews.game_word_view.GameWordView
 import com.vocabulary.managers.Injector
+import com.vocabulary.models.GameResult
 import com.vocabulary.models.game_words_models.GameWordItemModel
 import com.vocabulary.models.game_words_models.GameWordsListModel
+import com.vocabulary.ui.common.ExerciseResultDialog
 import com.vocabulary.ui.common.ExitSureDialog
 import kotlinx.android.synthetic.main.activity_game_words.*
 
@@ -68,12 +70,7 @@ class GameWordsActivity : AppCompatActivity() {
         }
 
         this.btn_endgame?.setOnClickListener {
-            val dialog = ExitSureDialog.newInstance(object : ExitSureDialog.ExitSureDialogListener {
-                override fun onOKPressed() {
-                    // TODO finish pressed
-                }
-            })
-            dialog.show(supportFragmentManager, dialog.tag)
+            showSureExitDialog()
         }
 
         this.btn_game_next?.setOnClickListener {
@@ -82,7 +79,7 @@ class GameWordsActivity : AppCompatActivity() {
                     viewModel.nextPressed()
                 }
                 GameWordsViewModel.GameWordsButtonNextState.BS_FINISH -> {
-                    viewModel.nextPressed()
+                    viewModel.finishPressed()
                 }
                 GameWordsViewModel.GameWordsButtonNextState.BS_ENABLED_CHECK -> {
                     viewModel.checkPressed()
@@ -125,8 +122,31 @@ class GameWordsActivity : AppCompatActivity() {
                 Observer<Int> {
                 game_words_view.setPercentage(it)
             })
+            showFinishDialog.observe(this@GameWordsActivity,
+                Observer<ArrayList<GameResult>> {
+                    showResultDialog(it)
+                })
             loadGames()
         }
+    }
+
+    private fun showResultDialog(resultList: ArrayList<GameResult>) {
+        val dialog = ExerciseResultDialog.newInstance(resultList,
+            object : ExerciseResultDialog.ExerciseResultDialogListener {
+                override fun onFinishPressed() {
+                    // TODO make finish of screen
+                }
+            })
+        dialog.show(supportFragmentManager, dialog.tag)
+    }
+
+    private fun showSureExitDialog() {
+        val dialog = ExitSureDialog.newInstance(object : ExitSureDialog.ExitSureDialogListener {
+            override fun onOKPressed() {
+                viewModel.finishPressed()
+            }
+        })
+        dialog.show(supportFragmentManager, dialog.tag)
     }
 
     private fun updateNextButtonState(buttonState: GameWordsViewModel.GameWordsButtonNextState) {

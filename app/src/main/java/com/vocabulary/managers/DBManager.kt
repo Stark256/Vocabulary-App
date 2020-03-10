@@ -379,15 +379,30 @@ class DBManager(private val context: Context) {
                              count: String,
                              result: (ArrayList<WordModel>) -> Unit) {
 
-//        "SELECT * FROM (SELECT * FROM %s LIMIT %s) RIGHT JOIN %s ON %s = %s"
 
+//        SQLiteException: RIGHT and FULL OUTER JOINs are not currently supported (code 1 SQLITE_ERROR)
+
+        // RIGHT JOINT
+//        "SELECT * FROM (SELECT * FROM %s LIMIT %s) RIGHT JOIN %s ON %s = %s"
+//        val selectQuery = String.format(
+//            context.getString(R.string.query_select_fail_words_right_join),
+//            tableFails,
+//            count,
+//            tableWords,
+//            ExerciseFailModel.key_word_id,
+//            WordModel.key_id)
+
+        // LEFT JOIN
+//        "SELECT * FROM (SELECT * FROM %s ) AS A LEFT JOIN %s AS B ON A.%s = B.%s LIMIT %s"
+//        "SELECT * FROM (SELECT * FROM %s ) LEFT JOIN %s ON %s = %s LIMIT %s"
         val selectQuery = String.format(
-            context.getString(R.string.query_select_fail_words),
-            tableFails,
-            count,
+            context.getString(R.string.query_select_fail_words_left_join),
             tableWords,
+            tableFails,
+            WordModel.key_id,
             ExerciseFailModel.key_word_id,
-            WordModel.key_id)
+            count)
+
 
 
 
@@ -409,30 +424,36 @@ class DBManager(private val context: Context) {
         result.invoke(words)
     }
 
-    fun addExerciseFail(tableFails: String,
-                        wordID: Long,
-                        result: (Boolean) -> Unit) {
-        val isExist = isWordFailAlreadyExist(tableFails, wordID.toString())
+    fun addExerciseFailList(tableFails: String,
+                        wordIDArr: ArrayList<Long>,
+                        result: () -> Unit) {
+        for(wordID in wordIDArr) {
 
-        if(!isExist) {
+            val isExist = isWordFailAlreadyExist(tableFails, wordID.toString())
 
-            val exerciseFailModel = ExerciseFailModel(wordID = wordID)
-
-            db.writableDatabase.insert(tableFails, null, exerciseFailModel.getContentValues())
-            db.close()
-            result.invoke(!isExist)
-        } else {
-            result.invoke(!isExist)
+            if (!isExist) {
+                val exerciseFailModel = ExerciseFailModel(wordID = wordID)
+                db.writableDatabase.insert(tableFails, null, exerciseFailModel.getContentValues())
+            }
         }
+        db.close()
+        result.invoke()
     }
 
-    fun deleteExerciseFail(tableFails: String,
-                           exerciseID: Long,
+    fun deleteExerciseFailListByWordIDs(tableFails: String,
+                           exerciseIDArr: ArrayList<Long>,
                            result: () -> Unit) {
-        db.writableDatabase.delete(
-            tableFails,
-            "${ExerciseFailModel.key_id} = ?",
-            arrayOf(exerciseID.toString()))
+        for(exerciseItem in exerciseIDArr) {
+            val isExist = isWordFailAlreadyExist(tableFails, exerciseItem.toString())
+            if(isExist) {
+                db.writableDatabase.delete(
+                    tableFails,
+                    "${ExerciseFailModel.key_word_id} = ?",
+                    arrayOf(exerciseItem.toString())
+                )
+            }
+        }
+
         db.close()
         result.invoke()
     }

@@ -13,7 +13,9 @@
     <string name="query_drop_table">DROP TABLE IF EXISTS %s</string>
     <string name="query_select_where">SELECT * FROM %s WHERE %s=\'%s\'</string>
     <string name="query_search_words">SELECT * FROM %s WHERE %s LIKE \'%%%s%%\' OR %s LIKE \'%%%s%%\' ORDER BY %s</string>
-    <string name="query_select_fail_words">"SELECT * FROM (SELECT * FROM %s LIMIT %s) RIGHT JOIN %s ON %s = %s"</string>
+    <string name="query_select_fail_words_right_join">SELECT * FROM (SELECT * FROM %s LIMIT %s) RIGHT JOIN %s ON %s = %s</string>
+<!--    <string name="query_select_fail_words_left_join">SELECT * FROM (SELECT * FROM %s ) LEFT JOIN %s ON %s = %s LIMIT %s</string>-->
+    <string name="query_select_fail_words_left_join">SELECT * FROM (SELECT * FROM %s ) AS A LEFT JOIN %s AS B ON A.%s = B.%s LIMIT %s</string>
 
     <string name="message_empty_field">This field can not be empty</string>
     <string name="message_language_exist">This language already exist</string>
@@ -95,4 +97,7 @@
 
     <string name="game_result_correct">Correct</string>
     <string name="game_result_incorrect">Incorrect</string>
+    <string name="incorrect_word">Incorrect Word</string>
+
+    <string name="exercise_results">Exercise Results</string>
 </resources>

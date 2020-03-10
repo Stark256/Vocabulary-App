@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.res.ColorStateList
+import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.ImageView
 import android.widget.RelativeLayout
@@ -209,6 +210,10 @@ class ThemeManager {
         cv.setCardBackgroundColor(getAccentColor(context))
     }
 
+    fun changeCardBackgroundColorToSecondary(context: Context, cv: CardView) {
+        cv.setCardBackgroundColor(getSecondaryColor(context))
+    }
+
     fun changeCardBackgroundColorToWhite(context: Context, cv: CardView) {
         cv.setCardBackgroundColor(ContextCompat.getColor(context, R.color.white))
     }
@@ -341,6 +346,18 @@ class ThemeManager {
         }
     }
 
+    fun getDialogItemResultBackgroundDrawable(context: Context) : Drawable? {
+        return when(currentTheme) {
+            CustomTheme.THEME_OCEAN -> ContextCompat.getDrawable(context, R.drawable.dialog_item_result_background_ocean)
+            CustomTheme.THEME_SUNRISE -> ContextCompat.getDrawable(context, R.drawable.dialog_item_result_background_sunrise)
+            CustomTheme.THEME_SUNDOWN -> ContextCompat.getDrawable(context, R.drawable.dialog_item_result_background_sundown)
+            CustomTheme.THEME_RAZZ -> ContextCompat.getDrawable(context, R.drawable.dialog_item_result_background_razz)
+            CustomTheme.THEME_GRAPE -> ContextCompat.getDrawable(context, R.drawable.dialog_item_result_background_grape)
+            CustomTheme.THEME_AUTUMN -> ContextCompat.getDrawable(context, R.drawable.dialog_item_result_background_autumn)
+            CustomTheme.THEME_SPRING -> ContextCompat.getDrawable(context, R.drawable.dialog_item_result_background_spring)
+            else -> ContextCompat.getDrawable(context, R.drawable.dialog_item_result_background_ocean)
+        }
+    }
 
     //---------------
 

@@ -3,12 +3,9 @@ package com.vocabulary.ui.game.game_words
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.vocabulary.managers.Injector
-import com.vocabulary.models.ExerciseResult
+import com.vocabulary.models.*
 import com.vocabulary.models.game_words_models.GameWordItemModel
 import com.vocabulary.models.game_words_models.GameWordsListModel
-import com.vocabulary.models.getAllExcept
-import com.vocabulary.models.randomListExcept
-import com.vocabulary.models.safeLet
 import com.vocabulary.models.word_models.WordModel
 
 class GameWordsViewModel : ViewModel() {
@@ -19,6 +16,7 @@ class GameWordsViewModel : ViewModel() {
     val loadingPercent = MutableLiveData<Int>()
     val viewState = MutableLiveData<GameWordsViewState>()
     val buttonNextState = MutableLiveData<GameWordsButtonNextState>()
+    val showFinishDialog = MutableLiveData<ArrayList<GameResult>>()
 
     private val exerciseResult : ExerciseResult = ExerciseResult()
     private val gamesList = ArrayList<GameWordsListModel>()
@@ -207,25 +205,39 @@ class GameWordsViewModel : ViewModel() {
             GameWordsButtonNextState.BS_FINISH
             else GameWordsButtonNextState.BS_NEXT
 
-        // TODO set result of current game
-
         exerciseResult.setGameWordsResult(gamesList[currentGame].correctWord, selectedGameWordItem)
+    }
 
+    fun finishPressed() {
+        Injector.languageManager.getCurrentLanguageIfSelected()?.let {
+            currentLanguage ->
 
+            Injector.dbManager.deleteExerciseFailListByWordIDs(
+                currentLanguage.tableExerciseFails,
+                exerciseResult.getCorrectResultWordIDs()) {
+
+                Injector.dbManager.addExerciseFailList(
+                    currentLanguage.tableExerciseFails,
+                    exerciseResult.failsModelList) {
+
+                    showFinishDialog.value = exerciseResult.resultList
+                }
+            }
+        }
     }
 
     fun nextPressed() {
-        if(wordsCount != null && wordsCount!!.toInt() == currentGame+1) {
+//        if(wordsCount != null && wordsCount!!.toInt() == currentGame+1) {
             // is last
             // show result screen
 
-        } else {
+//        } else {
             buttonNextState.value = GameWordsButtonNextState.BS_NOT_ENABLED_CHECK
             selectedGameWordItem = null
             currentGame++
             game.value = gamesList[currentGame]
-            screenTitle.value = "${currentGame} / ${gamesList.size}"
-        }
+            screenTitle.value = "${currentGame+1} / ${gamesList.size}"
+//        }
     }
 
     fun tipsPressed() {

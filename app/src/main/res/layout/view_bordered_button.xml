@@ -9,8 +9,7 @@
     app:cardCornerRadius="@dimen/button_border_circle_corner_radius"
     app:cardElevation="0dp"
     android:layout_marginTop="6dp"
-    android:layout_marginBottom="6dp"
-    app:cardBackgroundColor="@color/red">
+    android:layout_marginBottom="6dp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_button_container"
@@ -34,7 +33,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/button_text_size"
-                android:text="Add"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:minWidth="@dimen/button_text_min_width"
