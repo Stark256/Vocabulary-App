@@ -8,7 +8,7 @@ import com.vocabulary.R
 import com.vocabulary.customViews.bottom_nav_view.BottomNavigationElevatedView
 import com.vocabulary.managers.Injector
 import com.vocabulary.ui.settings.SettingsFragment
-import com.vocabulary.ui.tests.TestsFragment
+import com.vocabulary.ui.exercises.ExercisesFragment
 import com.vocabulary.ui.words.WordsFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun changeFragmentToGames(toLeft: Boolean) {
-        replaceFragment(TestsFragment(), toLeft)
+        replaceFragment(ExercisesFragment(), toLeft)
 
     }
 

@@ -4,31 +4,58 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.res.ColorStateList
-import android.graphics.Color
 import android.view.View
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.DialogFragment
+import com.google.android.material.button.MaterialButton
 import com.vocabulary.R
 import com.vocabulary.customViews.BorderedButtonView
-import com.vocabulary.models.CustomTheme
-import com.vocabulary.models.ThemeColorModel
+import com.vocabulary.models.theme_models.CustomTheme
+import com.vocabulary.models.theme_models.ThemeColorModel
 
 class ThemeManager {
 
     lateinit var currentTheme: CustomTheme
 
     fun getThemes() : ArrayList<ThemeColorModel> = arrayListOf(
-        ThemeColorModel(R.string.theme_ocean, CustomTheme.THEME_OCEAN, colorRes = R.color.theme_ocean_accent),
-        ThemeColorModel(R.string.theme_sunrise, CustomTheme.THEME_SUNRISE, colorRes = R.color.theme_sunrise_accent),
-        ThemeColorModel(R.string.theme_sundown, CustomTheme.THEME_SUNDOWN, colorRes = R.color.theme_sundown_accent),
-        ThemeColorModel(R.string.theme_grape, CustomTheme.THEME_GRAPE, colorRes = R.color.theme_grape_accent),
-        ThemeColorModel(R.string.theme_razz, CustomTheme.THEME_RAZZ, colorRes = R.color.theme_razz_accent),
-        ThemeColorModel(R.string.theme_autumn, CustomTheme.THEME_AUTUMN, colorRes = R.color.theme_autumn_accent),
-        ThemeColorModel(R.string.theme_spring, CustomTheme.THEME_SPRING, colorRes = R.color.theme_spring_accent)
+        ThemeColorModel(
+            R.string.theme_ocean,
+            CustomTheme.THEME_OCEAN,
+            colorRes = R.color.theme_ocean_accent
+        ),
+        ThemeColorModel(
+            R.string.theme_sunrise,
+            CustomTheme.THEME_SUNRISE,
+            colorRes = R.color.theme_sunrise_accent
+        ),
+        ThemeColorModel(
+            R.string.theme_sundown,
+            CustomTheme.THEME_SUNDOWN,
+            colorRes = R.color.theme_sundown_accent
+        ),
+        ThemeColorModel(
+            R.string.theme_grape,
+            CustomTheme.THEME_GRAPE,
+            colorRes = R.color.theme_grape_accent
+        ),
+        ThemeColorModel(
+            R.string.theme_razz,
+            CustomTheme.THEME_RAZZ,
+            colorRes = R.color.theme_razz_accent
+        ),
+        ThemeColorModel(
+            R.string.theme_autumn,
+            CustomTheme.THEME_AUTUMN,
+            colorRes = R.color.theme_autumn_accent
+        ),
+        ThemeColorModel(
+            R.string.theme_spring,
+            CustomTheme.THEME_SPRING,
+            colorRes = R.color.theme_spring_accent
+        )
 
     )
 
@@ -80,6 +107,58 @@ class ThemeManager {
         }
     }
 
+    fun getHalfAccentColor(context: Context) : Int {
+        return when (currentTheme) {
+            CustomTheme.THEME_OCEAN -> ContextCompat.getColor(context, R.color.theme_ocean_accent_half)
+            CustomTheme.THEME_SUNRISE -> ContextCompat.getColor(context, R.color.theme_sunrise_accent_half)
+            CustomTheme.THEME_SUNDOWN -> ContextCompat.getColor(context, R.color.theme_sundown_accent_half)
+            CustomTheme.THEME_RAZZ -> ContextCompat.getColor(context, R.color.theme_razz_accent_half)
+            CustomTheme.THEME_GRAPE -> ContextCompat.getColor(context, R.color.theme_grape_accent_half)
+            CustomTheme.THEME_AUTUMN -> ContextCompat.getColor(context, R.color.theme_autumn_accent_half)
+            CustomTheme.THEME_SPRING -> ContextCompat.getColor(context, R.color.theme_spring_accent_half)
+            else -> ContextCompat.getColor(context, R.color.theme_ocean_accent_half)
+        }
+    }
+
+    fun getGradient1(context: Context) : Int {
+        return when (currentTheme) {
+            CustomTheme.THEME_OCEAN -> ContextCompat.getColor(context, R.color.theme_ocean_gradient_1)
+            CustomTheme.THEME_SUNRISE -> ContextCompat.getColor(context, R.color.theme_sunrise_gradient_1)
+            CustomTheme.THEME_SUNDOWN -> ContextCompat.getColor(context, R.color.theme_sundown_gradient_1)
+            CustomTheme.THEME_RAZZ -> ContextCompat.getColor(context, R.color.theme_razz_gradient_1)
+            CustomTheme.THEME_GRAPE -> ContextCompat.getColor(context, R.color.theme_grape_gradient_1)
+            CustomTheme.THEME_AUTUMN -> ContextCompat.getColor(context, R.color.theme_autumn_gradient_1)
+            CustomTheme.THEME_SPRING -> ContextCompat.getColor(context, R.color.theme_spring_gradient_1)
+            else -> ContextCompat.getColor(context, R.color.theme_ocean_gradient_1)
+        }
+    }
+
+    fun getGradient2(context: Context) : Int {
+        return when (currentTheme) {
+            CustomTheme.THEME_OCEAN -> ContextCompat.getColor(context, R.color.theme_ocean_gradient_2)
+            CustomTheme.THEME_SUNRISE -> ContextCompat.getColor(context, R.color.theme_sunrise_gradient_2)
+            CustomTheme.THEME_SUNDOWN -> ContextCompat.getColor(context, R.color.theme_sundown_gradient_2)
+            CustomTheme.THEME_RAZZ -> ContextCompat.getColor(context, R.color.theme_razz_gradient_2)
+            CustomTheme.THEME_GRAPE -> ContextCompat.getColor(context, R.color.theme_grape_gradient_2)
+            CustomTheme.THEME_AUTUMN -> ContextCompat.getColor(context, R.color.theme_autumn_gradient_2)
+            CustomTheme.THEME_SPRING -> ContextCompat.getColor(context, R.color.theme_spring_gradient_2)
+            else -> ContextCompat.getColor(context, R.color.theme_ocean_gradient_2)
+        }
+    }
+
+    fun getGradient3(context: Context) : Int {
+        return when (currentTheme) {
+            CustomTheme.THEME_OCEAN -> ContextCompat.getColor(context, R.color.theme_ocean_gradient_3)
+            CustomTheme.THEME_SUNRISE -> ContextCompat.getColor(context, R.color.theme_sunrise_gradient_3)
+            CustomTheme.THEME_SUNDOWN -> ContextCompat.getColor(context, R.color.theme_sundown_gradient_3)
+            CustomTheme.THEME_RAZZ -> ContextCompat.getColor(context, R.color.theme_razz_gradient_3)
+            CustomTheme.THEME_GRAPE -> ContextCompat.getColor(context, R.color.theme_grape_gradient_3)
+            CustomTheme.THEME_AUTUMN -> ContextCompat.getColor(context, R.color.theme_autumn_gradient_3)
+            CustomTheme.THEME_SPRING -> ContextCompat.getColor(context, R.color.theme_spring_gradient_3)
+            else -> ContextCompat.getColor(context, R.color.theme_ocean_gradient_3)
+        }
+    }
+
     fun getSecondaryColor(context: Context) : Int {
         return when (currentTheme) {
             CustomTheme.THEME_OCEAN -> ContextCompat.getColor(context, R.color.theme_ocean_gradient_3)
@@ -114,6 +193,156 @@ class ThemeManager {
     fun changeImageViewTintToGrey(context: Context, iv: ImageView) {
         iv.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.grey))
     }
+
+    fun changeImageViewTintToWhite(context: Context, iv: ImageView) {
+        iv.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.white))
+    }
+
+
+    // -------  Game Word View  -------
+
+    fun changeCardBackgroundColorToGrey(context: Context, cv: CardView) {
+        cv.setCardBackgroundColor(ContextCompat.getColor(context, R.color.grey))
+    }
+
+    fun changeCardBackgroundColorToAccent(context: Context, cv: CardView) {
+        cv.setCardBackgroundColor(getAccentColor(context))
+    }
+
+    fun changeCardBackgroundColorToWhite(context: Context, cv: CardView) {
+        cv.setCardBackgroundColor(ContextCompat.getColor(context, R.color.white))
+    }
+
+    fun changeTextColorToGrey(context: Context, tv: TextView) {
+        tv.setTextColor(ContextCompat.getColor(context, R.color.grey))
+    }
+
+    fun changeTextColorToAccent(context: Context, tv: TextView) {
+        tv.setTextColor(getAccentColor(context))
+    }
+
+    fun changeTextColorToWhite(context: Context, tv: TextView) {
+        tv.setTextColor(ContextCompat.getColor(context, R.color.white))
+    }
+
+    // -------------------
+    fun changeButtonTextColorToAccent(context: Context, button: MaterialButton) {
+//        button.setBackgroundColor(ContextCompat.getColor(context, R.color.white))
+        button.setTextColor(getAccentColor(context))
+    }
+
+    fun changeButtonTextColorToGrey(context: Context, button: MaterialButton) {
+//        button.setBackgroundColor(ContextCompat.getColor(context, R.color.grey))
+        button.setTextColor(ContextCompat.getColor(context, R.color.grey))
+    }
+
+
+    //------------ Radio Buttons
+
+    fun getAccentColorStateList(context: Context) : ColorStateList {
+         return when(currentTheme) {
+            CustomTheme.THEME_OCEAN ->
+                ColorStateList(
+                 arrayOf(
+                    intArrayOf(-android.R.attr.state_checked),
+                    intArrayOf(android.R.attr.state_checked)
+                 ), intArrayOf(
+                    ContextCompat.getColor(context, R.color.grey),
+                    ContextCompat.getColor(context, R.color.theme_ocean_accent)
+                 )
+             )
+            CustomTheme.THEME_SUNRISE ->
+                ColorStateList(
+                    arrayOf(
+                        intArrayOf(-android.R.attr.state_checked),
+                        intArrayOf(android.R.attr.state_checked)
+                    ), intArrayOf(
+                        ContextCompat.getColor(context, R.color.grey),
+                        ContextCompat.getColor(context, R.color.theme_sunrise_accent)
+                    )
+                )
+            CustomTheme.THEME_SUNDOWN ->
+                ColorStateList(
+                    arrayOf(
+                        intArrayOf(-android.R.attr.state_checked),
+                        intArrayOf(android.R.attr.state_checked)
+                    ), intArrayOf(
+                        ContextCompat.getColor(context, R.color.grey),
+                        ContextCompat.getColor(context, R.color.theme_sundown_accent)
+                    )
+                )
+            CustomTheme.THEME_RAZZ ->
+                ColorStateList(
+                    arrayOf(
+                        intArrayOf(-android.R.attr.state_checked),
+                        intArrayOf(android.R.attr.state_checked)
+                    ), intArrayOf(
+                        ContextCompat.getColor(context, R.color.grey),
+                        ContextCompat.getColor(context, R.color.theme_razz_accent)
+                    )
+                )
+            CustomTheme.THEME_GRAPE ->
+                ColorStateList(
+                    arrayOf(
+                        intArrayOf(-android.R.attr.state_checked),
+                        intArrayOf(android.R.attr.state_checked)
+                    ), intArrayOf(
+                        ContextCompat.getColor(context, R.color.grey),
+                        ContextCompat.getColor(context, R.color.theme_grape_accent)
+                    )
+                )
+            CustomTheme.THEME_AUTUMN ->
+                ColorStateList(
+                    arrayOf(
+                        intArrayOf(-android.R.attr.state_checked),
+                        intArrayOf(android.R.attr.state_checked)
+                    ), intArrayOf(
+                        ContextCompat.getColor(context, R.color.grey),
+                        ContextCompat.getColor(context, R.color.theme_autumn_accent)
+                    )
+                )
+            CustomTheme.THEME_SPRING ->
+                ColorStateList(
+                    arrayOf(
+                        intArrayOf(-android.R.attr.state_checked),
+                        intArrayOf(android.R.attr.state_checked)
+                    ), intArrayOf(
+                        ContextCompat.getColor(context, R.color.grey),
+                        ContextCompat.getColor(context, R.color.theme_spring_accent)
+                    )
+                )
+             else ->
+                 ColorStateList(
+                     arrayOf(
+                         intArrayOf(-android.R.attr.state_checked),
+                         intArrayOf(android.R.attr.state_checked)
+                     ), intArrayOf(
+                         ContextCompat.getColor(context, R.color.grey),
+                         ContextCompat.getColor(context, R.color.theme_ocean_accent)
+                     )
+                 )
+        }
+
+    }
+
+    fun customizeGameWordButtonResult(
+        context: Context, isCorrect: Boolean,
+        cv: CardView, tv: TextView, iv: ImageView) {
+        if(isCorrect) {
+            cv.setCardBackgroundColor(getAccentColor(context))
+            tv.setTextColor(ContextCompat.getColor(context, R.color.white))
+            tv.text = context.getString(R.string.game_result_correct)
+            iv.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_game_result_correct))
+        } else {
+            cv.setCardBackgroundColor(ContextCompat.getColor(context, R.color.grey))
+            tv.setTextColor(ContextCompat.getColor(context, R.color.white))
+            tv.text = context.getString(R.string.game_result_incorrect)
+            iv.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_game_result_incorrect))
+        }
+    }
+
+
+    //---------------
 
     fun getBorderedButton() : BorderedButtonView.BorderedButtonSett {
         return when (currentTheme) {

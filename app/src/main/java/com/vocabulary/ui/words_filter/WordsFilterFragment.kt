@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.vocabulary.R
 import com.vocabulary.customViews.sort_sett_view.SortSettView
-import com.vocabulary.models.LetterModel
+import com.vocabulary.models.word_models.LetterModel
 import kotlinx.android.synthetic.main.fragment_words_filter.*
 
 class WordsFilterFragment : Fragment(){

@@ -28,6 +28,7 @@
     <attr name="toolbar_background" format="reference"/>
     <attr name="text_accent" format="reference"/>
     <attr name="text_secondary" format="reference"/>
+    <attr name="number_picker" format="reference"/>
     <attr name="text_default" format="reference"/>
 
 </resources>

@@ -1,5 +1,9 @@
 package com.vocabulary.models
 
+import com.vocabulary.models.game_words_models.GameWordItemModel
+import com.vocabulary.models.word_models.LetterModel
+import com.vocabulary.models.word_models.WordModel
+
 
 // Safe Let
 
@@ -30,3 +34,52 @@ fun ArrayList<LetterModel>.cloneList() : ArrayList<LetterModel> {
     return newArr
 }
 
+fun ArrayList<GameWordItemModel>.getByModelID(modelID: Long) : GameWordItemModel {
+    return this.first { gameWordItemModel -> gameWordItemModel.modelID == modelID  }
+}
+
+fun ArrayList<WordModel>.getAllExcept(
+    exceptWordID: Long,
+    result: (ArrayList<WordModel>) -> Unit
+) {
+    val resultList = ArrayList<WordModel>()
+    for(item in this) {
+        if(item.id != exceptWordID) {
+            resultList.add(item)
+        }
+    }
+    result.invoke(resultList)
+}
+
+fun ArrayList<WordModel>.randomListExcept(
+    exceptWordID: Long, listSize: Int,
+    result: (ArrayList<WordModel>) -> Unit)  {
+
+    val resultList = ArrayList<WordModel>()
+    val exceptArr = ArrayList<Long>()
+    exceptArr.add(exceptWordID)
+
+
+    for(index in 0..listSize-1) {
+        var randomAgain = true
+
+        do {
+            val randItem = this.random()
+            var isAdd = true
+            for(exceptItem in exceptArr) {
+                if(randItem.id == exceptItem) {
+                    isAdd = false
+                    break
+                }
+            }
+            if(isAdd) {
+                randomAgain = false
+                resultList.add(randItem)
+                exceptArr.add(randItem.id)
+            }
+
+        } while (randomAgain)
+
+    }
+    result.invoke(resultList)
+}

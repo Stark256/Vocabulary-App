@@ -47,7 +47,7 @@ class LanguageActivity : AppCompatActivity(), SwipeLanguageClickListener {
             languages.observe(this@LanguageActivity, Observer<ArrayList<LanguageModel>>{
                 adapter.replaceAll(it)
             })
-            initializingView.observe(this@LanguageActivity,
+            viewState.observe(this@LanguageActivity,
                 Observer<LanguageViewModel.LanguageInitType>{
                 initView(it)
             })
@@ -59,9 +59,9 @@ class LanguageActivity : AppCompatActivity(), SwipeLanguageClickListener {
     private fun initView(type: LanguageViewModel.LanguageInitType) {
         when(type) {
             LanguageViewModel.LanguageInitType.LANGUAGES_LOADING -> {
-                this@LanguageActivity.pb_languages.visibility = View.VISIBLE
-                this@LanguageActivity.view_empty_languages.visibility = View.GONE
-                this@LanguageActivity.rv_languages.visibility = View.GONE
+                this.pb_languages.visibility = View.VISIBLE
+                this.view_empty_languages.visibility = View.GONE
+                this.rv_languages.visibility = View.GONE
             }
             LanguageViewModel.LanguageInitType.LANGUAGES_EMPTY -> {
                 this.pb_languages.visibility = View.GONE

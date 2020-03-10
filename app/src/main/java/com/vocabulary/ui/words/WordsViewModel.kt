@@ -4,14 +4,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.vocabulary.customViews.sort_sett_view.SortSettView
 import com.vocabulary.managers.Injector
-import com.vocabulary.models.LetterModel
-import com.vocabulary.models.WordBaseItem
-import com.vocabulary.models.WordModel
+import com.vocabulary.models.word_models.LetterModel
+import com.vocabulary.models.word_models.WordBaseItem
+import com.vocabulary.models.word_models.WordModel
 import java.util.regex.Pattern
 
 class WordsViewModel : ViewModel() {
 
-    val initializingView = MutableLiveData<WordInitType>()
+    val viewState = MutableLiveData<WordInitType>()
     var selectedSortSett: SortSettView.SORT_SETT = SortSettView.SORT_SETT.SORT_A_Z
     val words = MutableLiveData<ArrayList<WordBaseItem>>()
     val showBadge = MutableLiveData<Boolean>()
@@ -35,7 +35,8 @@ class WordsViewModel : ViewModel() {
             for (item in allWords) {
                 val wordStart = item.word.first().toString()
                 if (wordStart != letter) {
-                    val letterModel = LetterModel(wordStart)
+                    val letterModel =
+                        LetterModel(wordStart)
 
                     if(oldFilters != null) {
                         val oldFilter : LetterModel? =
@@ -79,9 +80,9 @@ class WordsViewModel : ViewModel() {
 
         this.words.value = filteredWords
         if(filteredWords.isEmpty()) {
-            initializingView.value = WordInitType.FILTER_EMPTY
+            viewState.value = WordInitType.FILTER_EMPTY
         } else {
-            initializingView.value = WordInitType.WORDS_NOT_EMPTY
+            viewState.value = WordInitType.WORDS_NOT_EMPTY
         }
 
 
@@ -107,7 +108,7 @@ class WordsViewModel : ViewModel() {
     }
 
     fun searchWords(searchText: String) {
-        initializingView.value = WordInitType.WORDS_LOADING
+        viewState.value = WordInitType.WORDS_LOADING
         this.needToUpdateAfterSearch = true
         val currentLanguage = Injector.languageManager.getCurrentLanguageIfSelected()
 
@@ -117,10 +118,10 @@ class WordsViewModel : ViewModel() {
                 replaceWithPattern(searchText)) { res ->
 
                 if(res.isNotEmpty()) {
-                    initializingView.value = WordInitType.SEARCH_NOT_EMPTY
+                    viewState.value = WordInitType.SEARCH_NOT_EMPTY
                     this.words.value = generateWordsListWithLetters(res)
                 } else {
-                    initializingView.value = WordInitType.SEARCH_EMPTY
+                    viewState.value = WordInitType.SEARCH_EMPTY
                 }
             }
         }
@@ -157,7 +158,7 @@ class WordsViewModel : ViewModel() {
     }
 
     fun getWords() {
-        initializingView.value = WordInitType.WORDS_LOADING
+        viewState.value = WordInitType.WORDS_LOADING
         val currentLanguage =
             Injector.languageManager.getCurrentLanguageIfSelected()
         if(currentLanguage != null) {
@@ -166,12 +167,12 @@ class WordsViewModel : ViewModel() {
                     initWordsList(it)
                 } else {
                     filters.clear()
-                    initializingView.value = WordInitType.WORDS_EMPTY
+                    viewState.value = WordInitType.WORDS_EMPTY
                     words.value = ArrayList()
                 }
             }
         } else {
-            initializingView.value = WordInitType.LANGUAGE_NOT_SELECTED
+            viewState.value = WordInitType.LANGUAGE_NOT_SELECTED
             words.value = ArrayList()
         }
     }
@@ -183,7 +184,8 @@ class WordsViewModel : ViewModel() {
         for(item in words) {
             val wordStart = item.word.first().toString()
             if(wordStart != letter) {
-                val letterModel = LetterModel(wordStart)
+                val letterModel =
+                    LetterModel(wordStart)
                 searchArr.add(letterModel)
                 filters.add(letterModel)
                 letter = wordStart
@@ -195,7 +197,7 @@ class WordsViewModel : ViewModel() {
     }
 
     fun setFilterData(sortSett: SortSettView.SORT_SETT, filters: ArrayList<LetterModel>) {
-        initializingView.value = WordInitType.WORDS_LOADING
+        viewState.value = WordInitType.WORDS_LOADING
         if(allWords.isNotEmpty()) {
             this.selectedSortSett = sortSett
             if(filters.isNotEmpty()) {
@@ -204,12 +206,12 @@ class WordsViewModel : ViewModel() {
             }
             filterWords(false)
         } else {
-            initializingView.value = WordInitType.WORDS_EMPTY
+            viewState.value = WordInitType.WORDS_EMPTY
         }
     }
 
     fun resetFilters() {
-        initializingView.value = WordInitType.WORDS_LOADING
+        viewState.value = WordInitType.WORDS_LOADING
         if(allWords.isNotEmpty()) {
             for (filter in filters) {
                 filter.isSelected = true
@@ -217,7 +219,7 @@ class WordsViewModel : ViewModel() {
             this.selectedSortSett = SortSettView.SORT_SETT.SORT_A_Z
             filterWords(false)
         } else {
-            initializingView.value = WordInitType.WORDS_EMPTY
+            viewState.value = WordInitType.WORDS_EMPTY
         }
     }
 

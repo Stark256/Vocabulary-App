@@ -8,7 +8,7 @@ import com.vocabulary.models.LanguageModel
 class LanguageViewModel: ViewModel() {
 
     val languages = MutableLiveData<ArrayList<LanguageModel>>()
-    val initializingView = MutableLiveData<LanguageInitType>()
+    val viewState = MutableLiveData<LanguageInitType>()
     private var previousLanguage: LanguageModel? = null
 
     init {
@@ -78,10 +78,10 @@ class LanguageViewModel: ViewModel() {
 
 
     fun getLanguages() {
-        initializingView.value = LanguageInitType.LANGUAGES_LOADING
+        viewState.value = LanguageInitType.LANGUAGES_LOADING
         Injector.dbManager.getLanguages { result ->
-            if(result.isNotEmpty()) { initializingView.value = LanguageInitType.LANGUAGES_NOT_EMPTY }
-            else { initializingView.value = LanguageInitType.LANGUAGES_EMPTY }
+            if(result.isNotEmpty()) { viewState.value = LanguageInitType.LANGUAGES_NOT_EMPTY }
+            else { viewState.value = LanguageInitType.LANGUAGES_EMPTY }
             languages.value = result
         }
     }

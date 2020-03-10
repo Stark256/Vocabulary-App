@@ -1,7 +1,7 @@
 package com.vocabulary.customViews.swipeable_view
 
 import com.vocabulary.models.LanguageModel
-import com.vocabulary.models.WordModel
+import com.vocabulary.models.word_models.WordModel
 
 interface SwipeLanguageClickListener {
     fun onViewPressed(languageModel: LanguageModel)

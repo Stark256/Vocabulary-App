@@ -55,17 +55,22 @@ class EmptyListMessageView @JvmOverloads constructor(
                 this.textMessage?.text = context.getString(R.string.no_languages_found_message)
                 this.btnAdd?.text = context.getString(R.string.button_add_new_language)
             }
-            ListType.ADD_GAMES -> {
-                this.textMessage?.visibility = View.VISIBLE
-                this.btnAdd?.visibility = View.VISIBLE
-                this.textTitle?.text = context.getString(R.string.no_tests_found_title)
-                this.textMessage?.text = context.getString(R.string.no_tests_found_message)
-                this.btnAdd?.text = context.getString(R.string.button_add_new_test)
-            }
             ListType.FILTER_NOT_FOUND -> {
                 this.textMessage?.visibility = View.GONE
                 this.btnAdd?.visibility = View.GONE
                 this.textTitle?.text = context.getString(R.string.no_words_found_title)
+            }
+            ListType.SELECT_LANGUAGES_EXERCISES -> {
+                this.textMessage?.visibility = View.VISIBLE
+                this.btnAdd?.visibility = View.GONE
+                this.textTitle?.text = context.getString(R.string.no_languages_found_title)
+                this.textMessage?.text = context.getString(R.string.no_languages_select_message)
+            }
+            ListType.NOT_ENOUGH_WORDS -> {
+                this.textMessage?.visibility = View.VISIBLE
+                this.btnAdd?.visibility = View.GONE
+                this.textTitle?.text = context.getString(R.string.not_enough_words_for_exercises_title)
+                this.textMessage?.text = context.getString(R.string.not_enough_words_for_exercises_message)
             }
         }
     }
@@ -74,9 +79,10 @@ class EmptyListMessageView @JvmOverloads constructor(
     enum class ListType {
         ADD_LANGUAGES,
         SELECT_LANGUAGES,
+        SELECT_LANGUAGES_EXERCISES,
         ADD_WORDS,
-        ADD_GAMES,
-        FILTER_NOT_FOUND
+        FILTER_NOT_FOUND,
+        NOT_ENOUGH_WORDS
     }
 
 }

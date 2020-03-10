@@ -1,4 +1,4 @@
-package com.vocabulary.models
+package com.vocabulary.models.word_models
 
 abstract class WordBaseItem {
 

@@ -30,4 +30,8 @@
     <dimen name="swipeable_view_marginEnd">16dp</dimen>
 
     <dimen name="bottom_nav_elevated_view_height">64dp</dimen>
+
+    <dimen name="progress_square_view_card_size">32dp</dimen>
+    <dimen name="progress_square_view_card_margin">4dp</dimen>
+    <dimen name="progress_square_view_root_size">120dp</dimen>
 </resources>

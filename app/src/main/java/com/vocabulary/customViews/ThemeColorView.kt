@@ -9,7 +9,7 @@ import android.widget.RelativeLayout
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import com.vocabulary.R
-import com.vocabulary.models.ThemeColorModel
+import com.vocabulary.models.theme_models.ThemeColorModel
 import kotlinx.android.synthetic.main.view_theme_color.view.*
 
 class ThemeColorView @JvmOverloads constructor(

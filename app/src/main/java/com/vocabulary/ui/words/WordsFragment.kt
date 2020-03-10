@@ -22,9 +22,9 @@ import com.vocabulary.customViews.swipeable_view.OnSwipeTouchListener
 import com.vocabulary.customViews.swipeable_view.SwipeWordClickListener
 import com.vocabulary.ui.common.BaseFragment
 import com.vocabulary.managers.Injector
-import com.vocabulary.models.LetterModel
-import com.vocabulary.models.WordBaseItem
-import com.vocabulary.models.WordModel
+import com.vocabulary.models.word_models.LetterModel
+import com.vocabulary.models.word_models.WordBaseItem
+import com.vocabulary.models.word_models.WordModel
 import com.vocabulary.models.cloneList
 import com.vocabulary.ui.common.DeletingDialog
 import com.vocabulary.ui.language.LanguageActivity
@@ -127,7 +127,7 @@ class WordsFragment : BaseFragment(),
         }
 
         viewModel.apply {
-            initializingView.observe(this@WordsFragment, Observer<WordsViewModel.WordInitType>{
+            viewState.observe(this@WordsFragment, Observer<WordsViewModel.WordInitType>{
                 initView(it)
             })
             showBadge.observe(this@WordsFragment, Observer<Boolean> { showBadge ->

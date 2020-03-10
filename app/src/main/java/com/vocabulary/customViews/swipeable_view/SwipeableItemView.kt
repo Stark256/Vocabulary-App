@@ -16,7 +16,7 @@ import com.vocabulary.R
 import com.vocabulary.customViews.CheckView
 import com.vocabulary.managers.Injector
 import com.vocabulary.models.LanguageModel
-import com.vocabulary.models.WordModel
+import com.vocabulary.models.word_models.WordModel
 import com.vocabulary.models.safeLet
 import kotlinx.android.synthetic.main.layout_language.view.*
 import kotlinx.android.synthetic.main.layout_word.view.*

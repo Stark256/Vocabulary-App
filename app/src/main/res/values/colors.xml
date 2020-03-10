@@ -67,11 +67,17 @@
     <color name="theme_ocean_gradient_2">#21EBED</color>
     <color name="theme_ocean_gradient_3">#45FAC7</color>
 
-    <color name="theme_spring_accent">#C2E567</color>
-    <color name="theme_spring_accent_half">#80C2E567</color>
-    <color name="theme_spring_gradient_1">#C2E567</color>
+<!--    <color name="theme_spring_accent">#C2E567</color>-->
+<!--    <color name="theme_spring_accent_half">#80C2E567</color>-->
+<!--    <color name="theme_spring_gradient_1">#C2E567</color>-->
+<!--    <color name="theme_spring_gradient_2">#93D162</color>-->
+<!--    <color name="theme_spring_gradient_3">#34AD60</color>-->
+
+    <color name="theme_spring_accent">#34AD60</color>
+    <color name="theme_spring_accent_half">#8034AD60</color>
+    <color name="theme_spring_gradient_1">#34AD60</color>
     <color name="theme_spring_gradient_2">#93D162</color>
-    <color name="theme_spring_gradient_3">#34AD60</color>
+    <color name="theme_spring_gradient_3">#C2E567</color>
 
     <color name="theme_autumn_accent">#36B856</color>
     <color name="theme_autumn_accent_half">#8036B856</color>

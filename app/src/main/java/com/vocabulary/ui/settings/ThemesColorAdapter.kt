@@ -1,14 +1,13 @@
 package com.vocabulary.ui.settings
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.vocabulary.R
 import com.vocabulary.customViews.ThemeColorView
-import com.vocabulary.models.CustomTheme
-import com.vocabulary.models.ThemeColorModel
+import com.vocabulary.models.theme_models.CustomTheme
+import com.vocabulary.models.theme_models.ThemeColorModel
 import kotlinx.android.synthetic.main.item_theme_color.view.*
 
 class ThemesColorAdapter(val currentTheme: CustomTheme, val arr: ArrayList<ThemeColorModel>, val listener: ThemeColorClickListener) : RecyclerView.Adapter<ThemesColorAdapter.ThemeColorViewHolder>() {

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.vocabulary.R
 import com.vocabulary.managers.Injector
-import com.vocabulary.models.LetterModel
+import com.vocabulary.models.word_models.LetterModel
 import kotlinx.android.synthetic.main.item_filter_letter.view.*
 
 class WordsFilterAdapter: RecyclerView.Adapter<WordsFilterAdapter.WordFilterViewHolder>() {

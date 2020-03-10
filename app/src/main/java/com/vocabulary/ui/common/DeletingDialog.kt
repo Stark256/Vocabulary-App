@@ -10,7 +10,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import com.vocabulary.R
 import com.vocabulary.models.LanguageModel
-import com.vocabulary.models.WordModel
+import com.vocabulary.models.word_models.WordModel
 import kotlinx.android.synthetic.main.dialog_delete.*
 
 class DeletingDialog : DialogFragment(){

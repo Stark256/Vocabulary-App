@@ -1,4 +1,4 @@
-package com.vocabulary.models
+package com.vocabulary.models.theme_models
 
 enum class CustomTheme(val value: String){
 //    THEME_BLUE("theme_blue"),

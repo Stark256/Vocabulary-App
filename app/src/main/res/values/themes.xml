@@ -22,6 +22,7 @@
         <item name="toolbar_background">@style/toolbar_background_ocean</item>
         <item name="text_accent">@style/text_accent_ocean</item>
         <item name="text_default">@style/text_default_ocean</item>
+        <item name="number_picker">@style/number_picker_ocean</item>
     </style>
 
     <style name="Theme.Custom_Grape" parent="AppThemeGrape">
@@ -44,6 +45,7 @@
         <item name="toolbar_background">@style/toolbar_background_grape</item>
         <item name="text_accent">@style/text_accent_grape</item>
         <item name="text_default">@style/text_default_grape</item>
+        <item name="number_picker">@style/number_picker_grape</item>
     </style>
 
     <style name="Theme.Custom_Razz" parent="AppThemeRazz">
@@ -66,6 +68,7 @@
         <item name="toolbar_background">@style/toolbar_background_razz</item>
         <item name="text_accent">@style/text_accent_razz</item>
         <item name="text_default">@style/text_default_razz</item>
+        <item name="number_picker">@style/number_picker_razz</item>
     </style>
 
     <style name="Theme.Custom_Sunrise" parent="AppThemeSunrise">
@@ -88,6 +91,7 @@
         <item name="toolbar_background">@style/toolbar_background_sunrise</item>
         <item name="text_accent">@style/text_accent_sunrise</item>
         <item name="text_default">@style/text_default_sunrise</item>
+        <item name="number_picker">@style/number_picker_sunrise</item>
     </style>
 
     <style name="Theme.Custom_Sundown" parent="AppThemeSundown">
@@ -110,6 +114,7 @@
         <item name="toolbar_background">@style/toolbar_background_sundown</item>
         <item name="text_accent">@style/text_accent_sundown</item>
         <item name="text_default">@style/text_default_sundown</item>
+        <item name="number_picker">@style/number_picker_sundown</item>
     </style>
 
     <style name="Theme.Custom_Autumn" parent="AppThemeAutumn">
@@ -132,6 +137,7 @@
         <item name="toolbar_background">@style/toolbar_background_autumn</item>
         <item name="text_accent">@style/text_accent_autumn</item>
         <item name="text_default">@style/text_default_autumn</item>
+        <item name="number_picker">@style/number_picker_autumn</item>
     </style>
 
     <style name="Theme.Custom_Spring" parent="AppThemeSpring">
@@ -154,6 +160,7 @@
         <item name="toolbar_background">@style/toolbar_background_spring</item>
         <item name="text_accent">@style/text_accent_spring</item>
         <item name="text_default">@style/text_default_spring</item>
+        <item name="number_picker">@style/number_picker_spring</item>
     </style>
 
 </resources>

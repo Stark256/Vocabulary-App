@@ -1,4 +1,4 @@
-package com.vocabulary.models
+package com.vocabulary.models.word_models
 
 import android.content.ContentValues
 import com.vocabulary.db.DBField
@@ -35,7 +35,8 @@ class WordModel(
         return (word.length <= 10 && translation.length <= 10)
     }
 
-    override fun getType(): WordItemType = WordItemType.TYPE_WORD
+    override fun getType(): WordItemType =
+        WordItemType.TYPE_WORD
     companion object {
 
         val key_id = "id"
@@ -50,10 +51,22 @@ class WordModel(
 
 
         val TABLE_FIELDS: ArrayList<DBField> = arrayListOf(
-            DBField(key_id, type_id),
-            DBField(key_word, type_word),
-            DBField(key_translate, type_translate),
-            DBField(key_table_name, type_table_name)
+            DBField(
+                key_id,
+                type_id
+            ),
+            DBField(
+                key_word,
+                type_word
+            ),
+            DBField(
+                key_translate,
+                type_translate
+            ),
+            DBField(
+                key_table_name,
+                type_table_name
+            )
         )
 
 

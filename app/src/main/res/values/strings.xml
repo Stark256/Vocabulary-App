@@ -1,15 +1,19 @@
 <resources>
     <string name="app_name">Vocabulary</string>
     <string name="title_words">Words</string>
-    <string name="title_tests">Tests</string>
+    <string name="title_tests">Exercises</string>
     <string name="title_settings">Settings</string>
 
     <string name="hint_search">Search…</string>
+<!--    <string name="loading">Loading…%s%%</string>-->
+    <string name="loading">Loading %s%%</string>
+    <string name="start">Start</string>
 
     <string name="query_create_table">CREATE TABLE %s ( %s )</string>
     <string name="query_drop_table">DROP TABLE IF EXISTS %s</string>
     <string name="query_select_where">SELECT * FROM %s WHERE %s=\'%s\'</string>
     <string name="query_search_words">SELECT * FROM %s WHERE %s LIKE \'%%%s%%\' OR %s LIKE \'%%%s%%\' ORDER BY %s</string>
+    <string name="query_select_fail_words">"SELECT * FROM (SELECT * FROM %s LIMIT %s) RIGHT JOIN %s ON %s = %s"</string>
 
     <string name="message_empty_field">This field can not be empty</string>
     <string name="message_language_exist">This language already exist</string>
@@ -41,6 +45,8 @@
     <string name="message_sure_language">Are you sure you want to delete this language?</string>
     <string name="message_sure_word">Are you sure you want to delete this word?</string>
 
+    <string name="message_sure_exit">Are you sure you want to exit?</string>
+
     <string name="delete_language_model">%s ( %s words )</string>
     <string name="delete_word_model">%s ( %s )</string>
 
@@ -68,9 +74,8 @@
     <string name="no_words_found_message">Please add new word</string>
     <string name="button_add_new_word">Add new word</string>
 
-    <string name="no_tests_found_title">NO TESTS FOUND</string>
-    <string name="no_tests_found_message">Please add new test</string>
-    <string name="button_add_new_test">Add new test</string>
+    <string name="not_enough_words_for_exercises_title">NOT ENOUGH WORDS</string>
+    <string name="not_enough_words_for_exercises_message">Please add more words</string>
 
     <string name="sort_by">Sort By</string>
 
@@ -79,5 +84,15 @@
 
     <string name="btn_i_dont_know">I Don\'t Know</string>
     <string name="btn_check">CHECK</string>
+    <string name="btn_finish">FINISH</string>
     <string name="btn_next">NEXT</string>
+
+    <string name="game_base_picker_title">Words Count</string>
+    <string name="game_base_radio_title">Additional Items to Guess</string>
+
+    <string name="game_words_title">Exercise Words</string>
+    <string name="game_letters_title">Exercise Letters</string>
+
+    <string name="game_result_correct">Correct</string>
+    <string name="game_result_incorrect">Incorrect</string>
 </resources>

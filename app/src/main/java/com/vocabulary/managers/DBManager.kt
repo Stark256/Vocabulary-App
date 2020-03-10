@@ -1,20 +1,14 @@
 package com.vocabulary.managers
 
-import android.content.ContentValues
 import android.content.Context
 import android.database.DatabaseUtils
-import androidx.core.content.ContextCompat
 import com.vocabulary.R
 import com.vocabulary.db.DBHelper
 import com.vocabulary.db.DBUtil
 import com.vocabulary.models.LanguageModel
-import com.vocabulary.models.TestFailModel
-import com.vocabulary.models.TestsModel
-import com.vocabulary.models.WordModel
-import org.intellij.lang.annotations.Language
+import com.vocabulary.models.ExerciseFailModel
+import com.vocabulary.models.word_models.WordModel
 import java.lang.Exception
-import android.widget.Toast
-import java.util.regex.Pattern
 
 
 class DBManager(private val context: Context) {
@@ -64,7 +58,7 @@ class DBManager(private val context: Context) {
                     id = cursor.getLong(cursor.getColumnIndex(LanguageModel.key_id)),
                     name = cursor.getString(cursor.getColumnIndex(LanguageModel.key_name)),
                     tableWords = cursor.getString(cursor.getColumnIndex(LanguageModel.key_table_words)),
-                    tableTestFails = cursor.getString(cursor.getColumnIndex(LanguageModel.key_table_test_fails)))
+                    tableExerciseFails = cursor.getString(cursor.getColumnIndex(LanguageModel.key_table_exercise_fails)))
                 lang.wordsCount = DatabaseUtils.queryNumEntries(db.readableDatabase, lang.tableWords)
                 languages.add(lang)
             } while(cursor.moveToNext())
@@ -82,7 +76,7 @@ class DBManager(private val context: Context) {
                     id = cursor.getLong(cursor.getColumnIndex(LanguageModel.key_id)),
                     name = cursor.getString(cursor.getColumnIndex(LanguageModel.key_name)),
                     tableWords = cursor.getString(cursor.getColumnIndex(LanguageModel.key_table_words)),
-                    tableTestFails = cursor.getString(cursor.getColumnIndex(LanguageModel.key_table_test_fails)))
+                    tableExerciseFails = cursor.getString(cursor.getColumnIndex(LanguageModel.key_table_exercise_fails)))
                 lang.wordsCount = DatabaseUtils.queryNumEntries(db.readableDatabase, lang.tableWords)
 
                 languages.add(lang)
@@ -100,11 +94,11 @@ class DBManager(private val context: Context) {
             val language = LanguageModel(
                 name = newLanguage!!,
                 tableWords = DBUtil.generateUniqueTableName(),
-                tableTestFails = DBUtil.generateUniqueTableName())
+                tableExerciseFails = DBUtil.generateUniqueTableName())
 
             db.writableDatabase.insert(LanguageModel.TABLE_NAME, null, language.getContentValues())
             createTableWords(language.tableWords)
-//            createTableTests()
+            createTableExerciseFails(language.tableExerciseFails)
             db.close()
             // TODO add language in table
             // TODO create words table
@@ -134,6 +128,7 @@ class DBManager(private val context: Context) {
 
     fun deleteLanguage(languageModel: LanguageModel, result: () -> Unit) {
         deleteTableWords(languageModel.tableWords)
+        deleteTableExerciseFails(languageModel.tableExerciseFails)
         // TODO delete test table
         db.writableDatabase.delete(
             LanguageModel.TABLE_NAME,
@@ -248,7 +243,38 @@ class DBManager(private val context: Context) {
                     id = cursor.getLong(cursor.getColumnIndex(WordModel.key_id)),
                     word = cursor.getString(cursor.getColumnIndex(WordModel.key_word)),
                     translation = cursor.getString(cursor.getColumnIndex(WordModel.key_translate)),
-                    tableName = cursor.getString(cursor.getColumnIndex(WordModel.key_table_name)))
+                    tableName = cursor.getString(cursor.getColumnIndex(WordModel.key_table_name))
+                )
+                words.add(word)
+
+            } while(cursor.moveToNext())
+        }
+        db.close()
+        result.invoke(words)
+    }
+
+    fun getRandomLimitedWords(wordsTable: String,
+                              limit: String,
+                              whereNotEqual: String?,
+                              result: (ArrayList<WordModel>) -> Unit) {
+        val selectQuary = "SELECT * FROM ${wordsTable} ${
+        if(whereNotEqual != null) "WHERE ${whereNotEqual}" else ""
+        } ORDER BY RANDOM() LIMIT ${limit}"
+
+
+        val words = ArrayList<WordModel>()
+        val cursor = db.readableDatabase.rawQuery(
+            selectQuary, null)
+
+
+        if(cursor.moveToFirst()) {
+            do {
+                val word = WordModel(
+                    id = cursor.getLong(cursor.getColumnIndex(WordModel.key_id)),
+                    word = cursor.getString(cursor.getColumnIndex(WordModel.key_word)),
+                    translation = cursor.getString(cursor.getColumnIndex(WordModel.key_translate)),
+                    tableName = cursor.getString(cursor.getColumnIndex(WordModel.key_table_name))
+                )
                 words.add(word)
 
             } while(cursor.moveToNext())
@@ -316,7 +342,8 @@ class DBManager(private val context: Context) {
                     id = cursor.getLong(cursor.getColumnIndex(WordModel.key_id)),
                     word = cursor.getString(cursor.getColumnIndex(WordModel.key_word)),
                     translation = cursor.getString(cursor.getColumnIndex(WordModel.key_translate)),
-                    tableName = cursor.getString(cursor.getColumnIndex(WordModel.key_table_name)))
+                    tableName = cursor.getString(cursor.getColumnIndex(WordModel.key_table_name))
+                )
                 words.add(word)
 
             } while(cursor.moveToNext())
@@ -329,52 +356,103 @@ class DBManager(private val context: Context) {
 
 
     // ----------------------------------------
-    // TESTS
-    fun createTableTests() {
-        db.writableDatabase.execSQL(DBUtil.createTableString(context, TestsModel.TABLE_NAME, TestsModel.TABLE_FIELDS))
-        db.close()
+    // Exercise Fails
+    fun getExerciseFailCount(tableName: String, result: (Long) -> Unit) {
+        val rdb = db.readableDatabase
+        val count = DatabaseUtils.queryNumEntries(rdb, tableName)
+        rdb.close()
+        result.invoke(count)
     }
 
-    fun deleteTableTests() {
-        db.writableDatabase.execSQL(String.format(context.getString(com.vocabulary.R.string.query_drop_table), TestsModel.TABLE_NAME))
-        db.close()
-    }
-
-    fun addTest() {
-        //TODO
-    }
-
-    fun updateTest() {
-        //TODO
-    }
-
-    fun deleteTest() {
-        //TODO
-    }
-    // ----------------------------------------
-
-    // ----------------------------------------
-    // TEST Fails
-//    fun createTableTestFails(tableName: String) {
-//        db.writableDatabase.execSQL(DBUtil.createTableString(context, TestFailModel.TABLE_NAME, TestFailModel.TABLE_FIELDS))
+    fun createTableExerciseFails(tableName: String) {
+        db.writableDatabase.execSQL(DBUtil.createTableString(context, tableName, ExerciseFailModel.TABLE_FIELDS))
 //        db.close()
-//    }
-//
-//    fun deleteTableTestFails(tableName: String) {
-//        db.writableDatabase.execSQL(String.format(context.getString(R.string.query_drop_table), TestFailModel.TABLE_NAME))
+    }
+
+    fun deleteTableExerciseFails(tableName: String) {
+        db.writableDatabase.execSQL(String.format(context.getString(com.vocabulary.R.string.query_drop_table), tableName))
 //        db.close()
-//    }
-
-    fun addFails() {
-        //TODO
     }
 
-    fun deleteFails() {
-        //TODO
+    fun getExerciseFailWords(tableWords: String,
+                             tableFails: String,
+                             count: String,
+                             result: (ArrayList<WordModel>) -> Unit) {
+
+//        "SELECT * FROM (SELECT * FROM %s LIMIT %s) RIGHT JOIN %s ON %s = %s"
+
+        val selectQuery = String.format(
+            context.getString(R.string.query_select_fail_words),
+            tableFails,
+            count,
+            tableWords,
+            ExerciseFailModel.key_word_id,
+            WordModel.key_id)
+
+
+
+        val words = ArrayList<WordModel>()
+        val cursor = db.readableDatabase.rawQuery(selectQuery, null)
+        if(cursor.moveToFirst()) {
+            do {
+                val word = WordModel(
+                    id = cursor.getLong(cursor.getColumnIndex(WordModel.key_id)),
+                    word = cursor.getString(cursor.getColumnIndex(WordModel.key_word)),
+                    translation = cursor.getString(cursor.getColumnIndex(WordModel.key_translate)),
+                    tableName = cursor.getString(cursor.getColumnIndex(WordModel.key_table_name))
+                )
+                words.add(word)
+
+            } while(cursor.moveToNext())
+        }
+        db.close()
+        result.invoke(words)
     }
-    // ----------------------------------------
 
+    fun addExerciseFail(tableFails: String,
+                        wordID: Long,
+                        result: (Boolean) -> Unit) {
+        val isExist = isWordFailAlreadyExist(tableFails, wordID.toString())
 
+        if(!isExist) {
 
+            val exerciseFailModel = ExerciseFailModel(wordID = wordID)
+
+            db.writableDatabase.insert(tableFails, null, exerciseFailModel.getContentValues())
+            db.close()
+            result.invoke(!isExist)
+        } else {
+            result.invoke(!isExist)
+        }
+    }
+
+    fun deleteExerciseFail(tableFails: String,
+                           exerciseID: Long,
+                           result: () -> Unit) {
+        db.writableDatabase.delete(
+            tableFails,
+            "${ExerciseFailModel.key_id} = ?",
+            arrayOf(exerciseID.toString()))
+        db.close()
+        result.invoke()
+    }
+
+    private fun isWordFailAlreadyExist(tableFails: String, wordID: String) : Boolean {
+        try {
+            val cursor = db.readableDatabase.rawQuery(
+                DBUtil.selectWhereString(context,
+                    tableFails,
+                    ExerciseFailModel.key_word_id,
+                    wordID), null)
+            if(cursor.moveToFirst()) {
+                db.close()
+                cursor.close()
+                return true
+            }
+            db.close()
+            cursor.close()
+        } catch (e: Exception) { }
+        return false
+    }
 
 }

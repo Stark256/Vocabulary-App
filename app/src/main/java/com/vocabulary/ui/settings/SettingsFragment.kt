@@ -8,10 +8,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.vocabulary.R
 import com.vocabulary.managers.Injector
-import com.vocabulary.models.ThemeColorModel
+import com.vocabulary.models.theme_models.ThemeColorModel
 import com.vocabulary.ui.main.MainActivity
 import com.vocabulary.ui.common.BaseFragment
 import kotlinx.android.synthetic.main.fragment_settings.*

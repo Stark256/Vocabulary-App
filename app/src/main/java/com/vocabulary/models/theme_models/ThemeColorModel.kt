@@ -1,4 +1,4 @@
-package com.vocabulary.models
+package com.vocabulary.models.theme_models
 
 class ThemeColorModel(
     val nameRes: Int,

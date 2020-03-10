@@ -20,6 +20,11 @@
 
 
 
+
+
+
+
+
     <style name="AppThemeOcean" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/theme_ocean_accent</item>
         <item name="colorPrimaryDark">@color/theme_ocean_accent</item>
@@ -88,7 +93,18 @@
     <style name="tint_accent_ocean">
         <item name="android:tint">@color/theme_ocean_accent</item>
     </style>
+    <style name="number_picker_ocean" >
+        <item name="android:colorControlNormal">@color/theme_ocean_accent</item>
+        <item name="android:textColorPrimary">@color/theme_ocean_accent</item>
+    </style>
     <style name="text_default_ocean" > </style>
+
+
+
+
+
+
+
 
 
     <style name="AppThemeSunrise" parent="Theme.MaterialComponents.Light.NoActionBar">
@@ -159,7 +175,19 @@
     <style name="tint_accent_sunrise">
         <item name="android:tint">@color/theme_sunrise_accent</item>
     </style>
+    <style name="number_picker_sunrise" >
+        <item name="android:colorControlNormal">@color/theme_sunrise_accent</item>
+        <item name="android:textColorPrimary">@color/theme_sunrise_accent</item>
+    </style>
     <style name="text_default_sunrise" > </style>
+
+
+
+
+
+
+
+
 
 
     <style name="AppThemeSundown" parent="Theme.MaterialComponents.Light.NoActionBar">
@@ -230,7 +258,19 @@
     <style name="tint_accent_sundown">
         <item name="android:tint">@color/theme_sundown_accent</item>
     </style>
+    <style name="number_picker_sundown" >
+        <item name="android:colorControlNormal">@color/theme_sundown_accent</item>
+        <item name="android:textColorPrimary">@color/theme_sundown_accent</item>
+    </style>
     <style name="text_default_sundown" > </style>
+
+
+
+
+
+
+
+
 
 
     <style name="AppThemeRazz" parent="Theme.MaterialComponents.Light.NoActionBar">
@@ -301,7 +341,18 @@
     <style name="tint_accent_razz">
         <item name="android:tint">@color/theme_razz_accent</item>
     </style>
+    <style name="number_picker_razz" >
+        <item name="android:colorControlNormal">@color/theme_razz_accent</item>
+        <item name="android:textColorPrimary">@color/theme_razz_accent</item>
+    </style>
     <style name="text_default_razz" > </style>
+
+
+
+
+
+
+
 
 
     <style name="AppThemeGrape" parent="Theme.MaterialComponents.Light.NoActionBar">
@@ -372,7 +423,16 @@
     <style name="tint_accent_grape">
         <item name="android:tint">@color/theme_grape_accent</item>
     </style>
+    <style name="number_picker_grape" >
+        <item name="android:colorControlNormal">@color/theme_grape_accent</item>
+        <item name="android:textColorPrimary">@color/theme_grape_accent</item>
+    </style>
     <style name="text_default_grape" > </style>
+
+
+
+
+
 
 
     <style name="AppThemeAutumn" parent="Theme.MaterialComponents.Light.NoActionBar">
@@ -443,7 +503,16 @@
     <style name="tint_accent_autumn">
         <item name="android:tint">@color/theme_autumn_accent</item>
     </style>
+    <style name="number_picker_autumn" >
+        <item name="android:colorControlNormal">@color/theme_autumn_accent</item>
+        <item name="android:textColorPrimary">@color/theme_autumn_accent</item>
+    </style>
     <style name="text_default_autumn" > </style>
+
+
+
+
+
 
 
     <style name="AppThemeSpring" parent="Theme.MaterialComponents.Light.NoActionBar">
@@ -515,6 +584,10 @@
     </style>
     <style name="text_secondary_spring">
         <item name="android:textColor">@color/theme_spring_gradient_3</item>
+    </style>
+    <style name="number_picker_spring" >
+        <item name="android:colorControlNormal">@color/theme_spring_accent</item>
+        <item name="android:textColorPrimary">@color/theme_spring_accent</item>
     </style>
     <style name="text_default_spring" > </style>
 

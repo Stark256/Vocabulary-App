@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.game.GameActivity"
+    tools:context=".ui.game.game_words.GameWordsActivity"
     style="?attr/background_gradient">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -73,28 +73,14 @@
     </com.google.android.material.appbar.AppBarLayout>
 
 
-    <RelativeLayout
+    <com.vocabulary.customViews.game_word_view.GameWordView
+        android:id="@+id/game_words_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-        app:layout_constraintBottom_toTopOf="@+id/ll_game_btns_container">
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="16dp"
-            app:cardCornerRadius="8dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-    </RelativeLayout>
+        app:layout_constraintBottom_toTopOf="@+id/ll_game_btns_container"/>
 
     <LinearLayout
         android:id="@+id/ll_game_btns_container"
@@ -117,7 +103,7 @@
             android:layout_marginEnd="8dp"/>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_game_check_next"
+            android:id="@+id/btn_game_next"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"

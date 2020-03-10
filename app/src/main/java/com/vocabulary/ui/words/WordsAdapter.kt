@@ -9,10 +9,9 @@ import com.vocabulary.R
 import com.vocabulary.customViews.swipeable_view.SwipeWordClickListener
 import com.vocabulary.customViews.swipeable_view.SwipeableItemView
 import com.vocabulary.customViews.swipeable_view.SwipeableViewHolderInterface
-import com.vocabulary.models.LetterModel
-import com.vocabulary.models.WordBaseItem
-import com.vocabulary.models.WordModel
-import kotlinx.android.synthetic.main.item_filter_letter.view.*
+import com.vocabulary.models.word_models.LetterModel
+import com.vocabulary.models.word_models.WordBaseItem
+import com.vocabulary.models.word_models.WordModel
 import kotlinx.android.synthetic.main.item_words_letter.view.*
 import kotlinx.android.synthetic.main.item_words_word.view.*
 
