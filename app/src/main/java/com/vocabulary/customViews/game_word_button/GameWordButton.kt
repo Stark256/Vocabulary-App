@@ -70,10 +70,10 @@ class GameWordButton @JvmOverloads constructor(
             isViewActive = false
             if(isViewSelected) {
                 isViewSelected = false
-                Injector.themeManager.changeCardBackgroundColorToWhite(context, mainCard)
             }
+            Injector.themeManager.changeCardBackgroundColorToGrey(context, mainCard)
             Injector.themeManager.changeCardBackgroundColorToGrey(context, borderCard)
-            Injector.themeManager.changeTextColorToGrey(context, textV)
+            Injector.themeManager.changeTextColorToWhite(context, textV)
         }
     }
 
@@ -101,8 +101,8 @@ class GameWordButton @JvmOverloads constructor(
         safeLet(this.cardBorder, this.cardMain, this.textView) { borderCard, mainCard, textV ->
             if(isViewSelected) {
                 isViewSelected = false
-                Injector.themeManager.changeCardBackgroundColorToWhite(context, mainCard)
             }
+            Injector.themeManager.changeCardBackgroundColorToWhite(context, mainCard)
             Injector.themeManager.changeCardBackgroundColorToAccent(context, borderCard)
             Injector.themeManager.changeTextColorToAccent(context, textV)
         }

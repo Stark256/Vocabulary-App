@@ -1,23 +1,21 @@
-package com.vocabulary.ui.game.game_words
+package com.vocabulary.ui.game.game_letters
 
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.vocabulary.R
-import com.vocabulary.customViews.game_word_view.GameWordView
+import com.vocabulary.customViews.game_letter_view.GameLetterView
 import com.vocabulary.managers.Injector
 import com.vocabulary.models.GameResult
-import com.vocabulary.models.game_words_models.GameWordItemModel
-import com.vocabulary.models.game_words_models.GameWordsListModel
+import com.vocabulary.models.game_letters_models.GameLettersModel
 import com.vocabulary.ui.common.ExerciseResultDialog
 import com.vocabulary.ui.common.ExitSureDialog
-import kotlinx.android.synthetic.main.activity_game_words.*
+import kotlinx.android.synthetic.main.activity_game_letters.*
 
-class GameWordsActivity : AppCompatActivity() {
+class GameLettersActivity : AppCompatActivity() {
 
     companion object {
         val EXTRA_WORDS_COUNT = "words_count"
@@ -26,7 +24,7 @@ class GameWordsActivity : AppCompatActivity() {
         fun newInstance(context: Context,
                         wordsCount: Long,
                         itemToGuessCount: Long): Intent {
-            return Intent(context, GameWordsActivity::class.java)
+            return Intent(context, GameLettersActivity::class.java)
                 .apply {
                     putExtra(EXTRA_WORDS_COUNT, wordsCount)
                     putExtra(EXTRA_ITEM_GUESS_COUNT, itemToGuessCount)
@@ -34,34 +32,38 @@ class GameWordsActivity : AppCompatActivity() {
         }
     }
 
-    private lateinit var viewModel: GameWordsViewModel
-    private var currentButtonState: GameWordsViewModel.GameWordsButtonNextState =
-        GameWordsViewModel.GameWordsButtonNextState.BS_NOT_ENABLED_CHECK
+    private lateinit var viewModel: GameLettersViewModel
+    private var currentButtonState : GameLettersViewModel.GameLettersButtonNextState =
+        GameLettersViewModel.GameLettersButtonNextState.BS_NOT_ENABLED_CHECK
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Injector.themeManager.onActivityCreateSetTheme(this)
-        setContentView(R.layout.activity_game_words)
+        setContentView(R.layout.activity_game_letters)
 
-        this.viewModel = ViewModelProviders.of(this@GameWordsActivity).get(GameWordsViewModel::class.java)
+        this.viewModel = ViewModelProviders.of(this).get(GameLettersViewModel::class.java)
 
         intent.extras?.apply {
-            this@GameWordsActivity.viewModel.setInitExtras(
+            this@GameLettersActivity.viewModel.setInitExtras(
                 getLong(EXTRA_WORDS_COUNT, -1L),
                 getLong(EXTRA_ITEM_GUESS_COUNT, -1L))
         }
 
         enableNextButton(false)
-        game_words_view.setListener(object : GameWordView.GameWordViewSelectListener{
-            override fun onGameWordSelected(gameWordItemModel: GameWordItemModel?) {
-                viewModel.onGameWordSelected(gameWordItemModel)
+        game_letters_view.setListener(object : GameLetterView.GameLetterViewSelectListener {
+            override fun onGameLetterSelected(result: String?) {
+                viewModel.onGameLetterSelected(result)
             }
 
             override fun onReadyPressed() {
                 viewModel.startPressed()
             }
-        })
 
+            override fun onCheckListIsFull(isFull: Boolean) {
+                // TODO show or hide chekc button
+                viewModel.showCheck(isFull)
+            }
+        })
 
         this.btn_tooltip?.setOnClickListener {
             viewModel.tipsPressed()
@@ -73,62 +75,119 @@ class GameWordsActivity : AppCompatActivity() {
 
         this.btn_game_next?.setOnClickListener {
             when(currentButtonState) {
-                GameWordsViewModel.GameWordsButtonNextState.BS_NEXT -> {
+                GameLettersViewModel.GameLettersButtonNextState.BS_NEXT -> {
                     viewModel.nextPressed()
                     enableTipsButton(true)
                 }
-                GameWordsViewModel.GameWordsButtonNextState.BS_FINISH -> {
+                GameLettersViewModel.GameLettersButtonNextState.BS_FINISH -> {
                     viewModel.finishPressed()
                 }
-                GameWordsViewModel.GameWordsButtonNextState.BS_ENABLED_CHECK -> {
+                GameLettersViewModel.GameLettersButtonNextState.BS_ENABLED_CHECK -> {
                     viewModel.checkPressed()
-                    game_words_view.showResults(false)
+                    game_letters_view.showResult(false,
+                        viewModel.getCurrentGame())
                 }
             }
         }
 
-
-
         this.btn_game_dont_know?.setOnClickListener {
-            viewModel.onGameWordSelected(null)
-            game_words_view.showResults(true)
+            // TODO
+            game_letters_view.showResult(true,
+                viewModel.getCurrentGame())
+            viewModel.checkPressed()
         }
 
+
+
+
+
         this.viewModel.apply {
-            screenTitle.observe(this@GameWordsActivity,
-                Observer<String> {
-                    tv_game_title?.text = it
+            screenTitle.observe(this@GameLettersActivity, Observer<String> {
+                tv_game_title?.text = it
             })
-            game.observe(this@GameWordsActivity,
-                Observer<GameWordsListModel> {
-                game_words_view.showNext(it)
-            })
-            buttonNextState.observe(this@GameWordsActivity,
-                Observer<GameWordsViewModel.GameWordsButtonNextState> {
-//                enableNextButton(it)
-                updateNextButtonState(it)
-            })
-            tips.observe(this@GameWordsActivity,
-                Observer<ArrayList<Long>> {
-                game_words_view.setTips(it)
-                    if(!showTipsButton) {
-                        enableTipsButton(false)
-                    }
-            })
-            viewState.observe(this@GameWordsActivity,
-                Observer<GameWordsViewState> {
+            viewState.observe(this@GameLettersActivity,
+                Observer<GameLetterViewState>{
                 updateState(it)
-                game_words_view.setState(it)
+                game_letters_view.setState(it)
             })
-            loadingPercent.observe(this@GameWordsActivity,
-                Observer<Int> {
-                game_words_view.setPercentage(it)
+            buttonNextState.observe(this@GameLettersActivity,
+                Observer<GameLettersViewModel.GameLettersButtonNextState>{
+                    updateNextButtonState(it)
             })
-            showFinishDialog.observe(this@GameWordsActivity,
-                Observer<ArrayList<GameResult>> {
-                    showResultDialog(it)
+            game.observe(this@GameLettersActivity,
+                Observer<GameLettersModel> {
+                    game_letters_view.showNext(it)
+            })
+            loadingPercent.observe(this@GameLettersActivity,
+                Observer<Int>{
+                    game_letters_view.setPercentage(it)
                 })
+            tips.observe(this@GameLettersActivity,
+                Observer<ArrayList<Long>>{
+              // TODO tips
+            })
+            showFinishDialog.observe(this@GameLettersActivity,
+                Observer<ArrayList<GameResult>>{
+                    showResultDialog(it)
+            })
             loadGames()
+        }
+    }
+
+
+    private fun updateNextButtonState(buttonState: GameLettersViewModel.GameLettersButtonNextState) {
+        when(buttonState) {
+            GameLettersViewModel.GameLettersButtonNextState.BS_NEXT -> {
+                btn_game_next.text = getString(R.string.btn_next)
+                if(currentButtonState == GameLettersViewModel
+                        .GameLettersButtonNextState
+                        .BS_NOT_ENABLED_CHECK) {
+                    enableNextButton(true)
+                }
+                this.currentButtonState = buttonState
+            }
+            GameLettersViewModel.GameLettersButtonNextState.BS_FINISH -> {
+                btn_game_next.text = getString(R.string.btn_finish)
+                if(currentButtonState == GameLettersViewModel
+                        .GameLettersButtonNextState
+                        .BS_NOT_ENABLED_CHECK) {
+                    enableNextButton(true)
+                }
+                this.currentButtonState = buttonState
+            }
+            GameLettersViewModel.GameLettersButtonNextState.BS_ENABLED_CHECK -> {
+                btn_game_next.text = getString(R.string.btn_check)
+                if(currentButtonState == GameLettersViewModel
+                        .GameLettersButtonNextState
+                        .BS_NOT_ENABLED_CHECK) {
+                    enableNextButton(true)
+                }
+                this.currentButtonState = buttonState
+            }
+            GameLettersViewModel.GameLettersButtonNextState.BS_NOT_ENABLED_CHECK -> {
+                btn_game_next.text = getString(R.string.btn_check)
+                if(currentButtonState != GameLettersViewModel
+                        .GameLettersButtonNextState
+                        .BS_NOT_ENABLED_CHECK) {
+                    enableNextButton(false)
+                }
+                this.currentButtonState = buttonState
+            }
+        }
+    }
+
+    private fun updateState(state: GameLetterViewState) {
+        if(state == GameLetterViewState.STATE_STARTED) {
+
+//            enableNextButton(true)
+            enableDontknowButton(true)
+            enableEndgameButton(true)
+            enableTipsButton(true)
+        } else {
+            enableNextButton(false)
+            enableDontknowButton(false)
+            enableEndgameButton(false)
+            enableTipsButton(false)
         }
     }
 
@@ -153,61 +212,6 @@ class GameWordsActivity : AppCompatActivity() {
         dialog.show(supportFragmentManager, dialog.tag)
     }
 
-    private fun updateNextButtonState(buttonState: GameWordsViewModel.GameWordsButtonNextState) {
-        when(buttonState) {
-            GameWordsViewModel.GameWordsButtonNextState.BS_NEXT -> {
-                btn_game_next.text = getString(R.string.btn_next)
-                if(currentButtonState == GameWordsViewModel
-                        .GameWordsButtonNextState
-                        .BS_NOT_ENABLED_CHECK) {
-                    enableNextButton(true)
-                }
-                this.currentButtonState = buttonState
-            }
-            GameWordsViewModel.GameWordsButtonNextState.BS_FINISH -> {
-                btn_game_next.text = getString(R.string.btn_finish)
-                if(currentButtonState == GameWordsViewModel
-                        .GameWordsButtonNextState
-                        .BS_NOT_ENABLED_CHECK) {
-                    enableNextButton(true)
-                }
-                this.currentButtonState = buttonState
-            }
-            GameWordsViewModel.GameWordsButtonNextState.BS_ENABLED_CHECK -> {
-                btn_game_next.text = getString(R.string.btn_check)
-                if(currentButtonState == GameWordsViewModel
-                        .GameWordsButtonNextState
-                        .BS_NOT_ENABLED_CHECK) {
-                    enableNextButton(true)
-                }
-                this.currentButtonState = buttonState
-            }
-            GameWordsViewModel.GameWordsButtonNextState.BS_NOT_ENABLED_CHECK -> {
-                btn_game_next.text = getString(R.string.btn_check)
-                if(currentButtonState != GameWordsViewModel
-                        .GameWordsButtonNextState
-                        .BS_NOT_ENABLED_CHECK) {
-                    enableNextButton(false)
-                }
-                this.currentButtonState = buttonState
-            }
-        }
-    }
-
-    private fun updateState(state: GameWordsViewState) {
-        if(state == GameWordsViewState.STATE_STARTED) {
-
-//            enableNextButton(true)
-            enableDontknowButton(true)
-            enableEndgameButton(true)
-            enableTipsButton(true)
-        } else {
-            enableNextButton(false)
-            enableDontknowButton(false)
-            enableEndgameButton(false)
-            enableTipsButton(false)
-        }
-    }
 
     private fun enableNextButton(isEnable: Boolean) {
         if(isEnable) {

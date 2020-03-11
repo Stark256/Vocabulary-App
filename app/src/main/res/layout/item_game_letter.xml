@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv_game_letter"
+    android:layout_width="@dimen/game_letters_letter_size"
+    android:layout_height="@dimen/game_letters_letter_size"
+    android:layout_margin="@dimen/game_letters_letter_margin"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="0dp"
+    app:cardBackgroundColor="@color/grey">
+
+    <RelativeLayout
+        android:id="@+id/rl_game_letter_back"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_clear">
+
+        <TextView
+            android:id="@+id/tv_game_letter"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/white"
+            android:visibility="gone"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:maxLines="1" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

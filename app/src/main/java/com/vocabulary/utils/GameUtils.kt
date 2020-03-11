@@ -13,10 +13,10 @@ object GameUtils {
         ExerciseBaseModel(
             ExerciseType.GAME_WORDS,
             R.string.game_words_title)
-//        ,
-//        GameBaseModel(
-//            GamesType.GAME_LETTERS,
-//            R.string.game_letters_title)
+        ,
+        ExerciseBaseModel(
+            ExerciseType.GAME_LETTERS,
+            R.string.game_letters_title)
     )
 
     fun initGameBaseModel(gameBaseModel: ExerciseBaseModel, wordsCountInTable: Long) {
@@ -40,9 +40,9 @@ object GameUtils {
                 gameBaseModel.option_1_title = radioButtons[0].toString()
                 gameBaseModel.option_2_title = radioButtons[1].toString()
                 gameBaseModel.option_3_title = radioButtons[2].toString()
-// TODO
-//                gameBaseModel.option_2_is_enable = radioButtons[1] <= wordsCountInTable
-//                gameBaseModel.option_3_is_enable = radioButtons[2] <= wordsCountInTable
+
+                gameBaseModel.option_2_is_enable = true
+                gameBaseModel.option_3_is_enable = true
             }
         }
     }
@@ -74,10 +74,10 @@ object GameUtils {
     private fun getRadioButtonsByGameType(gamesType: ExerciseType) : ArrayList<Int>{
         return when(gamesType) {
             ExerciseType.GAME_WORDS -> {
-                arrayListOf(4, 6, 10)
+                arrayListOf(4, 6, 8)
             }
             ExerciseType.GAME_LETTERS -> {
-                arrayListOf(0, 4, 8)
+                arrayListOf(4, 6, 8)
             }
         }
     }

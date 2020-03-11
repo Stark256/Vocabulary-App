@@ -34,4 +34,21 @@
     <dimen name="progress_square_view_card_size">32dp</dimen>
     <dimen name="progress_square_view_card_margin">4dp</dimen>
     <dimen name="progress_square_view_root_size">120dp</dimen>
+
+<!--    <dimen name="game_letters_list_height_1_lines">36dp</dimen>-->
+<!--    <dimen name="game_letters_list_height_2_lines">72dp</dimen>-->
+<!--    <dimen name="game_letters_list_height_3_lines">108dp</dimen>-->
+<!--    <dimen name="game_letters_list_height_4_lines">144dp</dimen>-->
+<!--    <dimen name="game_letters_letter_size">24dp</dimen>-->
+
+    <dimen name="game_letters_list_height_1_lines">40dp</dimen>
+    <dimen name="game_letters_list_height_2_lines">80dp</dimen>
+    <dimen name="game_letters_list_height_3_lines">120dp</dimen>
+    <dimen name="game_letters_list_height_4_lines">160dp</dimen>
+    <dimen name="game_letters_letter_size">28dp</dimen>
+
+    <dimen name="game_letters_letter_margin">4dp</dimen>
+
+    <dimen name="card_elevation_0">0dp</dimen>
+    <dimen name="card_elevation_4">4dp</dimen>
 </resources>

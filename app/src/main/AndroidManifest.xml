@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.game.game_words.GameWordsActivity"></activity>
+        <activity android:name=".ui.game.game_letters.GameLettersActivity"></activity>
+        <activity android:name=".ui.game.game_words.GameWordsActivity" />
         <activity
             android:name=".ui.language.LanguageActivity"
             android:windowSoftInputMode="adjustPan" />

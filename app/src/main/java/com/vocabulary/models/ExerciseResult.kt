@@ -35,6 +35,20 @@ class ExerciseResult {
         }
     }
 
+    fun setGameLettersResult(correctWord: WordModel, resultString: String?) {
+        if(resultString != null) {
+            if(correctWord.word.equals(resultString)) {
+                resultList.add(GameResult(correctWord.id, true, correctWord.word, correctWord.translation))
+            } else {
+                resultList.add(GameResult(correctWord.id, false, correctWord.word, correctWord.translation, resultString))
+                failsModelList.add(correctWord.id)
+            }
+        } else {
+            resultList.add(GameResult(correctWord.id, false, correctWord.word, correctWord.translation))
+            failsModelList.add(correctWord.id)
+        }
+    }
+
 }
 
 class GameResult(

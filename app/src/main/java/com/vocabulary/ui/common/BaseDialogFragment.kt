@@ -50,7 +50,7 @@ open class BaseDialogFragment: DialogFragment() {
                 }
                 return resultString
             }
-        }, InputFilter.LengthFilter(25))
+        }, InputFilter.LengthFilter(24))
 
     fun replaceWithPattern(string: String) : String {
         val ptn = Pattern.compile("\\s+")

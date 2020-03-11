@@ -99,5 +99,5 @@ open class BaseFragment(): Fragment(){
             }
             return resultString
         }
-    }, InputFilter.LengthFilter(25))
+    }, InputFilter.LengthFilter(24))
 }

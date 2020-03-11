@@ -1,34 +1,42 @@
-package com.vocabulary.ui.game.game_words
+package com.vocabulary.ui.game.game_letters
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.vocabulary.customViews.game_letter_view.GameLetterView
 import com.vocabulary.managers.Injector
-import com.vocabulary.models.*
-import com.vocabulary.models.game_words_models.GameWordItemModel
-import com.vocabulary.models.game_words_models.GameWordsListModel
+import com.vocabulary.models.ExerciseResult
+import com.vocabulary.models.GameResult
+import com.vocabulary.models.game_letters_models.GameLetterItemModel
+import com.vocabulary.models.game_letters_models.GameLetterItemModelState
+import com.vocabulary.models.game_letters_models.GameLettersModel
+import com.vocabulary.models.safeLet
 import com.vocabulary.models.word_models.WordModel
 
-class GameWordsViewModel : ViewModel() {
+class GameLettersViewModel : ViewModel() {
 
-    val game = MutableLiveData<GameWordsListModel>()
+    val game = MutableLiveData<GameLettersModel>()
     val tips = MutableLiveData<ArrayList<Long>>()
     val screenTitle = MutableLiveData<String>()
     val loadingPercent = MutableLiveData<Int>()
-    val viewState = MutableLiveData<GameWordsViewState>()
-    val buttonNextState = MutableLiveData<GameWordsButtonNextState>()
+    val viewState = MutableLiveData<GameLetterViewState>()
+    val buttonNextState = MutableLiveData<GameLettersButtonNextState>()
     val showFinishDialog = MutableLiveData<ArrayList<GameResult>>()
 
     var showTipsButton = true
     var finishImmediate = true
 
+    private val gamesList = ArrayList<GameLettersModel>()
     private val exerciseResult : ExerciseResult = ExerciseResult()
-    private val gamesList = ArrayList<GameWordsListModel>()
-    private var selectedGameWordItem: GameWordItemModel? = null
+
     private val showedTips = ArrayList<Long>()
 
     private var wordsCount: Long? = null
     private var itemToGuess: Long? = null
     private var currentGame: Int = -1
+
+    fun getCurrentGame() : GameLettersModel {
+        return gamesList[currentGame]
+    }
 
     fun setInitExtras(wordsCount: Long, itemToGuess: Long) {
         if(wordsCount != -1L) this.wordsCount = wordsCount
@@ -37,7 +45,7 @@ class GameWordsViewModel : ViewModel() {
 
     fun loadGames() {
         gamesList.clear()
-        viewState.value = GameWordsViewState.STATE_LOADING
+        viewState.value = GameLetterViewState.STATE_LOADING
 
         val currentLanguage = Injector.languageManager.getCurrentLanguageIfSelected()
 
@@ -119,102 +127,90 @@ class GameWordsViewModel : ViewModel() {
         val jointGameList = ArrayList<WordModel>()
         if(failsArr.isNotEmpty()) jointGameList.addAll(failsArr)
         if(wordsArr.isNotEmpty()) jointGameList.addAll(wordsArr)
-//        gamesList.clear()
 
-        if(jointGameList.size == itemToGuess.toInt()) {
+        for(word in jointGameList) {
 
-            for (word in jointGameList) {
-                jointGameList.getAllExcept(word.id)
-                { wordsForGuess ->
-                    val arrGameWordItemModel = ArrayList<GameWordItemModel>()
-                    arrGameWordItemModel.add(GameWordItemModel(word.id, true, word.word))
+            val correctLettersList = getCorrectLettersArr(word.word)
+            val guessLettersList = getGuessLettersArr(word.word, jointGameList)
 
-                    for (wordItemGuess in wordsForGuess) {
-                        arrGameWordItemModel.add(
-                            GameWordItemModel(
-                                wordItemGuess.id,
-                                false,
-                                wordItemGuess.word
-                            )
-                        )
-                    }
-
-                    arrGameWordItemModel.shuffle()
-                    gamesList.add(
-                        GameWordsListModel(
-                            word,
-                            word.translation,
-                            arrGameWordItemModel
-                        )
+            gamesList.add(
+                GameLettersModel(
+                    word,
+                    word.translation,
+                    correctLettersList,
+                    guessLettersList
                     )
+            )
 
-                    loadingPercent.value = ((100 / jointGameList.size) * gamesList.size)
-                }
-            }
-        } else {
-            for (word in jointGameList) {
-                jointGameList.randomListExcept(
-                    word.id, itemToGuess.toInt() - 1)
-                { wordsForGuess ->
-
-                    val arrGameWordItemModel = ArrayList<GameWordItemModel>()
-                    arrGameWordItemModel.add(GameWordItemModel(word.id, true, word.word))
-
-                    for (wordItemGuess in wordsForGuess) {
-
-                        arrGameWordItemModel.add(
-                            GameWordItemModel(
-                                wordItemGuess.id,
-                                false,
-                                wordItemGuess.word
-                            )
-                        )
-                    }
-
-                    arrGameWordItemModel.shuffle()
-                    gamesList.add(
-                        GameWordsListModel(
-                            word,
-                            word.translation,
-                            arrGameWordItemModel
-                        )
-                    )
-                    loadingPercent.value = ((100 / jointGameList.size) * gamesList.size)
-                }
-            }
+            loadingPercent.value = ((100 / jointGameList.size) * gamesList.size)
         }
         gamesList.shuffle()
-        viewState.value = GameWordsViewState.STATE_READY
+        viewState.value = GameLetterViewState.STATE_READY
+    }
+
+    private fun getGuessLettersArr(
+        correctWord: String,
+        wordArr: ArrayList<WordModel>)
+            : ArrayList<GameLetterItemModel> {
+        val arrGuess = ArrayList<GameLetterItemModel>()
+        var wordString = ""
+        wordString += correctWord
+        val lastGuesC: Int = (itemToGuess?.toInt() ?: correctWord.length) - correctWord.length
+
+        for(index in 0..lastGuesC-1) {
+            wordString += wordArr.random().word.toCharArray().random()
+        }
+
+        val stringArr = wordString.toCharArray()
+        for(index in 0..stringArr.size -1) {
+            arrGuess.add(GameLetterItemModel(
+                GameLetterItemModelState.GS_LETTER, index,
+                stringArr[index].toString(), true))
+        }
+        arrGuess.shuffle()
+        return arrGuess
+    }
+
+    private fun getCorrectLettersArr(correctWord: String) : ArrayList<GameLetterItemModel> {
+        val resultArr = ArrayList<GameLetterItemModel>()
+        val stringArr = correctWord.toCharArray()
+        for(index in 0..stringArr.size -1) {
+            resultArr.add(GameLetterItemModel(
+                GameLetterItemModelState.GS_LETTER, index,
+                stringArr[index].toString(), true))
+        }
+        return resultArr
     }
 
     fun startPressed() {
-        viewState.value = GameWordsViewState.STATE_STARTED
+        viewState.value = GameLetterViewState.STATE_STARTED
         nextPressed()
-    }
-
-    fun onGameWordSelected(gameWordItemModel: GameWordItemModel?) {
-        if(gameWordItemModel != null) {
-            selectedGameWordItem = gameWordItemModel
-            buttonNextState.value = GameWordsButtonNextState.BS_ENABLED_CHECK
-
-        } else {
-            selectedGameWordItem = null
-            checkPressed()
-        }
     }
 
     fun checkPressed() {
         buttonNextState.value =
             if(wordsCount != null && wordsCount!!.toInt() == currentGame+1)
-            GameWordsButtonNextState.BS_FINISH
-            else GameWordsButtonNextState.BS_NEXT
+                GameLettersButtonNextState.BS_FINISH
+            else GameLettersButtonNextState.BS_NEXT
+        // TODO
+//        exerciseResult.setGameWordsResult(gamesList[currentGame].correctWord, selectedGameWordItem)
+    }
 
-        exerciseResult.setGameWordsResult(gamesList[currentGame].correctWord, selectedGameWordItem)
+    fun showCheck(isFull: Boolean) {
+        buttonNextState.value =
+             if(isFull) GameLettersButtonNextState.BS_ENABLED_CHECK
+             else  GameLettersButtonNextState.BS_NOT_ENABLED_CHECK
+    }
+
+    fun onGameLetterSelected(resultString: String?) {
+        exerciseResult.setGameLettersResult(
+            gamesList[currentGame].correctWord,
+            resultString)
     }
 
     fun finishPressed() {
         Injector.languageManager.getCurrentLanguageIfSelected()?.let {
-            currentLanguage ->
+                currentLanguage ->
 
             Injector.dbManager.deleteExerciseFailListByWordIDs(
                 currentLanguage.tableExerciseFails,
@@ -231,48 +227,22 @@ class GameWordsViewModel : ViewModel() {
     }
 
     fun nextPressed() {
-//        if(wordsCount != null && wordsCount!!.toInt() == currentGame+1) {
-            // is last
-            // show result screen
-
-//        } else {
         if(finishImmediate) {
             finishImmediate = false
         }
         showedTips.clear()
-        buttonNextState.value = GameWordsButtonNextState.BS_NOT_ENABLED_CHECK
-        selectedGameWordItem = null
+        buttonNextState.value = GameLettersButtonNextState.BS_NOT_ENABLED_CHECK
+//        selectedGameWordItem = null
         currentGame++
         game.value = gamesList[currentGame]
         screenTitle.value = "${currentGame+1} / ${gamesList.size}"
-//        }
     }
 
     fun tipsPressed() {
-        val newShuffledList = gamesList[currentGame].arrWordItemModels.shuffled()
-        var addedCount = 0
-
-        for(shuffledItem in newShuffledList) {
-            var shouldAdd = true
-            if(!shuffledItem.isTrue) {
-                for(tipItem in showedTips) {
-                    if(tipItem == shuffledItem.modelID) {
-                        shouldAdd = false
-                        break
-                    }
-                }
-            } else { shouldAdd = false }
-            if(shouldAdd) {
-                showedTips.add(shuffledItem.modelID)
-                addedCount++
-            }
-            if(addedCount == 2) { break }
-        }
-        showTipsButton = !((itemToGuess ?: 0L).toInt() - showedTips.size == 2)
-        tips.value = showedTips
+        // TODO
     }
 
-    enum class GameWordsButtonNextState {
+    enum class GameLettersButtonNextState {
         BS_NEXT,
         BS_FINISH,
         BS_ENABLED_CHECK,

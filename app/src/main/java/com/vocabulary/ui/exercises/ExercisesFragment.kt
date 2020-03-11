@@ -12,6 +12,7 @@ import com.vocabulary.customViews.EmptyListMessageView
 import com.vocabulary.models.exercise_base_models.ExerciseBaseModel
 import com.vocabulary.models.exercise_base_models.ExerciseType
 import com.vocabulary.ui.common.BaseFragment
+import com.vocabulary.ui.game.game_letters.GameLettersActivity
 import com.vocabulary.ui.game.game_words.GameWordsActivity
 import kotlinx.android.synthetic.main.fragment_exercises.*
 
@@ -40,10 +41,13 @@ class ExercisesFragment : BaseFragment() {
                         startActivity(GameWordsActivity.newInstance(
                             contextMain,
                             wordsCount.toLong(),
-                            itemsToGuessCount.toLong()))
+                            (itemsToGuessCount + 2).toLong()))
                     }
                     ExerciseType.GAME_LETTERS -> {
-
+                        startActivity(GameLettersActivity.newInstance(
+                            contextMain,
+                            wordsCount.toLong(),
+                            (itemsToGuessCount + 2).toLong()))
                     }
                 }
                 // TODO

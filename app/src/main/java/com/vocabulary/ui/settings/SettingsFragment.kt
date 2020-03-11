@@ -9,7 +9,10 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.vocabulary.R
+import com.vocabulary.customViews.game_letter_list_view.GameLetterListView
 import com.vocabulary.managers.Injector
+import com.vocabulary.models.game_letters_models.GameLetterItemModel
+import com.vocabulary.models.game_letters_models.GameLetterItemModelState
 import com.vocabulary.models.theme_models.ThemeColorModel
 import com.vocabulary.ui.main.MainActivity
 import com.vocabulary.ui.common.BaseFragment
@@ -44,6 +47,12 @@ class SettingsFragment : BaseFragment() {
         rv_themes.layoutManager = LinearLayoutManager(contextMain, RecyclerView.HORIZONTAL, false)
         rv_themes.adapter = themeAdapter
 
-
+        psv_settings.isTextLoadingVisible = false
     }
+
+    override fun onPause() {
+        super.onPause()
+        psv_settings.stop()
+    }
+
 }

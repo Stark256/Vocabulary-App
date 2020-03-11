@@ -218,6 +218,10 @@ class ThemeManager {
         cv.setCardBackgroundColor(ContextCompat.getColor(context, R.color.white))
     }
 
+    fun changeCardBackgroundColorToTransparent(context: Context, cv: CardView) {
+        cv.setCardBackgroundColor(ContextCompat.getColor(context, R.color.transparent))
+    }
+
     fun changeTextColorToGrey(context: Context, tv: TextView) {
         tv.setTextColor(ContextCompat.getColor(context, R.color.grey))
     }
