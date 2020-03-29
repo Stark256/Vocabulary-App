@@ -60,7 +60,6 @@ class GameLettersActivity : AppCompatActivity() {
             }
 
             override fun onCheckListIsFull(isFull: Boolean) {
-                // TODO show or hide chekc button
                 viewModel.showCheck(isFull)
             }
         })
@@ -91,7 +90,6 @@ class GameLettersActivity : AppCompatActivity() {
         }
 
         this.btn_game_dont_know?.setOnClickListener {
-            // TODO
             game_letters_view.showResult(true,
                 viewModel.getCurrentGame())
             viewModel.checkPressed()
@@ -124,11 +122,15 @@ class GameLettersActivity : AppCompatActivity() {
                 })
             tips.observe(this@GameLettersActivity,
                 Observer<ArrayList<Long>>{
-              // TODO tips
+                    game_letters_view.setTips(it)
+                    if(!showTipsButton) {
+                        enableTipsButton(false)
+                    }
             })
             showFinishDialog.observe(this@GameLettersActivity,
                 Observer<ArrayList<GameResult>>{
-                    showResultDialog(it)
+//                    showResultDialog(it)
+                    finishActivity()
             })
             loadGames()
         }
@@ -183,6 +185,11 @@ class GameLettersActivity : AppCompatActivity() {
             enableDontknowButton(true)
             enableEndgameButton(true)
             enableTipsButton(true)
+        } else if(state == GameLetterViewState.STATE_READY) {
+            enableNextButton(false)
+            enableDontknowButton(false)
+            enableEndgameButton(true)
+            enableTipsButton(false)
         } else {
             enableNextButton(false)
             enableDontknowButton(false)
@@ -258,6 +265,6 @@ class GameLettersActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-//        super.onBackPressed()
+        showSureExitDialog()
     }
 }

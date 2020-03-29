@@ -50,8 +50,9 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun backViewClicked() {
-                // TODO get current selected fragment
-                //  if fragment is words fragment then hide filter view
+                (supportFragmentManager.fragments.firstOrNull() as? WordsFragment)?.let {
+                    if(it.isVisible) { it.hideFilter() }
+                }
             }
         })
 

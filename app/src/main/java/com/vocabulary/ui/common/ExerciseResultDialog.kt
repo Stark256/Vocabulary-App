@@ -93,9 +93,7 @@ class ExerciseResultDialogAdapter(private val dataArr: ArrayList<GameResult>)
         val cardBorder: CardView = v.cv_game_result_border
         val indicatorContainer: RelativeLayout = v.rl_game_result_indicator_container
         val indicator: ImageView = v.iv_game_result_indicator
-//        val textWordTitle: TextView = v.tv_game_result_word_title
         val textWordValue: TextView = v.tv_game_result_word_value
-//        val textTranslationTitle: TextView = v.tv_game_result_translation_title
         val textTranslationValue: TextView = v.tv_game_result_translation_value
         val textIncorrectTitle: TextView = v.tv_game_result_incorrect_title
         val textIncorrectValue: TextView = v.tv_game_result_incorrect_value

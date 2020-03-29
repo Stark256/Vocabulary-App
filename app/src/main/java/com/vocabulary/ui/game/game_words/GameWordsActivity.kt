@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.vocabulary.R
@@ -126,7 +125,8 @@ class GameWordsActivity : AppCompatActivity() {
             })
             showFinishDialog.observe(this@GameWordsActivity,
                 Observer<ArrayList<GameResult>> {
-                    showResultDialog(it)
+//                    showResultDialog(it)
+                    finishActivity()
                 })
             loadGames()
         }
@@ -201,6 +201,11 @@ class GameWordsActivity : AppCompatActivity() {
             enableDontknowButton(true)
             enableEndgameButton(true)
             enableTipsButton(true)
+        } else if(state == GameWordsViewState.STATE_READY) {
+            enableNextButton(false)
+            enableDontknowButton(false)
+            enableEndgameButton(true)
+            enableTipsButton(false)
         } else {
             enableNextButton(false)
             enableDontknowButton(false)
@@ -254,6 +259,6 @@ class GameWordsActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-//        super.onBackPressed()
+        showSureExitDialog()
     }
 }

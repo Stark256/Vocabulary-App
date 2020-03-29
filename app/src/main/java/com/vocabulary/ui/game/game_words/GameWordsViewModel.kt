@@ -231,11 +231,7 @@ class GameWordsViewModel : ViewModel() {
     }
 
     fun nextPressed() {
-//        if(wordsCount != null && wordsCount!!.toInt() == currentGame+1) {
-            // is last
-            // show result screen
 
-//        } else {
         if(finishImmediate) {
             finishImmediate = false
         }
@@ -245,7 +241,6 @@ class GameWordsViewModel : ViewModel() {
         currentGame++
         game.value = gamesList[currentGame]
         screenTitle.value = "${currentGame+1} / ${gamesList.size}"
-//        }
     }
 
     fun tipsPressed() {

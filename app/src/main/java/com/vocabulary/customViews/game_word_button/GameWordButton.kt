@@ -31,9 +31,6 @@ class GameWordButton @JvmOverloads constructor(
     private var isViewActive = true
 
     private lateinit var selectListener: GameWordButtonSelectListener
-//    var text: String
-//        get() { return textView?.text.toString() ?: "" }
-//        set(value) { textView?.text = value }
 
     lateinit var gameWordItemModel: GameWordItemModel
 
@@ -51,7 +48,6 @@ class GameWordButton @JvmOverloads constructor(
 
         this.cardBorder?.setOnClickListener {
             if(isViewActive) {
-//                makeSelected()
                 selectListener.onWordButtonItemSelected(gameWordItemModel)
             }
         }
@@ -79,15 +75,6 @@ class GameWordButton @JvmOverloads constructor(
 
     fun makeSelected() {
         if(!isViewSelected) {
-//            safeLet(this.cardBorder, this.cardMain, this.textView) { borderCard, mainCard, textV ->
-//                isViewSelected = false
-//                Injector.themeManager.changeCardBackgroundColorToWhite(context, mainCard)
-//                Injector.themeManager.changeCardBackgroundColorToAccent(context, borderCard)
-//                Injector.themeManager.changeTextColorToAccent(context, textV)
-//            }
-//        }
-
-//        else {
             safeLet(this.cardBorder, this.cardMain, this.textView) { borderCard, mainCard, textV ->
                 isViewSelected = true
                 Injector.themeManager.changeCardBackgroundColorToAccent(context, mainCard)

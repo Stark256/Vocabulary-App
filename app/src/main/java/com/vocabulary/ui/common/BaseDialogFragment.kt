@@ -2,12 +2,9 @@ package com.vocabulary.ui.common
 
 import android.content.Context
 import androidx.fragment.app.DialogFragment
-import android.view.inputmethod.InputMethodManager.HIDE_IMPLICIT_ONLY
-import android.content.Context.INPUT_METHOD_SERVICE
 import android.text.InputFilter
 import android.text.Spanned
 import android.view.inputmethod.InputMethodManager
-import androidx.core.content.ContextCompat.getSystemService
 import java.util.regex.Pattern
 
 

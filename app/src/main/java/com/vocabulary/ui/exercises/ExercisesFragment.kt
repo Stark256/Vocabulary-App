@@ -50,7 +50,6 @@ class ExercisesFragment : BaseFragment() {
                             (itemsToGuessCount + 2).toLong()))
                     }
                 }
-                // TODO
             }
         })
         this.rv_exercises.adapter = adapter

@@ -16,13 +16,6 @@
     <color name="white">#FFFFFF</color>
     <color name="start_white">#59FFFFFF</color>
 
-
-    <color name="theme_blue">#2C81EE</color>
-    <color name="half_blue">#802C81EE</color>
-
-    <color name="theme_red">#F33022</color>
-    <color name="half_red">#80F33022</color>
-
     <color name="text_grey">#9E9E9E</color>
 
 
@@ -55,23 +48,11 @@
     <color name="theme_razz_gradient_2">#F78B88</color>
     <color name="theme_razz_gradient_3">#FFEACA</color>
 
-<!--    <color name="theme_ocean_accent">#45FAC7</color>-->
-<!--    <color name="theme_ocean_accent_half">#8045FAC7</color>-->
-<!--    <color name="theme_ocean_gradient_1">#45FAC7</color>-->
-<!--    <color name="theme_ocean_gradient_2">#21EBED</color>-->
-<!--    <color name="theme_ocean_gradient_3">#05B1FB</color>-->
-
     <color name="theme_ocean_accent">#05B1FB</color>
     <color name="theme_ocean_accent_half">#8005B1FB</color>
     <color name="theme_ocean_gradient_1">#05B1FB</color>
     <color name="theme_ocean_gradient_2">#21EBED</color>
     <color name="theme_ocean_gradient_3">#45FAC7</color>
-
-<!--    <color name="theme_spring_accent">#C2E567</color>-->
-<!--    <color name="theme_spring_accent_half">#80C2E567</color>-->
-<!--    <color name="theme_spring_gradient_1">#C2E567</color>-->
-<!--    <color name="theme_spring_gradient_2">#93D162</color>-->
-<!--    <color name="theme_spring_gradient_3">#34AD60</color>-->
 
     <color name="theme_spring_accent">#34AD60</color>
     <color name="theme_spring_accent_half">#8034AD60</color>
@@ -87,13 +68,12 @@
 
 
 
+
     <color name="color_bubblegum_1">#171D29</color>
     <color name="color_bubblegum_2">#202632</color>
     <color name="color_bubblegum_3">#FF0657</color>
     <color name="color_bubblegum_4">#E1008A</color>
     <color name="color_bubblegum_5">#56606A</color>
-
-
 
     <color name="color_lilac_1">#9E70F5</color>
     <color name="color_lilac_2">#5236E2</color>
@@ -102,22 +82,17 @@
     <color name="color_lilac_3">#283550</color>
     <color name="color_lilac_4">#A7A8AF</color>
 
-
-
     <color name="color_eclipse_1">#194576</color>
     <color name="color_eclipse_2">#E8F0FB</color>
     <color name="color_eclipse_3">#205990</color>
     <color name="color_eclipse_4">#FF1E4C</color>
-
-
-
-
 
     <color name="color_azure_1">#264A84</color>
     <color name="color_azure_2">#241445</color>
     <color name="color_azure_3">#0570B4</color>
     <color name="color_new_delete">#FA441F</color>
     <color name="color_new_edit">#4CDA60</color>
+
 
 
 
@@ -144,18 +119,5 @@
     <color name="btn_orange_1">#BF0A1B</color>
     <color name="btn_orange_2">#D9360D</color>
     <color name="btn_orange_3">#F55602</color>
-
-
-
-    <!--delete-->
-    <color name="color_t4_1">#1A2030</color>
-    <color name="color_t4_2">#22273B</color>
-    <color name="color_t4_3">#574CB5</color>
-    <color name="color_t4_4">#06A1C0</color>
-
-
-    <color name="color_t6_1">#720D5D</color>
-    <color name="color_t6_2">#5D1049</color>
-    <color name="color_t6_3">#E30425</color>
 
 </resources>

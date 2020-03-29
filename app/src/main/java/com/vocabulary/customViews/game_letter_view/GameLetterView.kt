@@ -7,6 +7,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
+import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
@@ -16,6 +17,7 @@ import com.google.android.material.button.MaterialButton
 import com.vocabulary.R
 import com.vocabulary.customViews.game_letter_list_view.GameLetterListView
 import com.vocabulary.customViews.progress_square_view.ProgressSquareView
+import com.vocabulary.managers.Injector
 import com.vocabulary.models.game_letters_models.GameLettersModel
 import com.vocabulary.models.safeLet
 import com.vocabulary.ui.game.game_letters.GameLetterViewState
@@ -33,10 +35,14 @@ class GameLetterView @JvmOverloads constructor(
     private var translationTextView: TextView? = null
     private var rootCard: CardView? = null
     private var backCard: CardView? = null
+    private var translationCard: CardView? = null
     private var progressBar: ProgressSquareView? = null
     private var buttonStart: MaterialButton? = null
     private var letterListCheckView: GameLetterListView? = null
     private var letterListGuessView: GameLetterListView? = null
+    private var resultContainer: RelativeLayout? = null
+    private var resultText: TextView? = null
+    private var resultImage: ImageView? = null
 
     private lateinit var listener: GameLetterViewSelectListener
     private var isFirstShowing = true
@@ -51,6 +57,10 @@ class GameLetterView @JvmOverloads constructor(
         this.buttonStart = v.btn_start_game_letters
         this.letterListCheckView = v.gllv_game_letter_check
         this.letterListGuessView = v.gllv_game_letter_guess
+        this.translationCard = v.cv_game_translation
+        this.resultContainer = v.rl_game_letter_result_container
+        this.resultImage = v.iv_game_letter_result
+        this.resultText = v.tv_game_letter_result
 
         this.buttonStart?.setOnClickListener {
             listener.onReadyPressed()
@@ -78,10 +88,14 @@ class GameLetterView @JvmOverloads constructor(
     private fun initData(gameLettersModel: GameLettersModel) {
         this.translationTextView?.text = gameLettersModel.translation
 
+        this.translationCard?.let {
+            Injector.themeManager.changeCardBackgroundColorToAccent(context, it)
+        }
+        this.resultContainer?.visibility = View.GONE
         this.letterListGuessView?.visibility = View.VISIBLE
         this.letterListCheckView?.initViewCheckItems(gameLettersModel.correctLetters.size,
             object : GameLetterListView.GameLetterListViewSelectListener {
-                override fun onLetterItemPressed(position: Int, letter: String?, uniqueID: Int) {
+                override fun onLetterItemPressed(position: Int, letter: String?, uniqueID: Long) {
                     gllv_game_letter_guess.setItemGuess(letter, uniqueID,0, true)
                     gllv_game_letter_check.setItemCheck("", uniqueID, position, false)
                 }
@@ -93,7 +107,7 @@ class GameLetterView @JvmOverloads constructor(
 
         this.letterListGuessView?.initViewGuessItems(gameLettersModel.lettersToGuess,
             object : GameLetterListView.GameLetterListViewSelectListener {
-                override fun onLetterItemPressed(position: Int, letter: String?, uniqueID: Int) {
+                override fun onLetterItemPressed(position: Int, letter: String?, uniqueID: Long) {
                     if(gllv_game_letter_check.canAddMore()) {
                         gllv_game_letter_check.setItemCheck(letter, uniqueID, 0, true)
                         gllv_game_letter_guess.setItemGuess("", uniqueID, position, false)
@@ -106,18 +120,35 @@ class GameLetterView @JvmOverloads constructor(
 
     fun showResult(dontKnow: Boolean, gameLettersModel: GameLettersModel) {
         if(!dontKnow) {
-                val resultCheck = this.letterListCheckView?.getCheckListResult()
-                if(gameLettersModel.isCorrectWord(resultCheck)) {
-                    this.letterListCheckView?.showCheckResult(gameLettersModel.correctLetters, false)
-                    this.letterListGuessView?.visibility = View.GONE
-                } else {
-                    this.letterListCheckView?.showCheckResult(gameLettersModel.correctLetters, false)
-                    this.letterListGuessView?.showGuessResults(gameLettersModel.correctLetters)
-                }
+            val resultCheck = this.letterListCheckView?.getCheckListResult()
+            val isResultCorrect = gameLettersModel.isCorrectWord(resultCheck)
+            if(isResultCorrect) {
+                this.letterListCheckView?.showCheckResult(gameLettersModel.correctLetters, false)
+                this.letterListGuessView?.visibility = View.GONE
+            } else {
+                this.letterListCheckView?.showCheckResult(gameLettersModel.correctLetters, false)
+                this.letterListGuessView?.showGuessResults(gameLettersModel.correctLetters)
+            }
+
+            this.resultContainer?.visibility = View.VISIBLE
+            safeLet(this.translationCard, this.resultText, this.resultImage) {
+                translationC, textRes, imageRes ->
+                Injector.themeManager.customizeGameWordButtonResult(
+                    context, isResultCorrect,
+                    translationC, textRes, imageRes)
+            }
+
             listener.onGameLetterSelected(resultCheck)
         } else {
             this.letterListCheckView?.showCheckResult(gameLettersModel.correctLetters, true)
             this.letterListGuessView?.visibility = View.GONE
+            this.resultContainer?.visibility = View.VISIBLE
+            safeLet(this.translationCard, this.resultText, this.resultImage) {
+                    translationC, textRes, imageRes ->
+                Injector.themeManager.customizeGameWordButtonResult(
+                    context, false,
+                    translationC, textRes, imageRes)
+            }
             listener.onGameLetterSelected(null)
         }
     }
@@ -150,12 +181,9 @@ class GameLetterView @JvmOverloads constructor(
         }
     }
 
-
     fun setTips(arr: ArrayList<Long>) {
-        // TODO
+        letterListGuessView?.disableButtons(arr)
     }
-
-
 
     private fun showView() {
         safeLet(this.rootCard, this.backCard) { root, back ->

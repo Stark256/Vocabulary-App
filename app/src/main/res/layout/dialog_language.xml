@@ -33,22 +33,40 @@
             app:cardCornerRadius="20dp"
             android:layout_below="@+id/tv_dialog_title">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_language"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:textSize="16sp"
-                android:focusable="true"
-                android:inputType="text"
-                android:background="@null"
-                android:hint="@string/language"
-                android:maxLength="25"
-                android:imeOptions="actionDone"
-                android:lines="1" />
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_language"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:textSize="16sp"
+                    android:focusable="true"
+                    android:inputType="text"
+                    android:background="@null"
+                    android:hint="@string/language"
+                    android:maxLength="25"
+                    android:imeOptions="actionDone"
+                    android:lines="1" />
+
+                <ImageView
+                    android:id="@+id/iv_clear_language"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_clear"
+                    android:layout_marginEnd="16dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerInParent="true"
+                    android:background="?selectableItemBackgroundBorderless"
+                    />
+
+            </RelativeLayout>
 
         </androidx.cardview.widget.CardView>
+
 
         <RelativeLayout
             android:id="@+id/ll_warning_container"

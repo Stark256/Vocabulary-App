@@ -19,7 +19,6 @@ open class OnSwipeTouchListener(
         return recyclerView.onTouchEvent(event)
     }
 
-
 //    fun onTouch(event: MotionEvent): Boolean {
 //        return gestureDetector.onTouchEvent(event)
 //    }
@@ -33,20 +32,9 @@ open class OnSwipeTouchListener(
         private val SWIPE_THRESHOLD = 100
         private val SWIPE_VELOCITY_THRESHOLD = 100
 
-//        override fun onSingleTapConfirmed(e: MotionEvent?): Boolean {
-//            return true
-//        }
-
         override fun onDown(e: MotionEvent): Boolean {
             return true
         }
-
-//        override fun onSingleTapConfirmed(e: MotionEvent): Boolean {
-//            onTouch(e)
-//            return true
-//        }
-
-
 
         fun getViewHolderInEvent(e: MotionEvent) : RecyclerView.ViewHolder? {
             val childView = recyclerView.findChildViewUnder(e.x, e.y)
@@ -59,7 +47,6 @@ open class OnSwipeTouchListener(
 
         private fun getViewHolderByPosition(position: Int) : RecyclerView.ViewHolder? {
             return recyclerView.findViewHolderForAdapterPosition(position)
-//            return recyclerView.findViewHolderForLayoutPosition(position)
         }
 
         private var openedItemPosition: Int = -1
@@ -68,7 +55,6 @@ open class OnSwipeTouchListener(
             holder?.let {
                 val swipeableItemView = it.getSwipableItemView()
                 if(openedItemPosition != -1) {
-                // TODO close view in this position
                     (getViewHolderByPosition(openedItemPosition)
                             as? SwipeableViewHolderInterface)
                     ?.let {
@@ -124,11 +110,6 @@ open class OnSwipeTouchListener(
         }
 
     }
-
-
-
-
-
 //    open fun onSwipeRight() {}
 //
 //    open fun onSwipeLeft() {}

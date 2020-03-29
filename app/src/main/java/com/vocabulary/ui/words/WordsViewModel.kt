@@ -130,7 +130,6 @@ class WordsViewModel : ViewModel() {
     fun updateAfterSearch() {
         if(needToUpdateAfterSearch) {
             needToUpdateAfterSearch = false
-            // TODO refresh list
             filterWords(true)
         }
     }
@@ -139,21 +138,6 @@ class WordsViewModel : ViewModel() {
         this.allWords.clear()
         this.allWords.addAll(arr)
 
-//        val adapterList = ArrayList<WordBaseItem>()
-//        var letter = ""
-//
-//        for(item in arr) {
-//            val wordStart = item.word.first().toString()
-//            if(wordStart != letter) {
-//                val letterModel = LetterModel(wordStart)
-//                adapterList.add(letterModel)
-//                filters.add(letterModel)
-//                letter = wordStart
-//            }
-//            adapterList.add(item)
-//        }
-
-        //this.allWords.addAll(adapterList)
         filterWords(true)
     }
 

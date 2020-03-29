@@ -1,5 +1,6 @@
 package com.vocabulary.models
 
+import com.vocabulary.models.game_letters_models.GameLetterItemModel
 import com.vocabulary.models.game_words_models.GameWordItemModel
 import com.vocabulary.models.word_models.LetterModel
 import com.vocabulary.models.word_models.WordModel
@@ -36,6 +37,10 @@ fun ArrayList<LetterModel>.cloneList() : ArrayList<LetterModel> {
 
 fun ArrayList<GameWordItemModel>.getByModelID(modelID: Long) : GameWordItemModel {
     return this.first { gameWordItemModel -> gameWordItemModel.modelID == modelID  }
+}
+
+fun ArrayList<GameLetterItemModel>.getByModelID(uniqueID: Long) : GameLetterItemModel {
+    return this.first { gameWordItemModel -> gameWordItemModel.uniqueID == uniqueID  }
 }
 
 fun ArrayList<WordModel>.getAllExcept(

@@ -20,13 +20,6 @@ open class BaseFragment(): Fragment(){
         get(){ return activity as MainActivity
         }
 
-    fun setToolbarTitle(toolbar: Toolbar, title: String){
-        toolbar.title = title
-    }
-
-
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         isFragmentCreated = true

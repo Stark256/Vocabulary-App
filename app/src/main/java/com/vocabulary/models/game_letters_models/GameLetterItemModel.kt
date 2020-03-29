@@ -2,7 +2,7 @@ package com.vocabulary.models.game_letters_models
 
 class GameLetterItemModel(
     var type : GameLetterItemModelState,
-    var uniqueID: Int = -1,
+    var uniqueID: Long = -1L,
     var letter: String? = null,
     var isCorrect: Boolean = false
 )

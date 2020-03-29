@@ -1,5 +1,4 @@
 <resources>
-    <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
@@ -22,7 +21,6 @@
     <dimen name="button_icon_size">15dp</dimen>
     <dimen name="button_text_size">14sp</dimen>
 
-<!--    <dimen name="swipeable_view_difference">164dp</dimen>-->
     <dimen name="swipeable_view_height">106dp</dimen>
     <dimen name="swipeable_button_full_width">62dp</dimen>
     <dimen name="swipeable_button_zero_width">0dp</dimen>
@@ -35,11 +33,9 @@
     <dimen name="progress_square_view_card_margin">4dp</dimen>
     <dimen name="progress_square_view_root_size">120dp</dimen>
 
-<!--    <dimen name="game_letters_list_height_1_lines">36dp</dimen>-->
-<!--    <dimen name="game_letters_list_height_2_lines">72dp</dimen>-->
-<!--    <dimen name="game_letters_list_height_3_lines">108dp</dimen>-->
-<!--    <dimen name="game_letters_list_height_4_lines">144dp</dimen>-->
-<!--    <dimen name="game_letters_letter_size">24dp</dimen>-->
+    <dimen name="progress_square_view_card_size_small">12dp</dimen>
+    <dimen name="progress_square_view_card_margin_small">2dp</dimen>
+    <dimen name="progress_square_view_root_size_small">48dp</dimen>
 
     <dimen name="game_letters_list_height_1_lines">40dp</dimen>
     <dimen name="game_letters_list_height_2_lines">80dp</dimen>
@@ -51,4 +47,7 @@
 
     <dimen name="card_elevation_0">0dp</dimen>
     <dimen name="card_elevation_4">4dp</dimen>
+
+    <dimen name="ex_text_size_t">8sp</dimen>
+    <dimen name="ex_text_size">6sp</dimen>
 </resources>

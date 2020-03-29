@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/progress_square_view_root_size_small"
+    android:layout_height="@dimen/progress_square_view_root_size_small">
+
+    <View
+        android:id="@+id/view_marker_1"
+        android:layout_width="@dimen/progress_square_view_card_size_small"
+        android:layout_height="@dimen/progress_square_view_card_size_small"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@+id/view_marker_2"
+        android:layout_margin="@dimen/progress_square_view_card_margin_small"
+        android:visibility="invisible"/>
+
+    <View
+        android:id="@+id/view_marker_2"
+        android:layout_width="@dimen/progress_square_view_card_size_small"
+        android:layout_height="@dimen/progress_square_view_card_size_small"
+        android:layout_centerInParent="true"
+        android:layout_margin="@dimen/progress_square_view_card_margin_small"
+        android:visibility="invisible"/>
+
+    <View
+        android:id="@+id/view_marker_3"
+        android:layout_width="@dimen/progress_square_view_card_size_small"
+        android:layout_height="@dimen/progress_square_view_card_size_small"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/view_marker_2"
+        android:layout_margin="@dimen/progress_square_view_card_margin_small"
+        android:visibility="invisible"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_1"
+        android:layout_width="@dimen/progress_square_view_card_size_small"
+        android:layout_height="@dimen/progress_square_view_card_size_small"
+        app:cardCornerRadius="4dp"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_2"
+        android:layout_width="@dimen/progress_square_view_card_size_small"
+        android:layout_height="@dimen/progress_square_view_card_size_small"
+        app:cardCornerRadius="4dp"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_3"
+        android:layout_width="@dimen/progress_square_view_card_size_small"
+        android:layout_height="@dimen/progress_square_view_card_size_small"
+        app:cardCornerRadius="4dp"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_4"
+        android:layout_width="@dimen/progress_square_view_card_size_small"
+        android:layout_height="@dimen/progress_square_view_card_size_small"
+        app:cardCornerRadius="4dp"/>
+
+</RelativeLayout>

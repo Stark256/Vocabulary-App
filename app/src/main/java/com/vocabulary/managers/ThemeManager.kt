@@ -23,39 +23,46 @@ class ThemeManager {
 
     fun getThemes() : ArrayList<ThemeColorModel> = arrayListOf(
         ThemeColorModel(
-            R.string.theme_ocean,
-            CustomTheme.THEME_OCEAN,
-            colorRes = R.color.theme_ocean_accent
-        ),
-        ThemeColorModel(
             R.string.theme_sunrise,
             CustomTheme.THEME_SUNRISE,
-            colorRes = R.color.theme_sunrise_accent
+//            colorRes = R.color.theme_sunrise_accent,
+            drawableRes = R.drawable.background_gradient_sunrise_left
         ),
         ThemeColorModel(
             R.string.theme_sundown,
             CustomTheme.THEME_SUNDOWN,
-            colorRes = R.color.theme_sundown_accent
+//            colorRes = R.color.theme_sundown_accent,
+            drawableRes = R.drawable.background_gradient_sundown_left
+        ),
+        ThemeColorModel(
+            R.string.theme_ocean,
+            CustomTheme.THEME_OCEAN,
+//            colorRes = R.color.theme_ocean_accent,
+            drawableRes = R.drawable.background_gradient_ocean_left
         ),
         ThemeColorModel(
             R.string.theme_grape,
             CustomTheme.THEME_GRAPE,
-            colorRes = R.color.theme_grape_accent
+//            colorRes = R.color.theme_grape_accent,
+            drawableRes = R.drawable.background_gradient_grape_left
         ),
         ThemeColorModel(
             R.string.theme_razz,
             CustomTheme.THEME_RAZZ,
-            colorRes = R.color.theme_razz_accent
+//            colorRes = R.color.theme_razz_accent,
+            drawableRes = R.drawable.background_gradient_razz_left
         ),
         ThemeColorModel(
             R.string.theme_autumn,
             CustomTheme.THEME_AUTUMN,
-            colorRes = R.color.theme_autumn_accent
+//            colorRes = R.color.theme_autumn_accent,
+            drawableRes = R.drawable.background_gradient_autumn_left
         ),
         ThemeColorModel(
             R.string.theme_spring,
             CustomTheme.THEME_SPRING,
-            colorRes = R.color.theme_spring_accent
+//            colorRes = R.color.theme_spring_accent,
+            drawableRes = R.drawable.background_gradient_spring_left
         )
 
     )
@@ -69,7 +76,7 @@ class ThemeManager {
             CustomTheme.THEME_GRAPE.value -> this.currentTheme = CustomTheme.THEME_GRAPE
             CustomTheme.THEME_AUTUMN.value -> this.currentTheme = CustomTheme.THEME_AUTUMN
             CustomTheme.THEME_SPRING.value -> this.currentTheme = CustomTheme.THEME_SPRING
-            else -> this.currentTheme = CustomTheme.THEME_OCEAN
+            else -> this.currentTheme = CustomTheme.THEME_SUNRISE
         }
     }
 
@@ -91,7 +98,7 @@ class ThemeManager {
             CustomTheme.THEME_GRAPE -> activity.setTheme(R.style.Theme_Custom_Grape)
             CustomTheme.THEME_AUTUMN -> activity.setTheme(R.style.Theme_Custom_Autumn)
             CustomTheme.THEME_SPRING -> activity.setTheme(R.style.Theme_Custom_Spring)
-            else -> activity.setTheme(R.style.Theme_Custom_Ocean)
+            else -> activity.setTheme(R.style.Theme_Custom_Sunrise)
         }
     }
 
@@ -104,7 +111,7 @@ class ThemeManager {
             CustomTheme.THEME_GRAPE -> ContextCompat.getColor(context, R.color.theme_grape_accent)
             CustomTheme.THEME_AUTUMN -> ContextCompat.getColor(context, R.color.theme_autumn_accent)
             CustomTheme.THEME_SPRING -> ContextCompat.getColor(context, R.color.theme_spring_accent)
-            else -> ContextCompat.getColor(context, R.color.theme_ocean_accent)
+            else -> ContextCompat.getColor(context, R.color.theme_sunrise_accent)
         }
     }
 
@@ -117,7 +124,7 @@ class ThemeManager {
             CustomTheme.THEME_GRAPE -> ContextCompat.getColor(context, R.color.theme_grape_accent_half)
             CustomTheme.THEME_AUTUMN -> ContextCompat.getColor(context, R.color.theme_autumn_accent_half)
             CustomTheme.THEME_SPRING -> ContextCompat.getColor(context, R.color.theme_spring_accent_half)
-            else -> ContextCompat.getColor(context, R.color.theme_ocean_accent_half)
+            else -> ContextCompat.getColor(context, R.color.theme_sunrise_accent_half)
         }
     }
 
@@ -130,7 +137,7 @@ class ThemeManager {
             CustomTheme.THEME_GRAPE -> ContextCompat.getColor(context, R.color.theme_grape_gradient_1)
             CustomTheme.THEME_AUTUMN -> ContextCompat.getColor(context, R.color.theme_autumn_gradient_1)
             CustomTheme.THEME_SPRING -> ContextCompat.getColor(context, R.color.theme_spring_gradient_1)
-            else -> ContextCompat.getColor(context, R.color.theme_ocean_gradient_1)
+            else -> ContextCompat.getColor(context, R.color.theme_sunrise_gradient_1)
         }
     }
 
@@ -143,7 +150,7 @@ class ThemeManager {
             CustomTheme.THEME_GRAPE -> ContextCompat.getColor(context, R.color.theme_grape_gradient_2)
             CustomTheme.THEME_AUTUMN -> ContextCompat.getColor(context, R.color.theme_autumn_gradient_2)
             CustomTheme.THEME_SPRING -> ContextCompat.getColor(context, R.color.theme_spring_gradient_2)
-            else -> ContextCompat.getColor(context, R.color.theme_ocean_gradient_2)
+            else -> ContextCompat.getColor(context, R.color.theme_sunrise_gradient_2)
         }
     }
 
@@ -156,7 +163,7 @@ class ThemeManager {
             CustomTheme.THEME_GRAPE -> ContextCompat.getColor(context, R.color.theme_grape_gradient_3)
             CustomTheme.THEME_AUTUMN -> ContextCompat.getColor(context, R.color.theme_autumn_gradient_3)
             CustomTheme.THEME_SPRING -> ContextCompat.getColor(context, R.color.theme_spring_gradient_3)
-            else -> ContextCompat.getColor(context, R.color.theme_ocean_gradient_3)
+            else -> ContextCompat.getColor(context, R.color.theme_sunrise_gradient_3)
         }
     }
 
@@ -169,7 +176,7 @@ class ThemeManager {
             CustomTheme.THEME_GRAPE -> ContextCompat.getColor(context, R.color.theme_grape_gradient_3)
             CustomTheme.THEME_AUTUMN -> ContextCompat.getColor(context, R.color.theme_autumn_gradient_3)
             CustomTheme.THEME_SPRING -> ContextCompat.getColor(context, R.color.theme_spring_gradient_3)
-            else -> ContextCompat.getColor(context, R.color.theme_ocean_gradient_3)
+            else -> ContextCompat.getColor(context, R.color.theme_sunrise_gradient_3)
         }
     }
 
@@ -236,12 +243,10 @@ class ThemeManager {
 
     // -------------------
     fun changeButtonTextColorToAccent(context: Context, button: MaterialButton) {
-//        button.setBackgroundColor(ContextCompat.getColor(context, R.color.white))
         button.setTextColor(getAccentColor(context))
     }
 
     fun changeButtonTextColorToGrey(context: Context, button: MaterialButton) {
-//        button.setBackgroundColor(ContextCompat.getColor(context, R.color.grey))
         button.setTextColor(ContextCompat.getColor(context, R.color.grey))
     }
 
@@ -327,7 +332,7 @@ class ThemeManager {
                          intArrayOf(android.R.attr.state_checked)
                      ), intArrayOf(
                          ContextCompat.getColor(context, R.color.grey),
-                         ContextCompat.getColor(context, R.color.theme_ocean_accent)
+                         ContextCompat.getColor(context, R.color.theme_sunrise_accent)
                      )
                  )
         }
@@ -359,7 +364,7 @@ class ThemeManager {
             CustomTheme.THEME_GRAPE -> ContextCompat.getDrawable(context, R.drawable.dialog_item_result_background_grape)
             CustomTheme.THEME_AUTUMN -> ContextCompat.getDrawable(context, R.drawable.dialog_item_result_background_autumn)
             CustomTheme.THEME_SPRING -> ContextCompat.getDrawable(context, R.drawable.dialog_item_result_background_spring)
-            else -> ContextCompat.getDrawable(context, R.drawable.dialog_item_result_background_ocean)
+            else -> ContextCompat.getDrawable(context, R.drawable.dialog_item_result_background_sunrise)
         }
     }
 

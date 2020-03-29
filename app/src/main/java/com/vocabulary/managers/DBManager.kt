@@ -13,12 +13,9 @@ import java.lang.Exception
 
 class DBManager(private val context: Context) {
 
-    private val TEXT_REGEX = "^[a-zA-Z ]+$"
     private var db: DBHelper
-//    private var context: Context
 
     init {
-//        this.context = Injector.application!!
         this.db = DBHelper(context)
     }
 
@@ -43,8 +40,6 @@ class DBManager(private val context: Context) {
 
         result.invoke(string)
     }
-
-//val id = db.insertWithOnConflict(TABLE_USER, null, values, SQLiteDatabase.CONFLICT_IGNORE)
 
     // ----------------------------------------
     // LANGUAGES
@@ -100,9 +95,6 @@ class DBManager(private val context: Context) {
             createTableWords(language.tableWords)
             createTableExerciseFails(language.tableExerciseFails)
             db.close()
-            // TODO add language in table
-            // TODO create words table
-            // TODO create tests table
             result.invoke(isValid)
         } else {
             result.invoke(isValid)
@@ -129,7 +121,6 @@ class DBManager(private val context: Context) {
     fun deleteLanguage(languageModel: LanguageModel, result: () -> Unit) {
         deleteTableWords(languageModel.tableWords)
         deleteTableExerciseFails(languageModel.tableExerciseFails)
-        // TODO delete test table
         db.writableDatabase.delete(
             LanguageModel.TABLE_NAME,
             "${LanguageModel.key_id} = ?",
@@ -307,20 +298,6 @@ class DBManager(private val context: Context) {
                 context.getString(com.vocabulary.R.string.message_word_exist)
             else null
         else context.getString(com.vocabulary.R.string.message_empty_field)
-
-
-
-//        return if(!newWord.isNullOrEmpty() && !newTranslation.isNullOrEmpty())
-//            return if(Pattern.compile(TEXT_REGEX).matcher(newWord).matches())
-//                return if(Pattern.compile(TEXT_REGEX).matcher(newTranslation).matches())
-//                    return if(isWordAlreadyExist(tableWords, newWord))
-//                        context.getString(com.vocabulary.R.string.message_word_exist)
-//                    else null
-//                 else // TODO return string error
-//            else      // TODO return string error
-//         else context.getString(com.vocabulary.R.string.message_empty_field)
-
-
     }
 
 

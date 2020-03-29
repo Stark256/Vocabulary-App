@@ -110,20 +110,8 @@ class SwipeableItemView  @JvmOverloads constructor(
                         this@SwipeableItemView.centralLine = inc_word.view_central_line_small
 
                     }
-//            SwipeableInnerViewType.VIEW_GAME -> LayoutInflater.from(context).inflate(R.layout.view_swipeable_language, this, true)
-//            SwipeableInnerViewType.VIEW_CATEGORY -> LayoutInflater.from(context).inflate(R.layout.view_swipeable_language, this, true)
-
         }
 
-//        this.cardView?.setOnTouchListener(object : OnSwipeTouchListener(context) {
-//            override fun onSwipeRight() {
-//                if(!isSwiping) { closeView() }
-//            }
-//
-//            override fun onSwipeLeft() {
-//                if(!isSwiping) { openView() }
-//            }
-//        })
     }
 
     fun initLanguageView() {
@@ -168,18 +156,8 @@ class SwipeableItemView  @JvmOverloads constructor(
             this.textTranslationBig?.text = wordModel.translation
         }
 
-
-//        this.textWord?.text = wordModel.word
-//        this.textTranslation?.text = wordModel.translation
-        // TODO
-//        this.checkView?.setOnClickListener { wordListener.onViewPressed(wordModel) }
         this.cardEdit?.setOnClickListener { wordListener.onEditPressed(wordModel) }
         this.cardDelete?.setOnClickListener { wordListener.onDeletePressed(wordModel) }
-    }
-
-    fun initGameView() {
-//        this.type = SwipeableInnerViewType.VIEW_GAME
-        // TODO
     }
 
     private fun doOnOpeningStart() {
@@ -246,8 +224,6 @@ class SwipeableItemView  @JvmOverloads constructor(
                 })
 
             }
-
-
         }
     }
 
@@ -335,8 +311,7 @@ class SwipeableItemView  @JvmOverloads constructor(
 
     enum class SwipeableInnerViewType {
         VIEW_LANGUAGE,
-        VIEW_WORD,
-//        VIEW_GAME
+        VIEW_WORD
     }
 
 }

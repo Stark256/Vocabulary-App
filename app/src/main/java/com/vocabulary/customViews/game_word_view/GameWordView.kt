@@ -76,7 +76,6 @@ class GameWordView @JvmOverloads constructor(
         when(state) {
             GameWordsViewState.STATE_LOADING -> {
                 progressBar?.visibility = View.VISIBLE
-//                progressBar?.start()
                 buttonStart?.visibility = View.GONE
             }
             GameWordsViewState.STATE_READY -> {

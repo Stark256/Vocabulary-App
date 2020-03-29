@@ -16,7 +16,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        style="?attr/background_gradient">
+        style="?attr/background_gradient_left">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
@@ -108,18 +108,6 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             style="?attr/progress_bar"/>
-
-<!--        <com.google.android.material.bottomnavigation.BottomNavigationView-->
-<!--            android:id="@+id/bnv_words"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:background="?android:attr/windowBackground"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintLeft_toLeftOf="parent"-->
-<!--            app:layout_constraintRight_toRightOf="parent"-->
-<!--            app:menu="@menu/bottom_nav_menu"-->
-<!--            style="?attr/bottom_navigation"-->
-<!--            android:layout_alignParentBottom="true"/>-->
 
     </RelativeLayout>
 

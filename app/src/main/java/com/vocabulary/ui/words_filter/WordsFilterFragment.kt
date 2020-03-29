@@ -27,7 +27,6 @@ class WordsFilterFragment : Fragment(){
         this.adapter = WordsFilterAdapter()
         rv_letters.adapter = adapter
         rv_letters.layoutManager = GridLayoutManager(context, 5)
-//        adapter.replaceAll(filters)
 
         btn_apply.setOnClickListener {
             listener.onApplyPressed(this.ssv_words_filter.getSelectedSortSett(), this.filters)

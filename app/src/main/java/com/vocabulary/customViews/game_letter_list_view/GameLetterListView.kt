@@ -16,6 +16,7 @@ import com.vocabulary.R
 import com.vocabulary.managers.Injector
 import com.vocabulary.models.game_letters_models.GameLetterItemModel
 import com.vocabulary.models.game_letters_models.GameLetterItemModelState
+import com.vocabulary.ui.game.game_letters.GameLetterListViewAdapter
 import kotlinx.android.synthetic.main.item_game_letter.view.*
 import kotlinx.android.synthetic.main.view_game_letter_list.view.*
 
@@ -45,7 +46,6 @@ class GameLetterListView @JvmOverloads constructor(
 
         this.recyclerViewLetters = v.rv_game_letter_list
 
-        // TODO init adapter
         this.adapter = GameLetterListViewAdapter(
             object : GameLetterListViewAdapter.GameLetterAdapterSelectListener {
                 override fun onLetterPressed(position: Int) {
@@ -57,7 +57,9 @@ class GameLetterListView @JvmOverloads constructor(
         this.recyclerViewLetters?.layoutManager = GridLayoutManager(context, 8)
     }
 
-
+    fun disableButtons(arr: ArrayList<Long>) {
+        adapter.disableButtons(arr)
+    }
 
     fun initViewGuessItems(arr: ArrayList<GameLetterItemModel>,
                            listener: GameLetterListViewSelectListener) {
@@ -83,28 +85,23 @@ class GameLetterListView @JvmOverloads constructor(
         generateCheckItems(size)
     }
 
-    fun setItemGuess(letter: String?, uniqueID: Int, position: Int, fromCheck: Boolean) {
+    fun setItemGuess(letter: String?, uniqueID: Long, position: Int, fromCheck: Boolean) {
         if(!isResultShown) {
             if (fromCheck) {
-                // TODO find by letter and make visible
                 val letterModel = letterArrays.first { i -> i.uniqueID == uniqueID }
                 letterModel.type = GameLetterItemModelState.GS_LETTER
                 adapter.replaceAll(letterArrays)
             } else {
-                // TODO set invisible for position
                 val letterModel = letterArrays[position]
                 letterModel.type = GameLetterItemModelState.GS_INVISIBLE
                 adapter.replaceAll(letterArrays)
             }
         }
-
     }
 
-    fun setItemCheck(letter: String?, uniqueID: Int, position: Int, fromGuess: Boolean) {
+    fun setItemCheck(letter: String?, uniqueID: Long, position: Int, fromGuess: Boolean) {
         if(!isResultShown) {
             if (fromGuess) {
-                // TODO set letter for cusros position
-
                 val letterModel = letterArrays[cursorIndex]
                 letterModel.letter = letter
                 letterModel.uniqueID = uniqueID
@@ -113,7 +110,6 @@ class GameLetterListView @JvmOverloads constructor(
                 calculateCursorPosition()
                 adapter.replaceAll(letterArrays)
             } else {
-                // TODO make empty by position
                 val letterModel = letterArrays[position]
                 letterModel.type = GameLetterItemModelState.GS_EMPTY
 
@@ -240,7 +236,7 @@ class GameLetterListView @JvmOverloads constructor(
     }
 
     interface GameLetterListViewSelectListener {
-        fun onLetterItemPressed(position: Int, letter: String?, uniqueID: Int)
+        fun onLetterItemPressed(position: Int, letter: String?, uniqueID: Long)
         fun onCheckListIsFull(isFull: Boolean)
     }
 
@@ -250,143 +246,4 @@ class GameLetterListView @JvmOverloads constructor(
     }
 }
 
-class GameLetterListViewAdapter(
-    private val listener: GameLetterAdapterSelectListener) : RecyclerView
-.Adapter<GameLetterListViewAdapter.GameLetterListViewHolder>(){
-
-    private val dataArr = ArrayList<GameLetterItemModel>()
-    private lateinit var context: Context
-    private var showResult = false
-    private var reverseResult = false
-
-    fun replaceAll(arr: ArrayList<GameLetterItemModel>) {
-        this.dataArr.clear()
-        this.dataArr.addAll(arr)
-        notifyDataSetChanged()
-    }
-
-    fun reinit() {
-        showResult = false
-        reverseResult = false
-    }
-
-    fun showResult(dontKnow: Boolean = false) {
-        this.showResult = true
-        if(dontKnow) {
-            reverseResult = true
-        }
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameLetterListViewHolder {
-        this.context = parent.context
-        return GameLetterListViewHolder(
-            LayoutInflater.from(context).inflate(R.layout.item_game_letter, parent, false)
-        )
-    }
-
-    override fun getItemCount(): Int {
-        return dataArr.size
-    }
-
-    override fun onBindViewHolder(holder: GameLetterListViewHolder, position: Int) {
-        val item = dataArr[position]
-
-        if(!showResult) {
-            when(item.type) {
-                GameLetterItemModelState.GS_EMPTY -> holder.makeEmpty()
-                GameLetterItemModelState.GS_CURSOR -> holder.makeCursor()
-                GameLetterItemModelState.GS_LETTER -> holder.makeLetter(item.letter)
-                GameLetterItemModelState.GS_INVISIBLE-> holder.makeInvisible()
-            }
-        } else {
-            if(reverseResult) {
-                holder.showResultReverse(item.isCorrect, item.letter)
-            } else {
-                holder.showResult(item.isCorrect, item.letter)
-            }
-        }
-
-        holder.itemView.setOnClickListener {
-            if(!showResult && item.type == GameLetterItemModelState.GS_LETTER) {
-                listener.onLetterPressed(position)
-            }
-        }
-    }
-
-    inner class  GameLetterListViewHolder(v: View)
-        : RecyclerView.ViewHolder(v) {
-
-        private val elevation0 = context.resources.getDimension(R.dimen.card_elevation_0)
-        private val elevation4 = context.resources.getDimension(R.dimen.card_elevation_4)
-
-        val textLetter: TextView = v.tv_game_letter
-        val cardLetter: CardView = v.cv_game_letter
-        val cardBack: RelativeLayout = v.rl_game_letter_back
-
-        fun showResultReverse(isItemCorrect: Boolean, letter: String?) {
-            textLetter.visibility = View.VISIBLE
-            textLetter.text = letter
-            Injector.themeManager.changeTextColorToWhite(context, textLetter)
-            cardBack.background = ColorDrawable(ContextCompat.getColor(context, R.color.transparent))
-            if(isItemCorrect) {
-                cardLetter.cardElevation = elevation4
-                Injector.themeManager.changeCardBackgroundColorToGrey(context, cardLetter)
-            } else {
-                cardLetter.cardElevation = elevation4
-                Injector.themeManager.changeCardBackgroundColorToAccent(context, cardLetter)
-            }
-        }
-
-        fun showResult(isItemCorrect: Boolean, letter: String?) {
-            textLetter.visibility = View.VISIBLE
-            textLetter.text = letter
-            Injector.themeManager.changeTextColorToWhite(context, textLetter)
-            cardBack.background = ColorDrawable(ContextCompat.getColor(context, R.color.transparent))
-            if(isItemCorrect) {
-                cardLetter.cardElevation = elevation4
-                Injector.themeManager.changeCardBackgroundColorToAccent(context, cardLetter)
-            } else {
-                cardLetter.cardElevation = elevation4
-                Injector.themeManager.changeCardBackgroundColorToGrey(context, cardLetter)
-            }
-        }
-
-        fun makeEmpty() {
-            textLetter.visibility = View.GONE
-            cardLetter.cardElevation = elevation4
-            Injector.themeManager.changeCardBackgroundColorToGrey(context, cardLetter)
-            cardBack.background = ContextCompat.getDrawable(context, R.drawable.ic_clear)
-
-        }
-
-        fun makeInvisible() {
-            textLetter.visibility = View.GONE
-            cardLetter.cardElevation = elevation0
-            Injector.themeManager.changeCardBackgroundColorToTransparent(context, cardLetter)
-            cardBack.background = ColorDrawable(ContextCompat.getColor(context, R.color.transparent))
-        }
-
-        fun makeLetter(letter: String?) {
-            textLetter.visibility = View.VISIBLE
-            cardLetter.cardElevation = elevation4
-            letter?.let { textLetter.text = it }
-            Injector.themeManager.changeTextColorToAccent(context, textLetter)
-            Injector.themeManager.changeCardBackgroundColorToWhite(context, cardLetter)
-            cardBack.background = ColorDrawable(ContextCompat.getColor(context, R.color.transparent))
-        }
-
-        fun makeCursor() {
-            textLetter.visibility = View.GONE
-            cardLetter.cardElevation = elevation4
-            Injector.themeManager.changeCardBackgroundColorToAccent(context, cardLetter)
-            cardBack.background = ContextCompat.getDrawable(context, R.drawable.ic_center_focus)
-        }
-
-
-    }
-
-    interface GameLetterAdapterSelectListener {
-        fun onLetterPressed(position: Int)
-    }
-}
 

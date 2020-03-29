@@ -12,13 +12,10 @@ import android.widget.TextView
 import androidx.core.animation.doOnEnd
 import androidx.core.animation.doOnStart
 import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.vocabulary.R
 import com.vocabulary.managers.Injector
 import com.vocabulary.models.safeLet
 import kotlinx.android.synthetic.main.view_sort_sett.view.*
-import org.w3c.dom.Text
 
 class SortSettView @JvmOverloads constructor(
     context: Context,

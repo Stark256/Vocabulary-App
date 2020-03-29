@@ -9,20 +9,17 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.vocabulary.R
-import com.vocabulary.customViews.game_letter_list_view.GameLetterListView
 import com.vocabulary.managers.Injector
-import com.vocabulary.models.game_letters_models.GameLetterItemModel
-import com.vocabulary.models.game_letters_models.GameLetterItemModelState
 import com.vocabulary.models.theme_models.ThemeColorModel
 import com.vocabulary.ui.main.MainActivity
 import com.vocabulary.ui.common.BaseFragment
 import kotlinx.android.synthetic.main.fragment_settings.*
+import kotlinx.android.synthetic.main.layout_theme_screens.*
 
 class SettingsFragment : BaseFragment() {
 
-    private lateinit var settingsViewModel: SettingsViewModel
     private lateinit var themeAdapter: ThemesColorAdapter
-
+    private var isInitiated = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_settings, container, false)
@@ -32,22 +29,14 @@ class SettingsFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        settingsViewModel = ViewModelProviders.of(this).get(SettingsViewModel::class.java)
-
-        settingsViewModel.text.observe(this, Observer {
-
-        })
-
         this.themeAdapter = ThemesColorAdapter(Injector.themeManager.currentTheme, Injector.themeManager.getThemes(),
             object : ThemesColorAdapter.ThemeColorClickListener {
-                override fun colorPressed(newTheme: ThemeColorModel) {
-                    Injector.themeManager.setTheme(newTheme.theme, activity as MainActivity)
+                override fun colorPressed(theme: ThemeColorModel) {
+                    Injector.themeManager.setTheme(theme.theme, activity as MainActivity)
                 }
             })
         rv_themes.layoutManager = LinearLayoutManager(contextMain, RecyclerView.HORIZONTAL, false)
         rv_themes.adapter = themeAdapter
-
-        psv_settings.isTextLoadingVisible = false
     }
 
     override fun onPause() {
@@ -55,4 +44,12 @@ class SettingsFragment : BaseFragment() {
         psv_settings.stop()
     }
 
+    override fun onResume() {
+        super.onResume()
+      if(isInitiated) {
+          psv_settings.start()
+      } else {
+          isInitiated = true
+      }
+    }
 }

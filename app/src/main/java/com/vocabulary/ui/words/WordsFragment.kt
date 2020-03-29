@@ -52,6 +52,7 @@ class WordsFragment : BaseFragment(),
     private var isSearchEnabled = false
     private var isAddEnabled = false
     private var isFilterEnabled = false
+    private var isDialogOpened = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_words, container, false)
@@ -242,7 +243,6 @@ class WordsFragment : BaseFragment(),
     }
 
     private fun searchPressed() {
-        // TODO search words
         if(tiet_search?.text?.isNotBlank() ?: false) {
             viewModel.searchWords(tiet_search.text.toString())
         }
@@ -289,7 +289,7 @@ class WordsFragment : BaseFragment(),
         updateConstrains()
     }
 
-    private fun hideFilter() {
+    fun hideFilter() {
         isActive = false
         contextMain.hideBackView()
         updateConstrains()
@@ -375,24 +375,31 @@ class WordsFragment : BaseFragment(),
     }
 
     private fun showWordDialog(wordModel: WordModel? = null) {
-        val dialog = WordDialog.newInstance(
-            word = wordModel?.word,
-            translation = wordModel?.translation,
-            listener = object : WordDialog.WordsDialogListener {
-                override fun onOKPressed(
-                    word: String,
-                    translation: String,
-                    result: (String?) -> Unit
-                ) {
-                    viewModel.addEditWord(
-                        wordModel = wordModel,
-                        newWord = word,
-                        newTranslation =  translation
-                    ) { res ->
-                        result.invoke(res)
+        if(!isDialogOpened) {
+            val dialog = WordDialog.newInstance(
+                word = wordModel?.word,
+                translation = wordModel?.translation,
+                listener = object : WordDialog.WordsDialogListener {
+                    override fun onOKPressed(
+                        word: String,
+                        translation: String,
+                        result: (String?) -> Unit
+                    ) {
+                        viewModel.addEditWord(
+                            wordModel = wordModel,
+                            newWord = word,
+                            newTranslation = translation
+                        ) { res ->
+                            result.invoke(res)
+                        }
                     }
-                }
-            })
-        dialog.show(contextMain.supportFragmentManager, dialog.tag)
+
+                    override fun onClose() {
+                        isDialogOpened = false
+                    }
+                })
+            dialog.show(contextMain.supportFragmentManager, dialog.tag)
+            isDialogOpened = true
+        }
     }
 }

@@ -19,6 +19,7 @@ class LanguageActivity : AppCompatActivity(), SwipeLanguageClickListener {
 
     private lateinit var viewModel: LanguageViewModel
     private lateinit var adapter: LanguageAdapter
+    private var isDialogOpened = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -101,13 +102,30 @@ class LanguageActivity : AppCompatActivity(), SwipeLanguageClickListener {
     }
 
     private fun showLanguageDialog(languageModel: LanguageModel? = null) {
-        val dialog = LanguageDialog.newInstance(language = languageModel?.name, listener = object : LanguageDialog.LanguageDialogListener {
-            override fun onOKPressed(title: String, result: (String?) -> Unit) {
-                viewModel.addEditLanguage(languageModel = languageModel, newLanguage = title){ res ->
-                    result.invoke(res)
-                }
-            }
-        })
-        dialog.show(supportFragmentManager, dialog.tag)
+        if(!isDialogOpened) {
+            val dialog = LanguageDialog.newInstance(
+                language = languageModel?.name,
+                listener = object : LanguageDialog.LanguageDialogListener {
+                    override fun onOKPressed(title: String, result: (String?) -> Unit) {
+                        viewModel.addEditLanguage(
+                            languageModel = languageModel,
+                            newLanguage = title
+                        ) { res ->
+                            result.invoke(res)
+                        }
+                    }
+
+                    override fun onClose() {
+                        isDialogOpened = false
+                    }
+                })
+            dialog.show(supportFragmentManager, dialog.tag)
+            isDialogOpened = true
+        }
+    }
+
+    override fun onBackPressed() {
+        viewModel.checkIfNeedUpdate()
+        finish()
     }
 }

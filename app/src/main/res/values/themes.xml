@@ -14,6 +14,9 @@
         <item name="badge_filter_indicator">@style/badge_filter_indicator_ocean</item>
         <item name="background_filter_gradient">@style/background_filter_gradient_ocean</item>
         <item name="background_gradient">@style/background_gradient_ocean</item>
+        <item name="background_gradient_left">@style/background_gradient_ocean_left</item>
+        <item name="background_gradient_center">@style/background_gradient_ocean_center</item>
+        <item name="background_gradient_right">@style/background_gradient_ocean_right</item>
         <item name="background_accent">@style/background_accent_ocean</item>
         <item name="bottom_navigation">@style/bottom_navigation_ocean</item>
         <item name="filter_view_gradient">@style/filter_view_gradient_ocean</item>
@@ -21,7 +24,6 @@
         <item name="ic_add">@style/ic_add_ocean</item>
         <item name="toolbar_background">@style/toolbar_background_ocean</item>
         <item name="text_accent">@style/text_accent_ocean</item>
-        <item name="text_default">@style/text_default_ocean</item>
         <item name="number_picker">@style/number_picker_ocean</item>
     </style>
 
@@ -37,6 +39,9 @@
         <item name="badge_filter_indicator">@style/badge_filter_indicator_grape</item>
         <item name="background_filter_gradient">@style/background_filter_gradient_grape</item>
         <item name="background_gradient">@style/background_gradient_grape</item>
+        <item name="background_gradient_left">@style/background_gradient_grape_left</item>
+        <item name="background_gradient_center">@style/background_gradient_grape_center</item>
+        <item name="background_gradient_right">@style/background_gradient_grape_right</item>
         <item name="background_accent">@style/background_accent_grape</item>
         <item name="bottom_navigation">@style/bottom_navigation_grape</item>
         <item name="filter_view_gradient">@style/filter_view_gradient_grape</item>
@@ -44,7 +49,6 @@
         <item name="ic_add">@style/ic_add_grape</item>
         <item name="toolbar_background">@style/toolbar_background_grape</item>
         <item name="text_accent">@style/text_accent_grape</item>
-        <item name="text_default">@style/text_default_grape</item>
         <item name="number_picker">@style/number_picker_grape</item>
     </style>
 
@@ -60,6 +64,9 @@
         <item name="badge_filter_indicator">@style/badge_filter_indicator_razz</item>
         <item name="background_filter_gradient">@style/background_filter_gradient_razz</item>
         <item name="background_gradient">@style/background_gradient_razz</item>
+        <item name="background_gradient_left">@style/background_gradient_razz_left</item>
+        <item name="background_gradient_center">@style/background_gradient_razz_center</item>
+        <item name="background_gradient_right">@style/background_gradient_razz_right</item>
         <item name="background_accent">@style/background_accent_razz</item>
         <item name="bottom_navigation">@style/bottom_navigation_razz</item>
         <item name="filter_view_gradient">@style/filter_view_gradient_razz</item>
@@ -67,7 +74,6 @@
         <item name="ic_add">@style/ic_add_razz</item>
         <item name="toolbar_background">@style/toolbar_background_razz</item>
         <item name="text_accent">@style/text_accent_razz</item>
-        <item name="text_default">@style/text_default_razz</item>
         <item name="number_picker">@style/number_picker_razz</item>
     </style>
 
@@ -83,6 +89,9 @@
         <item name="badge_filter_indicator">@style/badge_filter_indicator_sunrise</item>
         <item name="background_filter_gradient">@style/background_filter_gradient_sunrise</item>
         <item name="background_gradient">@style/background_gradient_sunrise</item>
+        <item name="background_gradient_left">@style/background_gradient_sunrise_left</item>
+        <item name="background_gradient_center">@style/background_gradient_sunrise_center</item>
+        <item name="background_gradient_right">@style/background_gradient_sunrise_right</item>
         <item name="background_accent">@style/background_accent_sunrise</item>
         <item name="bottom_navigation">@style/bottom_navigation_sunrise</item>
         <item name="filter_view_gradient">@style/filter_view_gradient_sunrise</item>
@@ -90,7 +99,6 @@
         <item name="ic_add">@style/ic_add_sunrise</item>
         <item name="toolbar_background">@style/toolbar_background_sunrise</item>
         <item name="text_accent">@style/text_accent_sunrise</item>
-        <item name="text_default">@style/text_default_sunrise</item>
         <item name="number_picker">@style/number_picker_sunrise</item>
     </style>
 
@@ -106,6 +114,9 @@
         <item name="badge_filter_indicator">@style/badge_filter_indicator_sundown</item>
         <item name="background_filter_gradient">@style/background_filter_gradient_sundown</item>
         <item name="background_gradient">@style/background_gradient_sundown</item>
+        <item name="background_gradient_left">@style/background_gradient_sundown_left</item>
+        <item name="background_gradient_center">@style/background_gradient_sundown_center</item>
+        <item name="background_gradient_right">@style/background_gradient_sundown_right</item>
         <item name="background_accent">@style/background_accent_sundown</item>
         <item name="bottom_navigation">@style/bottom_navigation_sundown</item>
         <item name="filter_view_gradient">@style/filter_view_gradient_sundown</item>
@@ -113,7 +124,6 @@
         <item name="ic_add">@style/ic_add_sundown</item>
         <item name="toolbar_background">@style/toolbar_background_sundown</item>
         <item name="text_accent">@style/text_accent_sundown</item>
-        <item name="text_default">@style/text_default_sundown</item>
         <item name="number_picker">@style/number_picker_sundown</item>
     </style>
 
@@ -129,6 +139,9 @@
         <item name="badge_filter_indicator">@style/badge_filter_indicator_autumn</item>
         <item name="background_filter_gradient">@style/background_filter_gradient_autumn</item>
         <item name="background_gradient">@style/background_gradient_autumn</item>
+        <item name="background_gradient_left">@style/background_gradient_autumn_left</item>
+        <item name="background_gradient_center">@style/background_gradient_autumn_center</item>
+        <item name="background_gradient_right">@style/background_gradient_autumn_right</item>
         <item name="background_accent">@style/background_accent_autumn</item>
         <item name="bottom_navigation">@style/bottom_navigation_autumn</item>
         <item name="filter_view_gradient">@style/filter_view_gradient_autumn</item>
@@ -136,7 +149,6 @@
         <item name="ic_add">@style/ic_add_autumn</item>
         <item name="toolbar_background">@style/toolbar_background_autumn</item>
         <item name="text_accent">@style/text_accent_autumn</item>
-        <item name="text_default">@style/text_default_autumn</item>
         <item name="number_picker">@style/number_picker_autumn</item>
     </style>
 
@@ -152,6 +164,9 @@
         <item name="badge_filter_indicator">@style/badge_filter_indicator_spring</item>
         <item name="background_filter_gradient">@style/background_filter_gradient_spring</item>
         <item name="background_gradient">@style/background_gradient_spring</item>
+        <item name="background_gradient_left">@style/background_gradient_spring_left</item>
+        <item name="background_gradient_center">@style/background_gradient_spring_center</item>
+        <item name="background_gradient_right">@style/background_gradient_spring_right</item>
         <item name="background_accent">@style/background_accent_spring</item>
         <item name="bottom_navigation">@style/bottom_navigation_spring</item>
         <item name="filter_view_gradient">@style/filter_view_gradient_spring</item>
@@ -159,7 +174,6 @@
         <item name="ic_add">@style/ic_add_spring</item>
         <item name="toolbar_background">@style/toolbar_background_spring</item>
         <item name="text_accent">@style/text_accent_spring</item>
-        <item name="text_default">@style/text_default_spring</item>
         <item name="number_picker">@style/number_picker_spring</item>
     </style>
 

@@ -59,8 +59,6 @@ class WordsAdapter(val listener: SwipeWordClickListener) : RecyclerView.Adapter<
         val item = dataArr[position]
         when(item.getType()) {
             WordBaseItem.WordItemType.TYPE_WORD -> {
-//                (holder as WordViewHolder).word.text = (item as WordModel).word
-//                (holder as WordViewHolder).translate.text = (item as WordModel).translation
                 (holder as WordViewHolder).swipeableWord.setWordModel(position, (item as WordModel), listener)
             }
 
@@ -71,8 +69,6 @@ class WordsAdapter(val listener: SwipeWordClickListener) : RecyclerView.Adapter<
     }
 
     private class WordViewHolder(v: View) : SwipeableViewHolderInterface, RecyclerView.ViewHolder(v) {
-//        val word = v.tv_word
-//        val translate = v.tv_translate
         val swipeableWord = v.swipeable_view_word
 
         init {

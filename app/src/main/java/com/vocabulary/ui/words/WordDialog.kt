@@ -1,5 +1,6 @@
 package com.vocabulary.ui.words
 
+import android.content.DialogInterface
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import android.view.Window
 import android.view.inputmethod.EditorInfo
 import androidx.core.content.ContextCompat
 import com.vocabulary.R
+import com.vocabulary.managers.Injector
 import com.vocabulary.ui.common.BaseDialogFragment
 import kotlinx.android.synthetic.main.dialog_word.*
 
@@ -62,6 +64,8 @@ class WordDialog: BaseDialogFragment() {
         context?.let {
             et_word.requestFocus()
             showKeyboard(it)
+            Injector.themeManager.changeImageViewTintToAccent(it, iv_clear_word)
+            Injector.themeManager.changeImageViewTintToAccent(it, iv_clear_translation)
         }
 
         et_word.filters = getInputFilters()
@@ -74,9 +78,19 @@ class WordDialog: BaseDialogFragment() {
             false
         }
 
+
+        iv_clear_word?.setOnClickListener {
+            et_word?.text?.clear()
+        }
+
+        iv_clear_translation?.setOnClickListener {
+            et_translation?.text?.clear()
+        }
+
         btn_cancel.setOnClickListener {
             context?.let { closeKeyboard(it) }
             dismiss()
+            listener.onClose()
         }
 
         btn_ok.setOnClickListener {
@@ -112,10 +126,18 @@ class WordDialog: BaseDialogFragment() {
         } else {
             context?.let { closeKeyboard(it) }
             dismiss()
+            listener.onClose()
         }
     }
 
     interface WordsDialogListener {
         fun onOKPressed(word: String, translation: String, result: (String?) -> Unit)
+        fun onClose()
+    }
+
+    override fun onDismiss(dialog: DialogInterface) {
+        context?.let { closeKeyboard(it) }
+        super.onDismiss(dialog)
+        listener.onClose()
     }
 }

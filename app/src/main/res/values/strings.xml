@@ -100,4 +100,15 @@
     <string name="incorrect_word">Incorrect Word</string>
 
     <string name="exercise_results">Exercise Results</string>
+
+    <string name="ex_word_1">Word 1</string>
+    <string name="ex_word_2">Word 2</string>
+    <string name="ex_word_3">Word 3</string>
+    <string name="ex_word_4">Word 4</string>
+
+    <string name="ex_letter_a">A</string>
+    <string name="ex_letter_b">B</string>
+    <string name="ex_letter_c">C</string>
+    <string name="ex_letter_d">D</string>
+    <string name="ex_translation">Translation</string>
 </resources>

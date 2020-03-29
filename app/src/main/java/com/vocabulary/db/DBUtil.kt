@@ -1,7 +1,6 @@
 package com.vocabulary.db
 
 import android.content.Context
-import androidx.core.content.ContextCompat
 import com.vocabulary.R
 import java.util.*
 import kotlin.collections.ArrayList
@@ -23,8 +22,6 @@ object DBUtil {
             }
         }
 
-
-//        String.format(resources.getString(R.string.general_sort_param),text)
         return String.format(context.getString(R.string.query_create_table), tableName, fieldsString)
     }
 

@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/theme_blue">
+    style="?attr/background_gradient_right">
 
 
     <com.google.android.material.appbar.AppBarLayout
@@ -31,23 +31,7 @@
                 android:layout_marginEnd="16dp"
                 android:gravity="center">
 
-<!--                <ImageView-->
-<!--                    android:id="@+id/btn_back"-->
-<!--                    android:layout_width="30dp"-->
-<!--                    android:layout_height="30dp"-->
-<!--                    android:background="?selectableItemBackgroundBorderless"-->
-<!--                    android:padding="3dp"-->
-<!--                    android:src="@drawable/ic_arrow_back"-->
-<!--                    android:layout_alignParentStart="true"/>-->
 
-                <ImageView
-                    android:id="@+id/btn_add_language"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:background="?selectableItemBackgroundBorderless"
-                    android:padding="3dp"
-                    android:src="@drawable/ic_add"
-                    android:layout_alignParentEnd="true"/>
 
             </RelativeLayout>
 
@@ -67,34 +51,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layout_screens"
         android:orientation="horizontal"/>
-
-
-    <com.vocabulary.customViews.progress_square_view.ProgressSquareView
-        android:id="@+id/psv_settings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rv_themes" />
-
-
-
-
-
-
-
-
-<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
-<!--        android:id="@+id/bnv_settings"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:background="?android:attr/windowBackground"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintLeft_toLeftOf="parent"-->
-<!--        app:layout_constraintRight_toRightOf="parent"-->
-<!--        style="?attr/bottom_navigation"-->
-<!--        app:menu="@menu/bottom_nav_menu" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

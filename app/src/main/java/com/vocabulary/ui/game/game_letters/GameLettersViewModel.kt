@@ -2,7 +2,6 @@ package com.vocabulary.ui.game.game_letters
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.vocabulary.customViews.game_letter_view.GameLetterView
 import com.vocabulary.managers.Injector
 import com.vocabulary.models.ExerciseResult
 import com.vocabulary.models.GameResult
@@ -61,7 +60,7 @@ class GameLettersViewModel : ViewModel() {
                         countW.toString(),
                         null) { wordsList ->
 
-                        generateGamesList(ArrayList(), wordsList, countG)
+                        generateGamesList(ArrayList(), wordsList)
                     }
 
                 } else if(countW / 2 > countF) {
@@ -78,7 +77,7 @@ class GameLettersViewModel : ViewModel() {
                                 countW.minus(countF).toString(),
                                 wheneNotEqual) { wordList ->
 
-                                generateGamesList(failsWords, wordList, countG)
+                                generateGamesList(failsWords, wordList)
                             }
                         }
                     }
@@ -97,7 +96,7 @@ class GameLettersViewModel : ViewModel() {
                                 (countW / 2L).toString(),
                                 wheneNotEqual) { wordList ->
 
-                                generateGamesList(failsWords, wordList, countG)
+                                generateGamesList(failsWords, wordList)
                             }
                         }
                     }
@@ -122,8 +121,7 @@ class GameLettersViewModel : ViewModel() {
 
     private fun generateGamesList(
         failsArr: ArrayList<WordModel>,
-        wordsArr: ArrayList<WordModel>,
-        itemToGuess: Long) {
+        wordsArr: ArrayList<WordModel>) {
         val jointGameList = ArrayList<WordModel>()
         if(failsArr.isNotEmpty()) jointGameList.addAll(failsArr)
         if(wordsArr.isNotEmpty()) jointGameList.addAll(wordsArr)
@@ -131,7 +129,7 @@ class GameLettersViewModel : ViewModel() {
         for(word in jointGameList) {
 
             val correctLettersList = getCorrectLettersArr(word.word)
-            val guessLettersList = getGuessLettersArr(word.word, jointGameList)
+            val guessLettersList = getGuessLettersArr(word.word, jointGameList, correctLettersList)
 
             gamesList.add(
                 GameLettersModel(
@@ -150,11 +148,13 @@ class GameLettersViewModel : ViewModel() {
 
     private fun getGuessLettersArr(
         correctWord: String,
-        wordArr: ArrayList<WordModel>)
+        wordArr: ArrayList<WordModel>,
+        correctLetterArr: ArrayList<GameLetterItemModel>)
             : ArrayList<GameLetterItemModel> {
         val arrGuess = ArrayList<GameLetterItemModel>()
         var wordString = ""
-        wordString += correctWord
+//        wordString += correctWord
+        arrGuess.addAll(correctLetterArr)
         val lastGuesC: Int = (itemToGuess?.toInt() ?: correctWord.length) - correctWord.length
 
         for(index in 0..lastGuesC-1) {
@@ -164,8 +164,8 @@ class GameLettersViewModel : ViewModel() {
         val stringArr = wordString.toCharArray()
         for(index in 0..stringArr.size -1) {
             arrGuess.add(GameLetterItemModel(
-                GameLetterItemModelState.GS_LETTER, index,
-                stringArr[index].toString(), true))
+                GameLetterItemModelState.GS_LETTER, index.toLong() + correctLetterArr.size,
+                stringArr[index].toString(), false))
         }
         arrGuess.shuffle()
         return arrGuess
@@ -176,7 +176,7 @@ class GameLettersViewModel : ViewModel() {
         val stringArr = correctWord.toCharArray()
         for(index in 0..stringArr.size -1) {
             resultArr.add(GameLetterItemModel(
-                GameLetterItemModelState.GS_LETTER, index,
+                GameLetterItemModelState.GS_LETTER, index.toLong(),
                 stringArr[index].toString(), true))
         }
         return resultArr
@@ -192,8 +192,6 @@ class GameLettersViewModel : ViewModel() {
             if(wordsCount != null && wordsCount!!.toInt() == currentGame+1)
                 GameLettersButtonNextState.BS_FINISH
             else GameLettersButtonNextState.BS_NEXT
-        // TODO
-//        exerciseResult.setGameWordsResult(gamesList[currentGame].correctWord, selectedGameWordItem)
     }
 
     fun showCheck(isFull: Boolean) {
@@ -232,14 +230,36 @@ class GameLettersViewModel : ViewModel() {
         }
         showedTips.clear()
         buttonNextState.value = GameLettersButtonNextState.BS_NOT_ENABLED_CHECK
-//        selectedGameWordItem = null
         currentGame++
         game.value = gamesList[currentGame]
         screenTitle.value = "${currentGame+1} / ${gamesList.size}"
     }
 
     fun tipsPressed() {
-        // TODO
+        val gameItem = gamesList[currentGame]
+        val newShuffledList = gameItem.lettersToGuess.shuffled()
+        var addedCount = 0
+        for(shuffledItem in newShuffledList) {
+            var shouldAdd = true
+            if(!shuffledItem.isCorrect) {
+                for(tipsItem in showedTips) {
+                    if(tipsItem == shuffledItem.uniqueID) {
+                        shouldAdd = false
+                        break
+                    }
+                }
+            } else { shouldAdd = false }
+
+            if(shouldAdd) {
+                showedTips.add(shuffledItem.uniqueID)
+                addedCount++
+            }
+            if(addedCount == 2) { break }
+        }
+        showTipsButton = !( gameItem.lettersToGuess.size - gameItem.correctLetters.size == (itemToGuess ?: 0L).toInt())
+
+        tips.value = showedTips
+
     }
 
     enum class GameLettersButtonNextState {

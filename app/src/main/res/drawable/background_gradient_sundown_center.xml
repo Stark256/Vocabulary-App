@@ -4,7 +4,8 @@
 
     <gradient
         android:angle="270"
-        android:endColor="@color/half_blue"
-        android:startColor="@color/start_white" />
+        android:startColor="@color/theme_sundown_gradient_1"
+        android:centerColor="@color/theme_sundown_gradient_2"
+        android:endColor="@color/theme_sundown_gradient_3"/>
 
 </shape>

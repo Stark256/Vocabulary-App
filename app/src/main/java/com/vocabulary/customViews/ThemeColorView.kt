@@ -45,7 +45,6 @@ class ThemeColorView @JvmOverloads constructor(
     }
 
     fun setTheme(themeColorModel: ThemeColorModel) {
-//        .setCardBackgroundColor(ContextCompat.getColor(context, borderBackgroundColorRes))
 
         if(themeColorModel.colorRes != null) {
             this.themeColor?.setBackgroundColor(ContextCompat.getColor(context, themeColorModel.colorRes))

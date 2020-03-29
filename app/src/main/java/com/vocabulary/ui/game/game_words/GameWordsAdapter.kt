@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.vocabulary.R
 import com.vocabulary.customViews.game_word_button.GameWordButton
-import com.vocabulary.customViews.game_word_view.GameWordView
 import com.vocabulary.models.game_words_models.GameWordItemModel
 import com.vocabulary.models.getByModelID
 import kotlinx.android.synthetic.main.item_game_word.view.*
@@ -57,19 +56,12 @@ class GameWordsAdapter(private val clickResult: (GameWordItemModel?) -> Unit) :
             }
         } else {
             holder.gameWordView.makeInactive()
-//                if(selectedItemID != -1L && selectedItemID == item.modelID) {
-//                    clickResult.invoke(null)
-//                }
+
         }
 
         if(showResult) {
             holder.gameWordView.showResult()
         }
-//        else {
-//            holder.gameWordView.hideResult()
-//        }
-
-
     }
 
     class GameWordViewHolder(v: View) : RecyclerView.ViewHolder(v) {
