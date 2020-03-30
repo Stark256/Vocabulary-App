@@ -233,7 +233,9 @@ class DBManager(private val context: Context) {
         }
     }
 
-    fun deleteWord(wordModel: WordModel, result: () -> Unit) {
+    fun deleteWord(tableFails: String, wordModel: WordModel, result: () -> Unit) {
+        deleteExerciseFailListByWordIDs(tableFails,  arrayListOf(wordModel.id)) {}
+
         db.writableDatabase.delete(
             wordModel.tableName,
             "${WordModel.key_id} = ?",

@@ -259,9 +259,11 @@ class WordsViewModel : ViewModel() {
     }
 
     fun deleteWord(wordModel: WordModel, result: () -> Unit) {
-        Injector.dbManager.deleteWord(wordModel) {
-            result.invoke()
-            getWords()
+        Injector.languageManager.getCurrentLanguageIfSelected()?.let {
+            Injector.dbManager.deleteWord(it.tableExerciseFails, wordModel) {
+                result.invoke()
+                getWords()
+            }
         }
     }
 
