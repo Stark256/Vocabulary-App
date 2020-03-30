@@ -1,0 +1,7 @@
+{
+  "words_to_add": [
+    {"word": "test_word_one", "translation" : "test_translation_one" },
+    {"word": "test_word_two", "translation" : "test_translation_two" },
+    {"word": "test_word_three", "translation" : "test_translation_three" }
+  ]
+}

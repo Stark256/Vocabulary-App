@@ -7,6 +7,7 @@ import com.vocabulary.db.DBHelper
 import com.vocabulary.db.DBUtil
 import com.vocabulary.models.LanguageModel
 import com.vocabulary.models.ExerciseFailModel
+import com.vocabulary.models.JsonWord
 import com.vocabulary.models.word_models.WordModel
 import java.lang.Exception
 
@@ -177,6 +178,23 @@ class DBManager(private val context: Context) {
     fun deleteTableWords(tableName: String) {
         db.writableDatabase.execSQL(String.format(context.getString(com.vocabulary.R.string.query_drop_table), tableName))
 //        db.close()
+    }
+
+    fun addJsonWords(wordTable: String, jsonArr: ArrayList<JsonWord>, result: () -> Unit) {
+        for(item in jsonArr) {
+            val isValid = validateWord(wordTable, item.word, item.translation)
+
+            if(isValid == null) {
+                val wordModel = WordModel(
+                    word = item.word,
+                    translation = item.translation,
+                    tableName = wordTable
+                )
+                db.writableDatabase.insert(wordModel.tableName, null, wordModel.getContentValues())
+            }
+        }
+        db.close()
+        result.invoke()
     }
 
     fun addWord(wordTable : String, word: String?, translation: String?, result: (String?) -> Unit) {

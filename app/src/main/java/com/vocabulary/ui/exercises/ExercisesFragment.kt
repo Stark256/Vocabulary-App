@@ -47,7 +47,7 @@ class ExercisesFragment : BaseFragment() {
                         startActivity(GameLettersActivity.newInstance(
                             contextMain,
                             wordsCount.toLong(),
-                            (itemsToGuessCount + 2).toLong()))
+                            (itemsToGuessCount).toLong()))
                     }
                 }
             }

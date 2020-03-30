@@ -13,13 +13,18 @@ import com.vocabulary.managers.Injector
 import com.vocabulary.models.theme_models.ThemeColorModel
 import com.vocabulary.ui.main.MainActivity
 import com.vocabulary.ui.common.BaseFragment
+import com.vocabulary.ui.common.ProgressDialog
+import com.vocabulary.utils.JsonUtils
 import kotlinx.android.synthetic.main.fragment_settings.*
 import kotlinx.android.synthetic.main.layout_theme_screens.*
 
 class SettingsFragment : BaseFragment() {
 
+    private lateinit var viewModel: SettingsViewModel
     private lateinit var themeAdapter: ThemesColorAdapter
     private var isInitiated = false
+    private lateinit var progressDialog: ProgressDialog
+    private var isDialogShowed = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_settings, container, false)
@@ -29,6 +34,10 @@ class SettingsFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        this.viewModel = ViewModelProviders.of(this).get(SettingsViewModel::class.java)
+
+        this.progressDialog = ProgressDialog()
+
         this.themeAdapter = ThemesColorAdapter(Injector.themeManager.currentTheme, Injector.themeManager.getThemes(),
             object : ThemesColorAdapter.ThemeColorClickListener {
                 override fun colorPressed(theme: ThemeColorModel) {
@@ -37,6 +46,21 @@ class SettingsFragment : BaseFragment() {
             })
         rv_themes.layoutManager = LinearLayoutManager(contextMain, RecyclerView.HORIZONTAL, false)
         rv_themes.adapter = themeAdapter
+
+        btn_load_json.setOnClickListener {
+            jsonLoadPressed()
+        }
+    }
+
+    private fun jsonLoadPressed() {
+        if(!isDialogShowed) {
+            isDialogShowed = true
+            progressDialog.show(contextMain.supportFragmentManager, progressDialog.tag)
+            viewModel.loadJson(JsonUtils.loadJson(contextMain)) {
+                isDialogShowed = false
+                progressDialog.dismiss()
+            }
+        }
     }
 
     override fun onPause() {

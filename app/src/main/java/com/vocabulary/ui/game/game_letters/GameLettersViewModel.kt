@@ -155,7 +155,8 @@ class GameLettersViewModel : ViewModel() {
         var wordString = ""
 //        wordString += correctWord
         arrGuess.addAll(correctLetterArr)
-        val lastGuesC: Int = (itemToGuess?.toInt() ?: correctWord.length) - correctWord.length
+//        val lastGuesC: Int = (itemToGuess?.toInt() ?: correctWord.length) - correctWord.length
+        val lastGuesC: Int = (itemToGuess?.toInt() ?: correctWord.length)
 
         for(index in 0..lastGuesC-1) {
             wordString += wordArr.random().word.toCharArray().random()

@@ -28,10 +28,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:gravity="center">
+                android:layout_marginEnd="16dp">
 
-
+                <ImageView
+                    android:id="@+id/btn_load_json"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:padding="3dp"
+                    android:src="@drawable/ic_file_download"
+                    android:layout_alignParentEnd="true"/>
 
             </RelativeLayout>
 
