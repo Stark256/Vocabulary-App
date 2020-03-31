@@ -84,9 +84,16 @@ open class BaseFragment(): Fragment(){
             for(i in start..end-1) {
                 if(source != null ) {
 //                        Pattern.compile("^[a-zA-Z ]+$").matcher(source[i].toString()).matches()) {
-
-                    if(Character.isLetter(source[i]) || source[i].toString() == " ") {
-                        resultString += source[i]
+                    if(dend == 0) {
+                        if (Character.isLetter(source[i])){
+                            resultString += source[i]
+                        }
+                    } else {
+                        if (Character.isLetter(source[i]) || source[i].toString() == " "
+                            || source[i].toString() == "," || source[i].toString() == "_"
+                        ) {
+                            resultString += source[i]
+                        }
                     }
                 }
             }
